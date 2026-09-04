@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brewers Magic Number Tracker</title>
+<meta name="description" content="How close are the Milwaukee Brewers to clinching a playoff berth, the NL Central, the No. 1 seed, and the best record in baseball.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <h1>Brewers Magic Number</h1>
+    <div class="record" id="record">Loading…</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="notice"></div>
+
+  <main class="hero" id="hero" aria-live="polite">
+    <div class="hero-bar">
+      <span id="slate">Milwaukee Brewers</span>
+      <span class="live"><span class="dot"></span> <span id="updated">Loading</span></span>
+    </div>
+    <div class="hero-body">
+      <div class="hero-num">
+        <div class="numeral" id="numeral">—</div>
+        <div class="hero-side">
+          <div class="lbl">Magic number</div>
+          <h2 id="headline">Loading the standings…</h2>
+          <p id="explainer"></p>
+        </div>
+      </div>
+      <div class="track">
+        <div class="track-rail"><div class="track-fill" id="track-fill" style="width:0%"></div></div>
+        <div class="track-cap">
+          <span id="track-left">—</span>
+          <span id="track-right"></span>
+        </div>
+      </div>
+    </div>
+    <div class="races" id="races"></div>
+  </main>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Daily updates</div>
+      <h2>What moved the numbers</h2>
+      <p>Only games that can touch a Brewers magic number appear here, each one annotated with exactly what it changed.</p>
+    </div>
+    <div class="feed" id="feed"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">How it works</div>
+      <h2>One formula, four chasers</h2>
+    </div>
+    <div class="explain">
+      <div class="eq">M &nbsp;=&nbsp; 163 &nbsp;&minus;&nbsp; Brewers wins &nbsp;&minus;&nbsp; chaser losses</div>
+      <ul>
+        <li>Each race measures the Brewers against a <strong>different chaser</strong> — which is why a Cubs loss moves the division number and nothing else.</li>
+        <li>A <strong>Brewers win drops all four</strong> numbers by one. It is the only result that does.</li>
+        <li>A <strong>Brewers loss moves nothing.</strong> Losses don't raise a magic number — they only burn a game off the schedule.</li>
+        <li>The 163 is 162 games plus one, because the extra game is what turns a tie into a clinch. MLB now breaks ties mathematically, so where the Brewers own the head-to-head tiebreaker the real number can be one lower.</li>
+        <li>If the chaser changes overnight, a number can <strong>rise</strong> even after a win. The feed says so when it happens.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Data from the <a href="https://statsapi.mlb.com/api/v1/standings?leagueId=104&amp;standingsTypes=regularSeason">MLB Stats API</a>, refreshed on a schedule. Not affiliated with or endorsed by the Milwaukee Brewers or MLB.</p>
+    <p id="footer-stamp"></p>
+  </footer>
+</div>
+
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

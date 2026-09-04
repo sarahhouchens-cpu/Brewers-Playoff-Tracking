@@ -1,0 +1,13 @@
+{
+  "name": "brewers-playoff-tracking",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Milwaukee Brewers magic number tracker",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "update": "node scripts/update.js",
+    "update:demo": "node scripts/update.js --demo",
+    "serve": "node --run-if-present serve || python3 -m http.server 8080"
+  }
+}
