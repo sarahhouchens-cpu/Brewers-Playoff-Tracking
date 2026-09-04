@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-04T23:11:59.307Z",
+  "generatedAt": "2026-09-04T23:15:45.913Z",
   "slateDate": "2026-09-03",
   "team": {
     "id": 158,
@@ -96,28 +96,16 @@
     {
       "key": "leagueSeed",
       "delta": 0,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 143,
-        "name": "Philadelphia Phillies",
-        "abbrev": "PHI",
-        "wins": 84,
-        "losses": 57
-      },
+      "chaserChanged": false,
+      "previousChaser": null,
       "previousMagic": 19
     },
     {
       "key": "bestRecord",
-      "delta": -1,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 147,
-        "name": "New York Yankees",
-        "abbrev": "NYY",
-        "wins": 85,
-        "losses": 56
-      },
-      "previousMagic": 20
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 19
     }
   ],
   "feed": [
