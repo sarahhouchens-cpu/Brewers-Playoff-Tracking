@@ -95,8 +95,16 @@ function assertUsable(teams) {
   if (problems.length) throw new Error(`Standings response not usable:\n  - ${problems.join('\n  - ')}`);
 }
 
-/** Pull finals for the most recent slate that actually has any. */
-async function fetchRecentFinals() {
+/**
+ * Collect finals for the last few days, most recent first.
+ *
+ * We cannot just take the newest date that has any final: in the early evening
+ * today's slate is still in progress, and a single completed day game would
+ * hide yesterday's Brewers result. The caller picks the most recent slate that
+ * actually produces feed cards.
+ */
+async function fetchCandidateSlates() {
+  const slates = [];
   for (const offset of [0, -1, -2]) {
     const date = centralDate(offset);
     const payload = await getJSON(`${API}/schedule?sportId=1&date=${date}`);
@@ -113,9 +121,9 @@ async function fetchRecentFinals() {
       }))
       .filter((g) => g.homeId != null && g.awayId != null);
 
-    if (finals.length) return { date, finals };
+    slates.push({ date, finals });
   }
-  return { date: centralDate(), finals: [] };
+  return slates;
 }
 
 /**
@@ -239,12 +247,22 @@ async function main() {
   const result = computeRaces(teams, brewers.id);
   const previous = await readPrevious();
 
-  let date, finals;
+  // Use the most recent slate that actually moved something for the Brewers.
+  let date = centralDate();
+  let feed = [];
   if (DEMO) {
-    ({ fixtureFinals: finals } = await import('../test/fixture-finals.js'));
+    const { fixtureFinals } = await import('../test/fixture-finals.js');
     date = '2026-09-04';
+    feed = buildFeed(fixtureFinals, result, brewers.id);
   } else {
-    ({ date, finals } = await fetchRecentFinals());
+    for (const slate of await fetchCandidateSlates()) {
+      const cards = buildFeed(slate.finals, result, brewers.id);
+      if (cards.length) {
+        date = slate.date;
+        feed = cards;
+        break;
+      }
+    }
   }
 
   const snapshot = {
@@ -257,7 +275,7 @@ async function main() {
     races: result.races,
     headline: headlineRace(result.races).key,
     deltas: diffRaces(result.races, previous?.races ?? null),
-    feed: buildFeed(finals, result, brewers.id),
+    feed,
   };
 
   for (const race of snapshot.races) {
