@@ -54,6 +54,7 @@ function normalize(standings, teamsPayload) {
   const meta = new Map();
   for (const t of teamsPayload?.teams ?? []) {
     meta.set(t.id, {
+      name: t.name ?? t.teamName ?? null,
       abbrev: t.abbreviation ?? t.teamCode?.toUpperCase() ?? String(t.id),
       leagueId: t.league?.id ?? null,
       divisionId: t.division?.id ?? null,
@@ -68,7 +69,7 @@ function normalize(standings, teamsPayload) {
       const extra = meta.get(id) ?? {};
       teams.push({
         id,
-        name: tr.team.name ?? `Team ${id}`,
+        name: extra.name ?? tr.team?.name ?? `Team ${id}`,
         abbrev: extra.abbrev ?? String(id),
         wins: Number(tr.wins ?? 0),
         losses: Number(tr.losses ?? 0),
@@ -86,7 +87,10 @@ function assertUsable(teams) {
   if (teams.length < 30) problems.push(`parsed only ${teams.length} teams, expected 30`);
   if (teams.some((t) => t.divisionId == null)) problems.push('some teams have no divisionId');
   if (teams.some((t) => t.leagueId == null)) problems.push('some teams have no leagueId');
-  if (!teams.some((t) => t.name === TEAM_NAME)) problems.push(`no team named "${TEAM_NAME}"`);
+  if (!teams.some((t) => t.name === TEAM_NAME)) {
+    const sample = teams.slice(0, 3).map((t) => t.name).join(', ');
+    problems.push(`no team named "${TEAM_NAME}" (first names parsed: ${sample})`);
+  }
   if (teams.every((t) => t.wins === 0)) problems.push('every team has 0 wins');
   if (problems.length) throw new Error(`Standings response not usable:\n  - ${problems.join('\n  - ')}`);
 }
