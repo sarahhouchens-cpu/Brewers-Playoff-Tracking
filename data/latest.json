@@ -1,6 +1,6 @@
 {
-  "source": "demo",
-  "generatedAt": "2026-09-04T23:09:15.560Z",
+  "source": "live",
+  "generatedAt": "2026-09-04T23:09:44.088Z",
   "slateDate": "2026-09-04",
   "team": {
     "id": 158,
@@ -21,11 +21,11 @@
         "id": 135,
         "name": "San Diego Padres",
         "abbrev": "SD",
-        "wins": 74,
+        "wins": 73,
         "losses": 67
       },
       "magic": 9,
-      "elimination": 35,
+      "elimination": 36,
       "clinched": false
     },
     {
@@ -50,14 +50,14 @@
       "headline": "to lock up the No. 1 seed",
       "chaserNote": "best record among other NL teams",
       "chaser": {
-        "id": 143,
-        "name": "Philadelphia Phillies",
-        "abbrev": "PHI",
-        "wins": 84,
+        "id": 144,
+        "name": "Atlanta Braves",
+        "abbrev": "ATL",
+        "wins": 83,
         "losses": 57
       },
       "magic": 19,
-      "elimination": 25,
+      "elimination": 26,
       "clinched": false
     },
     {
@@ -66,14 +66,14 @@
       "headline": "to secure World Series home field",
       "chaserNote": "best record anywhere in baseball",
       "chaser": {
-        "id": 147,
-        "name": "New York Yankees",
-        "abbrev": "NYY",
-        "wins": 85,
-        "losses": 56
+        "id": 144,
+        "name": "Atlanta Braves",
+        "abbrev": "ATL",
+        "wins": 83,
+        "losses": 57
       },
-      "magic": 20,
-      "elimination": 24,
+      "magic": 19,
+      "elimination": 26,
       "clinched": false
     }
   ],
@@ -96,92 +96,29 @@
     {
       "key": "leagueSeed",
       "delta": 0,
-      "chaserChanged": false,
-      "previousChaser": null,
+      "chaserChanged": true,
+      "previousChaser": {
+        "id": 143,
+        "name": "Philadelphia Phillies",
+        "abbrev": "PHI",
+        "wins": 84,
+        "losses": 57
+      },
       "previousMagic": 19
     },
     {
       "key": "bestRecord",
-      "delta": 0,
-      "chaserChanged": false,
-      "previousChaser": null,
+      "delta": -1,
+      "chaserChanged": true,
+      "previousChaser": {
+        "id": 147,
+        "name": "New York Yankees",
+        "abbrev": "NYY",
+        "wins": 85,
+        "losses": 56
+      },
       "previousMagic": 20
     }
   ],
-  "feed": [
-    {
-      "kind": "brewers-win",
-      "tag": "Brewers · Final",
-      "score": "Milwaukee Brewers 5, St. Louis Cardinals 2",
-      "why": "A win drops every magic number by one — the only result that moves all four at once.",
-      "impacts": [
-        {
-          "key": "berth",
-          "label": "Playoff berth",
-          "delta": -1
-        },
-        {
-          "key": "division",
-          "label": "NL Central",
-          "delta": -1
-        },
-        {
-          "key": "leagueSeed",
-          "label": "No. 1 seed, NL",
-          "delta": -1
-        },
-        {
-          "key": "bestRecord",
-          "label": "Best record, MLB",
-          "delta": -1
-        }
-      ]
-    },
-    {
-      "kind": "chaser-loss",
-      "tag": "Chaser · NL Central",
-      "score": "Pittsburgh Pirates 4, Chicago Cubs 1",
-      "why": "Chicago Cubs is the team the NL Central number is measured against, so their loss trims it by one.",
-      "impacts": [
-        {
-          "key": "division",
-          "label": "NL Central",
-          "delta": -1
-        }
-      ]
-    },
-    {
-      "kind": "chaser-loss",
-      "tag": "Chaser · Playoff berth",
-      "score": "San Francisco Giants 6, San Diego Padres 3",
-      "why": "San Diego Padres is the team the Playoff berth number is measured against, so their loss trims it by one.",
-      "impacts": [
-        {
-          "key": "berth",
-          "label": "Playoff berth",
-          "delta": -1
-        }
-      ]
-    },
-    {
-      "kind": "chaser-loss",
-      "tag": "Chaser · Best record, MLB",
-      "score": "Baltimore Orioles 8, New York Yankees 2",
-      "why": "New York Yankees is the team the Best record, MLB number is measured against, so their loss trims it by one.",
-      "impacts": [
-        {
-          "key": "bestRecord",
-          "label": "Best record, MLB",
-          "delta": -1
-        }
-      ]
-    },
-    {
-      "kind": "chaser-win",
-      "tag": "Chaser · No. 1 seed, NL",
-      "score": "Philadelphia Phillies 7, Miami Marlins 0",
-      "why": "Philadelphia Phillies holds the mark for No. 1 seed, NL. A win for them doesn't raise the number — it just removes a chance for it to fall.",
-      "impacts": []
-    }
-  ]
+  "feed": []
 }
