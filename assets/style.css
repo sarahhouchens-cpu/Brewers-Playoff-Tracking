@@ -21,15 +21,17 @@
   --clinch: #1b7a4f;
   --watch: #b4761a;
 
-  --panel: var(--navy);
-  --panel-mute: #93a6c4;
+  --panel: var(--royal);
+  --panel-mute: #a9c4ec;
 
   --shadow: 0 1px 2px rgba(18, 40, 75, 0.06), 0 8px 24px -12px rgba(18, 40, 75, 0.18);
   --pad: clamp(16px, 5vw, 40px);
 
-  --display: Archivo, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --body: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display: "Lilita One", Impact, Haettenschweiler, sans-serif;
+  --body: Rubik, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Was IBM Plex Mono. Rubik with tracking + tabular figures does the same
+     labelling job without the developer-tool connotation. */
+  --mono: Rubik, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,8 +47,8 @@
     --royal: #4d8ae8;
     --clinch: #4fc08a;
     --watch: #e0a648;
-    --panel: #0d1e38;
-    --panel-mute: #8ca2c4;
+    --panel: #00347f;
+    --panel-mute: #9fbce8;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px -14px rgba(0, 0, 0, 0.7);
   }
 }
@@ -63,8 +65,8 @@
   --royal: #4d8ae8;
   --clinch: #4fc08a;
   --watch: #e0a648;
-  --panel: #0d1e38;
-  --panel-mute: #8ca2c4;
+  --panel: #00347f;
+  --panel-mute: #9fbce8;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px -14px rgba(0, 0, 0, 0.7);
 }
 
@@ -90,7 +92,7 @@ body {
 
 /* ---------- Masthead ---------- */
 .masthead {
-  background: var(--navy);
+  background: var(--panel);
   border-bottom: 4px solid var(--gold);
 }
 .masthead-inner {
@@ -105,7 +107,7 @@ body {
 }
 .masthead h1 {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: clamp(19px, 5vw, 25px);
   letter-spacing: -0.02em;
   color: #fff;
@@ -113,6 +115,7 @@ body {
 }
 .masthead .record {
   font-family: var(--mono);
+  font-weight: 600;
   font-size: 12.5px;
   color: var(--gold);
   letter-spacing: 0.06em;
@@ -153,8 +156,9 @@ body {
   gap: 4px 12px;
   padding: 10px 18px;
   background: rgba(0, 0, 0, 0.22);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   font-family: var(--mono);
+  font-weight: 600;
   font-size: 10.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -184,7 +188,7 @@ body {
 }
 .numeral {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 400;
   font-size: clamp(84px, 26vw, 172px);
   line-height: 0.8;
   color: var(--gold);
@@ -202,6 +206,7 @@ body {
 }
 .hero-side .lbl {
   font-family: var(--mono);
+  font-weight: 700;
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -209,7 +214,7 @@ body {
   font-weight: 600;
 }
 .hero-side h2 {
-  font-family: var(--display);
+  font-family: var(--body);
   color: #fff;
   font-size: clamp(19px, 4.6vw, 25px);
   font-weight: 700;
@@ -231,7 +236,7 @@ body {
 .track-rail {
   height: 7px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.22);
   overflow: hidden;
 }
 .track-fill {
@@ -244,6 +249,7 @@ body {
   justify-content: space-between;
   gap: 12px;
   font-family: var(--mono);
+  font-weight: 500;
   font-size: 10.5px;
   color: var(--panel-mute);
   margin-top: 8px;
@@ -254,12 +260,12 @@ body {
 .races {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 .race {
   padding: 16px clamp(14px, 3vw, 22px);
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .race:nth-child(2n) {
   border-right: 0;
@@ -269,6 +275,7 @@ body {
 }
 .race .rt {
   font-family: var(--mono);
+  font-weight: 600;
   font-size: 10px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -278,7 +285,7 @@ body {
 }
 .race .rn {
   font-family: var(--display);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 34px;
   color: #fff;
   line-height: 1;
@@ -330,7 +337,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
   }
   .race:nth-child(2n) {
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
   }
   .race:last-child {
     border-right: 0;
@@ -352,13 +359,13 @@ section {
 .eyebrow {
   font-family: var(--mono);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
 .sec-head h2 {
-  font-family: var(--display);
+  font-family: var(--body);
   font-size: clamp(20px, 4.5vw, 26px);
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -400,13 +407,14 @@ section {
 }
 .card .tag {
   font-family: var(--mono);
+  font-weight: 600;
   font-size: 10.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
 .card .score {
-  font-family: var(--display);
+  font-family: var(--body);
   font-weight: 700;
   font-size: 15.5px;
   letter-spacing: -0.005em;
@@ -468,7 +476,8 @@ section {
   padding: 20px;
 }
 .explain .eq {
-  font-family: var(--mono);
+  font-family: var(--body);
+  font-variant-numeric: tabular-nums;
   font-size: clamp(11.5px, 3vw, 16px);
   font-weight: 500;
   color: var(--ink);
