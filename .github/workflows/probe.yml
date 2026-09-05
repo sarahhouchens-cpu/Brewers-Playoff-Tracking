@@ -17,4 +17,4 @@ jobs:
         run: node scripts/probe-provider.js
         env:
           FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
-          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          ODDS_API_KEY: ${{ secrets.TheOdds_API_Key }}

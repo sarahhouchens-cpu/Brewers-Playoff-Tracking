@@ -179,7 +179,13 @@ async function probeIdSpace() {
 /** Does the Odds API key actually return MLB player props? */
 async function probeTheOddsApi() {
   console.log('\n--- The Odds API ---');
-  if (!ODDS_KEY) return console.log('  ODDS_API_KEY not set — add it as a repository secret to test it');
+  if (!ODDS_KEY) {
+    console.log('  ODDS_API_KEY is empty.');
+    console.log('  The workflow maps secrets.TheOdds_API_Key onto it — if that secret exists');
+    console.log('  under a different name, the mapping in .github/workflows/probe.yml is wrong.');
+    return;
+  }
+  console.log(`  key present: yes (${ODDS_KEY.length} chars)`);
 
   const quota = (res) => {
     const remaining = res.headers.get('x-requests-remaining');
