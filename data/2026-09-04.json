@@ -1,16 +1,16 @@
 {
-  "source": "demo",
-  "generatedAt": "2026-09-04T23:11:32.241Z",
+  "source": "live",
+  "generatedAt": "2026-09-05T20:15:34.175Z",
   "slateDate": "2026-09-04",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
     "abbrev": "MIL",
-    "wins": 87,
+    "wins": 88,
     "losses": 54
   },
-  "gamesPlayed": 141,
-  "gamesRemaining": 21,
+  "gamesPlayed": 142,
+  "gamesRemaining": 20,
   "races": [
     {
       "key": "berth",
@@ -18,13 +18,13 @@
       "headline": "to clinch a playoff berth",
       "chaserNote": "first team out of the playoff field",
       "chaser": {
-        "id": 135,
-        "name": "San Diego Padres",
-        "abbrev": "SD",
+        "id": 109,
+        "name": "Arizona Diamondbacks",
+        "abbrev": "AZ",
         "wins": 74,
-        "losses": 67
+        "losses": 68
       },
-      "magic": 9,
+      "magic": 7,
       "elimination": 35,
       "clinched": false
     },
@@ -37,11 +37,11 @@
         "id": 112,
         "name": "Chicago Cubs",
         "abbrev": "CHC",
-        "wins": 79,
+        "wins": 80,
         "losses": 62
       },
-      "magic": 14,
-      "elimination": 30,
+      "magic": 13,
+      "elimination": 29,
       "clinched": false
     },
     {
@@ -50,13 +50,13 @@
       "headline": "to lock up the No. 1 seed",
       "chaserNote": "best record among other NL teams",
       "chaser": {
-        "id": 143,
-        "name": "Philadelphia Phillies",
-        "abbrev": "PHI",
+        "id": 144,
+        "name": "Atlanta Braves",
+        "abbrev": "ATL",
         "wins": 84,
         "losses": 57
       },
-      "magic": 19,
+      "magic": 18,
       "elimination": 25,
       "clinched": false
     },
@@ -66,14 +66,14 @@
       "headline": "to secure World Series home field",
       "chaserNote": "best record anywhere in baseball",
       "chaser": {
-        "id": 147,
-        "name": "New York Yankees",
-        "abbrev": "NYY",
-        "wins": 85,
-        "losses": 56
+        "id": 144,
+        "name": "Atlanta Braves",
+        "abbrev": "ATL",
+        "wins": 84,
+        "losses": 57
       },
-      "magic": 20,
-      "elimination": 24,
+      "magic": 18,
+      "elimination": 25,
       "clinched": false
     }
   ],
@@ -84,47 +84,35 @@
       "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 9
+      "previousMagic": 7
     },
     {
       "key": "division",
       "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 14
+      "previousMagic": 13
     },
     {
       "key": "leagueSeed",
       "delta": 0,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 144,
-        "name": "Atlanta Braves",
-        "abbrev": "ATL",
-        "wins": 83,
-        "losses": 57
-      },
-      "previousMagic": 19
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 18
     },
     {
       "key": "bestRecord",
-      "delta": 1,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 144,
-        "name": "Atlanta Braves",
-        "abbrev": "ATL",
-        "wins": 83,
-        "losses": 57
-      },
-      "previousMagic": 19
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 18
     }
   ],
   "feed": [
     {
       "kind": "brewers-win",
       "tag": "Brewers · Final",
-      "score": "Milwaukee Brewers 5, St. Louis Cardinals 2",
+      "score": "Milwaukee Brewers 10, Cincinnati Reds 7",
       "why": "A win drops every magic number by one — the only result that moves all four at once.",
       "impacts": [
         {
@@ -151,22 +139,9 @@
     },
     {
       "kind": "chaser-loss",
-      "tag": "Chaser · NL Central",
-      "score": "Pittsburgh Pirates 4, Chicago Cubs 1",
-      "why": "Chicago Cubs is the team the NL Central number is measured against, so their loss trims it by one.",
-      "impacts": [
-        {
-          "key": "division",
-          "label": "NL Central",
-          "delta": -1
-        }
-      ]
-    },
-    {
-      "kind": "chaser-loss",
       "tag": "Chaser · Playoff berth",
-      "score": "San Francisco Giants 6, San Diego Padres 3",
-      "why": "San Diego Padres is the team the Playoff berth number is measured against, so their loss trims it by one.",
+      "score": "Houston Astros 3, Arizona Diamondbacks 1",
+      "why": "Arizona Diamondbacks is the team the Playoff berth number is measured against, so their loss trims it by one.",
       "impacts": [
         {
           "key": "berth",
@@ -176,23 +151,17 @@
       ]
     },
     {
-      "kind": "chaser-loss",
-      "tag": "Chaser · Best record, MLB",
-      "score": "Baltimore Orioles 8, New York Yankees 2",
-      "why": "New York Yankees is the team the Best record, MLB number is measured against, so their loss trims it by one.",
-      "impacts": [
-        {
-          "key": "bestRecord",
-          "label": "Best record, MLB",
-          "delta": -1
-        }
-      ]
+      "kind": "chaser-win",
+      "tag": "Chaser · No. 1 seed, NL",
+      "score": "Atlanta Braves 5, Philadelphia Phillies 2",
+      "why": "Atlanta Braves holds the mark for No. 1 seed, NL and Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     },
     {
       "kind": "chaser-win",
-      "tag": "Chaser · No. 1 seed, NL",
-      "score": "Philadelphia Phillies 7, Miami Marlins 0",
-      "why": "Philadelphia Phillies holds the mark for No. 1 seed, NL. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "tag": "Chaser · NL Central",
+      "score": "Chicago Cubs 6, Miami Marlins 1",
+      "why": "Chicago Cubs holds the mark for NL Central. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
