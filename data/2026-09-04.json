@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-05T02:54:46.725Z",
+  "generatedAt": "2026-09-05T03:15:11.139Z",
   "slateDate": "2026-09-04",
   "team": {
     "id": 158,
@@ -81,16 +81,10 @@
   "deltas": [
     {
       "key": "berth",
-      "delta": -1,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 135,
-        "name": "San Diego Padres",
-        "abbrev": "SD",
-        "wins": 73,
-        "losses": 67
-      },
-      "previousMagic": 8
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 7
     },
     {
       "key": "division",
