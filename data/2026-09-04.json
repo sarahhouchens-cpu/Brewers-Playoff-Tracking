@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-05T02:17:22.376Z",
+  "generatedAt": "2026-09-05T02:41:48.122Z",
   "slateDate": "2026-09-04",
   "team": {
     "id": 158,
@@ -109,6 +109,34 @@
     }
   ],
   "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 10, Cincinnati Reds 7",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
     {
       "kind": "chaser-win",
       "tag": "Chaser · No. 1 seed, NL",
