@@ -15,6 +15,9 @@ import {
   buildParlays, validateParlay, isEligibleLeg, withEdge,
   PAYOUT_WINDOW, STAKE,
 } from '../lib/parlay.js';
+import * as projections from '../lib/projections.js';
+
+const require_projections = () => projections;
 
 const near = (a, b, tol = 1e-6, msg) => assert.ok(Math.abs(a - b) < tol, msg ?? `${a} !~= ${b}`);
 
@@ -318,4 +321,35 @@ test('the board does not return six versions of the same ticket', () => {
   for (const [k, n] of uses) {
     assert.ok(n <= 2, `leg ${k} appeared on ${n} tickets, cap is 2`);
   }
+});
+
+/* ----------------------------------------------------------- park factor --- */
+
+test('park power reflects the venue, not the team', () => {
+  const { parkPower } = require_projections();
+  assert.ok(parkPower('Great American Ball Park') > 1.1, 'Cincinnati is homer-friendly');
+  assert.ok(parkPower('Oracle Park') < 0.9, 'San Francisco suppresses power');
+  assert.equal(parkPower('Some Unlisted Field'), 1, 'unknown parks play neutral');
+});
+
+test('a closed roof still keeps the park factor', () => {
+  const { weatherPower } = require_projections();
+  // Weather is neutralised, but the ballpark's dimensions do not close with it.
+  const closed = weatherPower({ roofClosed: true, venue: 'American Family Field', temperatureF: 40, windMph: 20, windDirection: 'in' });
+  assert.ok(closed > 1, 'American Family Field plays slightly hitter-friendly indoors');
+  assert.equal(weatherPower({ roofClosed: true, venue: 'Some Unlisted Field' }), 1);
+});
+
+test('roof status is a property of the venue', () => {
+  const { isRoofed } = require_projections();
+  assert.equal(isRoofed('American Family Field'), true);
+  assert.equal(isRoofed('Great American Ball Park'), false, 'Cincinnati is open air');
+});
+
+test('a hot night in Cincinnati compounds park and weather', () => {
+  const { weatherPower } = require_projections();
+  const cincy = weatherPower({ venue: 'Great American Ball Park', temperatureF: 93, windMph: 11, windDirection: 'out' });
+  const neutral = weatherPower({ venue: 'Some Unlisted Field', temperatureF: 72, windMph: 0 });
+  assert.ok(cincy > neutral * 1.1, `expected a clear boost, got ${cincy} vs ${neutral}`);
+  assert.ok(cincy <= 1.35, 'still clamped against runaway multipliers');
 });

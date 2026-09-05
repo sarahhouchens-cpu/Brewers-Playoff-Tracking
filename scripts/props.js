@@ -19,7 +19,7 @@ import { writeFile, mkdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { projectBatter, weatherPower, pitcherContactFactor } from '../lib/projections.js';
+import { projectBatter, weatherPower, pitcherContactFactor, isRoofed, parkPower } from '../lib/projections.js';
 import { buildParlays, withEdge, describeLeg, MARKET_LABELS } from '../lib/parlay.js';
 import { decimalToAmerican } from '../lib/odds.js';
 
@@ -149,7 +149,7 @@ async function bullpenContact(teamId, season) {
 }
 
 /** Roof state, temperature and wind from the live game feed. */
-async function venueConditions(gamePk) {
+async function venueConditions(gamePk, venueName) {
   try {
     const feed = await getJSON(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`);
     const weather = feed?.gameData?.weather ?? {};
@@ -162,15 +162,29 @@ async function venueConditions(gamePk) {
     if (/out/i.test(wind)) windDirection = 'out';
     else if (/in/i.test(wind)) windDirection = 'in';
 
+    // Only a roofed park can be closed. Reading "dome" out of a condition
+    // string at an open-air venue would silently neutralise real weather.
+    const roofClosed = isRoofed(venueName) && /roof closed|dome|indoor/i.test(condition);
+
     return {
-      roofClosed: /roof closed|dome/i.test(condition),
+      venue: venueName,
+      roofed: isRoofed(venueName),
+      roofClosed,
       temperatureF,
       windMph,
       windDirection,
       description: [condition, wind].filter(Boolean).join(' · ') || 'Conditions unavailable',
     };
   } catch {
-    return { roofClosed: false, temperatureF: 72, windMph: 0, windDirection: 'none', description: 'Conditions unavailable' };
+    return {
+      venue: venueName,
+      roofed: isRoofed(venueName),
+      roofClosed: false,
+      temperatureF: 72,
+      windMph: 0,
+      windDirection: 'none',
+      description: 'Conditions unavailable',
+    };
   }
 }
 
@@ -285,8 +299,9 @@ async function buildBoard(date) {
     }
   }
 
-  const conditions = await venueConditions(game.gamePk);
-  const power = weatherPower(conditions);
+  const venueName = game?.venue?.name ?? null;
+  const conditions = await venueConditions(game.gamePk, venueName);
+  const power = weatherPower({ ...conditions, venue: venueName });
 
   const [starterAvg, penContact] = await Promise.all([
     pitcherOpponentAvg(starter?.id, season),
@@ -354,7 +369,7 @@ async function buildBoard(date) {
     starter: starter ? { id: starter.id, name: starter.fullName, hand: starterHand, opponentAvg: starterAvg } : null,
     lineupSource,
     conditions,
-    factors: { starterContact, bullpenContact: penContact, power },
+    factors: { starterContact, bullpenContact: penContact, power, park: parkPower(venueName) },
     legs: priced.sort((a, b) => (b.edge ?? -99) - (a.edge ?? -99) || b.modelProbability - a.modelProbability),
     parlays: parlays.map((p) => ({
       ...p,

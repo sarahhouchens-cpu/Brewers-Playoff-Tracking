@@ -93,14 +93,17 @@ function renderGame(board) {
       `${board.starter.hand === 'L' ? 'Left' : 'Right'}-handed${board.starter.opponentAvg ? ` · .${String(Math.round(board.starter.opponentAvg * 1000)).padStart(3, '0')} against` : ''}`));
   }
   facts.append(fact('Conditions', board.conditions.roofClosed ? 'Roof closed' : `${Math.round(board.conditions.temperatureF)}°F`,
-    board.conditions.description));
+    [board.conditions.venue, board.conditions.description].filter(Boolean).join(' · ')));
 
   const f = board.factors ?? {};
   facts.append(fact('Starter factor', f.starterContact?.toFixed(2) ?? '—',
     f.starterContact > 1 ? 'Hitter-friendly' : 'Suppresses contact'));
+  const parkNote = f.park && f.park !== 1
+    ? `${f.park > 1 ? 'Hitter' : 'Pitcher'}'s park (${f.park.toFixed(2)})`
+    : 'Neutral park';
   facts.append(fact('Power factor', f.power?.toFixed(2) ?? '—',
-    board.conditions.roofClosed ? 'Roof closed — weather neutral'
-      : f.power > 1 ? 'Wind and air help the ball' : 'Conditions hold the ball down'));
+    board.conditions.roofClosed ? `Roof closed — ${parkNote.toLowerCase()}`
+      : `${parkNote}${f.power > 1 ? ', air helps' : ''}`));
 
   card.append(facts);
   host.append(card);
