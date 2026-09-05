@@ -1,7 +1,7 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-05T01:14:10.084Z",
-  "slateDate": "2026-09-03",
+  "generatedAt": "2026-09-05T01:28:49.333Z",
+  "slateDate": "2026-09-04",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
@@ -53,11 +53,11 @@
         "id": 144,
         "name": "Atlanta Braves",
         "abbrev": "ATL",
-        "wins": 83,
+        "wins": 84,
         "losses": 57
       },
       "magic": 19,
-      "elimination": 26,
+      "elimination": 25,
       "clinched": false
     },
     {
@@ -69,11 +69,11 @@
         "id": 144,
         "name": "Atlanta Braves",
         "abbrev": "ATL",
-        "wins": 83,
+        "wins": 84,
         "losses": 57
       },
       "magic": 19,
-      "elimination": 26,
+      "elimination": 25,
       "clinched": false
     }
   ],
@@ -110,10 +110,10 @@
   ],
   "feed": [
     {
-      "kind": "brewers-loss",
-      "tag": "Brewers · Final",
-      "score": "Chicago Cubs 2, Milwaukee Brewers 1",
-      "why": "A loss never raises a magic number. It just burns a game off the schedule.",
+      "kind": "chaser-win",
+      "tag": "Chaser · No. 1 seed, NL",
+      "score": "Atlanta Braves 5, Philadelphia Phillies 2",
+      "why": "Atlanta Braves holds the mark for No. 1 seed, NL and Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
