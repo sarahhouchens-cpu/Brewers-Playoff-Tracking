@@ -38,6 +38,17 @@ const TZ = 'America/Chicago';
  */
 const EDGE_SANITY_LIMIT = 15;
 
+/**
+ * How close to first pitch the odds are worth spending credits on.
+ *
+ * Lineups typically post two to four hours out, and prices before that are
+ * provisional. Fetching at breakfast burns three credits on a board that will
+ * be rebuilt anyway. This lets the schedule carry many slots — runs outside the
+ * window, and runs after first pitch, cost nothing — while credits are only
+ * spent where the board is actually useful.
+ */
+const ODDS_WINDOW_HOURS = 5;
+
 const args = new Set(process.argv.slice(2));
 const DEMO = args.has('--demo');
 const DRY_RUN = args.has('--dry-run');
@@ -292,9 +303,15 @@ async function buildBoard(date, { withOdds = true } = {}) {
   ]);
   const starterContact = pitcherContactFactor(starterAvg ?? 0.243);
 
-  const { quotes, status: oddsStatus, books } = withOdds
+  const hoursOut = (startsAt - new Date()) / 3600000;
+  const inOddsWindow = hoursOut <= ODDS_WINDOW_HOURS;
+
+  const { quotes, status: oddsStatus, books } = withOdds && inOddsWindow
     ? await fetchOdds()
-    : { quotes: new Map(), status: 'skipped' };
+    : {
+        quotes: new Map(),
+        status: withOdds ? `too-early (${hoursOut.toFixed(1)}h to first pitch)` : 'skipped',
+      };
 
   // If StatsAPI has not posted a lineup yet, fall back to whoever the book has
   // priced. A player carrying props is almost certainly starting, and this is
@@ -388,6 +405,7 @@ async function buildBoard(date, { withOdds = true } = {}) {
     status: 'ok',
     oddsStatus,
     books: books ?? 0,
+    hoursToFirstPitch: Number(hoursOut.toFixed(2)),
     game: {
       gamePk: game.gamePk,
       opponent: opponent?.name ?? 'TBD',

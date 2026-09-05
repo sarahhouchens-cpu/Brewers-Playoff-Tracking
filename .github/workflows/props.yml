@@ -10,12 +10,20 @@ name: Update bet board
 # Times are chosen around a typical MLB schedule in Central time: late morning
 # for early lines, then afternoon and two evening passes as lineups are posted
 # and prices firm up.
+# Slots are dense because most of them are free. A run after first pitch
+# returns before the odds call, and a run more than five hours out skips it —
+# so credits are only spent in the window where lineups are posted and prices
+# are real. That covers a 1:10 PM Sunday game and a 7:10 PM weeknight with one
+# schedule, instead of assuming every game starts in the evening.
 on:
   schedule:
-    - cron: '0 16 * * *'   # 11:00 CT — opening lines
-    - cron: '0 21 * * *'   #  4:00 PM CT — afternoon move
-    - cron: '30 23 * * *'  #  6:30 PM CT — lineups posted
-    - cron: '30 0 * * *'   #  7:30 PM CT — last look before first pitch
+    - cron: '0 14 * * *'   #  9:00 AM CT
+    - cron: '0 16 * * *'   # 11:00 AM CT
+    - cron: '0 18 * * *'   #  1:00 PM CT
+    - cron: '0 20 * * *'   #  3:00 PM CT
+    - cron: '30 21 * * *'  #  4:30 PM CT
+    - cron: '0 23 * * *'   #  6:00 PM CT
+    - cron: '0 1 * * *'    #  8:00 PM CT
   workflow_dispatch:
 
 permissions:
