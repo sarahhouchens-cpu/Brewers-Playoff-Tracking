@@ -15,6 +15,8 @@
 
 const FP_KEY = process.env.FANTASYPROS_API_KEY ?? '';
 const FP_BASE = 'https://api.fantasypros.com/public/v2/json';
+const ODDS_KEY = process.env.ODDS_API_KEY ?? '';
+const ODDS_BASE = 'https://api.the-odds-api.com/v4';
 const season = new Date().getUTCFullYear();
 
 /**
@@ -130,11 +132,106 @@ async function main() {
     console.log(`  deep probe failed: ${err.message}`);
   }
 
+  await probeIdSpace();
+  await probeTheOddsApi();
+
   console.log('\nWhat to look for:');
   console.log('  - mlb/lineups returning 200 means the board can be built before StatsAPI posts a lineup.');
   console.log('  - any odds/props endpoint returning 200 would let the parlay pricing use this key.');
   console.log('  - 401/403 means the key is not valid for that endpoint tier.');
   console.log('  - 404 means the endpoint does not exist, which is the expected answer for the odds ones.');
+}
+
+/**
+ * Are FantasyPros' lineup player_ids MLB ids?
+ *
+ * The lineup entries carry no player name, so the whole model depends on being
+ * able to join them to StatsAPI. If these ids resolve against StatsAPI's people
+ * endpoint the join is free; if not, a name-matching table is needed.
+ */
+async function probeIdSpace() {
+  console.log('\n--- Are FantasyPros lineup ids MLB ids? ---');
+  if (!FP_KEY) return console.log('  no FantasyPros key');
+
+  try {
+    const res = await fetch(`${FP_BASE}/mlb/lineups`, {
+      headers: { 'x-api-key': FP_KEY, Accept: 'application/json' },
+    });
+    const games = (await res.json())?.games ?? [];
+    const game = games.find((g) => g?.hitters?.MIL) ?? games.find((g) => g?.hitters);
+    const side = game?.hitters?.MIL ? 'MIL' : Object.keys(game?.hitters ?? {})[0];
+    const slots = game?.hitters?.[side] ?? {};
+
+    for (const slot of ['1', '2']) {
+      const id = slots[slot]?.player_id;
+      if (!id) continue;
+      const mlb = await fetch(`https://statsapi.mlb.com/api/v1/people/${id}`);
+      const person = mlb.ok ? (await mlb.json())?.people?.[0] : null;
+      console.log(`  ${side} slot ${slot}: player_id=${id} → StatsAPI ${mlb.status}` +
+        (person ? ` = ${person.fullName} (${person.primaryPosition?.abbreviation})` : ' (no match)'));
+    }
+    console.log('  A name coming back means the ids are MLB ids and the join is free.');
+  } catch (err) {
+    console.log(`  failed: ${err.message}`);
+  }
+}
+
+/** Does the Odds API key actually return MLB player props? */
+async function probeTheOddsApi() {
+  console.log('\n--- The Odds API ---');
+  if (!ODDS_KEY) return console.log('  ODDS_API_KEY not set — add it as a repository secret to test it');
+
+  const quota = (res) => {
+    const remaining = res.headers.get('x-requests-remaining');
+    const used = res.headers.get('x-requests-used');
+    return remaining ? `  [quota: ${used} used, ${remaining} remaining]` : '';
+  };
+
+  try {
+    const sports = await fetch(`${ODDS_BASE}/sports?apiKey=${ODDS_KEY}`);
+    console.log(`  /sports                                  ${sports.status} ${sports.statusText}${quota(sports)}`);
+    if (!sports.ok) {
+      console.log('  Key rejected — check it was pasted whole, with no stray whitespace.');
+      return;
+    }
+
+    const evRes = await fetch(`${ODDS_BASE}/sports/baseball_mlb/events?apiKey=${ODDS_KEY}`);
+    const events = evRes.ok ? await evRes.json() : [];
+    console.log(`  /baseball_mlb/events                     ${evRes.status} ${evRes.statusText}  ${events.length} events${quota(evRes)}`);
+
+    const brewers = events.find((e) => /brewers/i.test(`${e.home_team} ${e.away_team}`));
+    const target = brewers ?? events[0];
+    if (!target) return console.log('  no MLB events listed right now');
+    console.log(`  using: ${target.away_team} @ ${target.home_team}${brewers ? '  (Brewers game)' : '  (no Brewers game listed)'}`);
+
+    // The decisive call: player props for one event.
+    const markets = 'batter_hits,batter_total_bases,batter_home_runs';
+    const oddsRes = await fetch(
+      `${ODDS_BASE}/sports/baseball_mlb/events/${target.id}/odds` +
+      `?apiKey=${ODDS_KEY}&regions=us&markets=${markets}&oddsFormat=american`
+    );
+    console.log(`  /events/{id}/odds  (player props)        ${oddsRes.status} ${oddsRes.statusText}${quota(oddsRes)}`);
+
+    if (!oddsRes.ok) {
+      console.log(`  body: ${(await oddsRes.text()).slice(0, 300)}`);
+      console.log('  A 422 here usually means player props are not on this plan.');
+      return;
+    }
+
+    const odds = await oddsRes.json();
+    const books = odds?.bookmakers ?? [];
+    console.log(`  bookmakers: ${books.length}`);
+    for (const book of books.slice(0, 3)) {
+      for (const market of book?.markets ?? []) {
+        const o = market?.outcomes?.[0];
+        console.log(`    ${book.title} / ${market.key}: ${market.outcomes?.length ?? 0} outcomes` +
+          (o ? ` — e.g. ${JSON.stringify({ name: o.name, description: o.description, point: o.point, price: o.price })}` : ''));
+      }
+    }
+    console.log('  Outcomes carrying a player name in `description` is what the adapter needs.');
+  } catch (err) {
+    console.log(`  failed: ${err.message}`);
+  }
 }
 
 main().catch((err) => {
