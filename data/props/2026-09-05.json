@@ -3,6 +3,7 @@
   "status": "ok",
   "oddsStatus": "ok",
   "books": 5,
+  "hoursToFirstPitch": 1.11,
   "game": {
     "gamePk": 824468,
     "opponent": "Cincinnati Reds",
@@ -76,12 +77,12 @@
       "modelProbability": 0.4867123070018191,
       "modelFairOdds": 105,
       "gamePk": 824468,
-      "americanOdds": 158,
-      "oppositeAmericanOdds": -208,
+      "americanOdds": 155,
+      "oppositeAmericanOdds": -204,
       "book": "BetOnline.ag",
-      "impliedProbability": 0.38759689922480617,
-      "fairProbability": 0.36465239628717555,
-      "edge": 12.205991071464355
+      "impliedProbability": 0.3921568627450981,
+      "fairProbability": 0.3688425139529241,
+      "edge": 11.786979304889499
     },
     {
       "playerId": 666152,
@@ -696,12 +697,12 @@
           "modelProbability": 0.4867123070018191,
           "modelFairOdds": 105,
           "gamePk": 824468,
-          "americanOdds": 158,
-          "oppositeAmericanOdds": -208,
+          "americanOdds": 155,
+          "oppositeAmericanOdds": -204,
           "book": "BetOnline.ag",
-          "impliedProbability": 0.38759689922480617,
-          "fairProbability": 0.36465239628717555,
-          "edge": 12.205991071464355,
+          "impliedProbability": 0.3921568627450981,
+          "fairProbability": 0.3688425139529241,
+          "edge": 11.786979304889499,
           "description": "Garrett Mitchell 2+ total bases"
         },
         {
@@ -773,11 +774,11 @@
           "description": "William Contreras 2+ total bases"
         }
       ],
-      "decimal": 31.368511168831173,
-      "payout": 156.84255584415587,
-      "profit": 151.84255584415587,
+      "decimal": 31.003761038961045,
+      "payout": 155.01880519480522,
+      "profit": 150.01880519480522,
       "probability": 0.051605313242815656,
-      "expectedValue": 3.0939092241414716,
+      "expectedValue": 2.9997940006049424,
       "band": "short",
       "stake": 5
     },
@@ -809,12 +810,12 @@
           "modelProbability": 0.4867123070018191,
           "modelFairOdds": 105,
           "gamePk": 824468,
-          "americanOdds": 158,
-          "oppositeAmericanOdds": -208,
+          "americanOdds": 155,
+          "oppositeAmericanOdds": -204,
           "book": "BetOnline.ag",
-          "impliedProbability": 0.38759689922480617,
-          "fairProbability": 0.36465239628717555,
-          "edge": 12.205991071464355,
+          "impliedProbability": 0.3921568627450981,
+          "fairProbability": 0.3688425139529241,
+          "edge": 11.786979304889499,
           "description": "Garrett Mitchell 2+ total bases"
         },
         {
@@ -869,11 +870,11 @@
           "description": "Luis Lara 2+ total bases"
         }
       ],
-      "decimal": 32.59475146700833,
-      "payout": 162.97375733504165,
-      "profit": 157.97375733504165,
+      "decimal": 32.21574272901986,
+      "payout": 161.0787136450993,
+      "profit": 156.0787136450993,
       "probability": 0.049642939793449345,
-      "expectedValue": 3.090496423295697,
+      "expectedValue": 2.9964208834899324,
       "band": "short",
       "stake": 5
     },
@@ -1070,6 +1071,6 @@
       "stake": 5
     }
   ],
-  "generatedAt": "2026-09-05T20:54:00.308Z",
+  "generatedAt": "2026-09-05T21:33:33.848Z",
   "source": "live"
 }
