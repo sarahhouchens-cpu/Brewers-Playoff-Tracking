@@ -292,15 +292,39 @@ async function buildBoard(date, { withOdds = true } = {}) {
   ]);
   const starterContact = pitcherContactFactor(starterAvg ?? 0.243);
 
+  const { quotes, status: oddsStatus, books } = withOdds
+    ? await fetchOdds()
+    : { quotes: new Map(), status: 'skipped' };
+
+  // If StatsAPI has not posted a lineup yet, fall back to whoever the book has
+  // priced. A player carrying props is almost certainly starting, and this is
+  // what keeps the board from being empty for most of the day.
+  if (!lineup.length && quotes.size) {
+    const roster = await rosterByName();
+    const seen = new Set();
+    for (const [key, displayName] of playersInFeed(quotes)) {
+      const person = roster.get(key);
+      if (!person || seen.has(person.id)) continue;
+      seen.add(person.id);
+      lineup.push({ id: person.id, fullName: person.fullName });
+    }
+    if (lineup.length) lineupSource = 'odds-feed';
+  }
+
   const batters = lineup.slice(0, 9);
   // Without a posted batting order every hitter is treated as a middle-of-the-
   // order bat rather than pretending to know who leads off.
   const slotKnown = lineupSource === 'statsapi';
   const legs = [];
 
+  const skipped = [];
+
   for (const [index, player] of batters.entries()) {
     const views = await hitterViews(player.id, season, starterHand);
-    if (!views.season) continue;
+    if (!views.season) {
+      skipped.push(player.fullName ?? player.id);
+      continue;
+    }
 
     const projection = projectBatter({
       views,
@@ -330,23 +354,12 @@ async function buildBoard(date, { withOdds = true } = {}) {
     }
   }
 
-  const { quotes, status: oddsStatus, books } = withOdds
-    ? await fetchOdds()
-    : { quotes: new Map(), status: 'skipped' };
-
-  // If StatsAPI has not posted a lineup yet, fall back to whoever the book has
-  // priced. A player carrying props is almost certainly starting, and this is
-  // what keeps the board from being empty for most of the day.
-  if (!lineup.length && quotes.size) {
-    const roster = await rosterByName();
-    const seen = new Set();
-    for (const [key, displayName] of playersInFeed(quotes)) {
-      const person = roster.get(key);
-      if (!person || seen.has(person.id)) continue;
-      seen.add(person.id);
-      lineup.push({ id: person.id, fullName: person.fullName });
-    }
-    if (lineup.length) lineupSource = 'odds-feed';
+  // A lineup that produces no legs is a bug, not an empty night — it means the
+  // batters were resolved but their stats never were. Say so loudly rather than
+  // shipping a silently empty board.
+  if (batters.length && !legs.length) {
+    console.error(`WARNING: ${batters.length} batters resolved but no legs built.` +
+      (skipped.length ? ` Skipped for missing season stats: ${skipped.join(', ')}` : ''));
   }
 
   const priced = legs.map((leg) => {
@@ -386,6 +399,8 @@ async function buildBoard(date, { withOdds = true } = {}) {
     lineupSource,
     conditions,
     factors: { starterContact, bullpenContact: penContact, power, park: parkPower(venueName) },
+    battersResolved: batters.length,
+    battersSkipped: skipped,
     legs: priced.sort((a, b) => (b.edge ?? -99) - (a.edge ?? -99) || b.modelProbability - a.modelProbability),
     parlays: parlays.map((p) => ({
       ...p,
@@ -495,6 +510,10 @@ async function write(board) {
   console.log(`Board for ${board.date}: ${board.status}` +
     (board.gameState ? ` (${board.gameState})` : '') +
     `, ${board.legs?.length ?? 0} legs, ${board.parlays?.length ?? 0} parlays`);
+  if (board.battersResolved != null) {
+    console.log(`Batters: ${board.battersResolved} resolved` +
+      (board.battersSkipped?.length ? `, ${board.battersSkipped.length} skipped for missing stats` : ''));
+  }
   const suspect = (board.legs ?? []).filter((l) => l.suspect).length;
   if (suspect) console.log(`Held back ${suspect} legs with implausible edges (>${EDGE_SANITY_LIMIT} pts)`);
   console.log(`Odds: ${board.oddsStatus ?? 'n/a'}${board.books ? ` across ${board.books} books` : ''}` +
