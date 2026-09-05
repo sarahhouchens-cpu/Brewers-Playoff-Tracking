@@ -70,6 +70,21 @@ function renderGame(board) {
     return;
   }
 
+  if (board.status === 'game-started') {
+    const box = el('div', 'empty');
+    box.append(
+      el('strong', null, `First pitch has passed — ${board.gameState ?? 'in progress'}.`),
+      document.createElement('br'),
+      document.createTextNode(
+        'No board is shown once a game starts. Books switch to live in-play pricing, ' +
+        'which reflects at-bats already taken, while this model projects a full game — ' +
+        'comparing the two produces edges that look enormous and are not real.'
+      )
+    );
+    host.append(box);
+    return;
+  }
+
   const card = el('div', 'matchup');
   const head = el('div', 'matchup-head');
   head.append(

@@ -31,6 +31,13 @@ const API = 'https://statsapi.mlb.com/api/v1';
 const BREWERS = 158;
 const TZ = 'America/Chicago';
 
+/**
+ * Edges beyond this many percentage points are treated as suspect and kept off
+ * tickets. Player props are liquid enough that a genuine edge is small; a large
+ * one nearly always means the model and the book are pricing different things.
+ */
+const EDGE_SANITY_LIMIT = 15;
+
 const args = new Set(process.argv.slice(2));
 const DEMO = args.has('--demo');
 const DRY_RUN = args.has('--dry-run');
@@ -245,6 +252,36 @@ async function buildBoard(date, { withOdds = true } = {}) {
   let lineup = game?.lineups?.[`${lineupKey}Players`] ?? [];
   let lineupSource = lineup.length ? 'statsapi' : 'none';
 
+  // A pregame model must never be priced against in-play odds.
+  //
+  // Once first pitch passes, the book reprices continuously on what has already
+  // happened — a hitter who is 0-for-3 has his 1+ hits price collapse — while
+  // this model still projects a full game from the first pitch. The gap between
+  // them looks like a huge edge and is entirely an artifact. Observed live: a
+  // 1+ hits prop at +105 (book fair 45%) against a model saying 76%, a
+  // 30-point "edge" that was really just three at-bats already gone.
+  const abstractState = game?.status?.abstractGameState ?? '';
+  const startsAt = new Date(game.gameDate);
+  const started = abstractState !== 'Preview' || startsAt <= new Date();
+
+  if (started) {
+    return {
+      date,
+      status: 'game-started',
+      gameState: game?.status?.detailedState ?? abstractState,
+      startTime: game.gameDate,
+      game: {
+        gamePk: game.gamePk,
+        opponent: opponent?.name ?? 'TBD',
+        isHome,
+        startTime: game.gameDate,
+        venue: game?.venue?.name ?? null,
+      },
+      legs: [],
+      parlays: [],
+    };
+  }
+
   const venueName = game?.venue?.name ?? null;
   const conditions = await venueConditions(game.gamePk, venueName);
   const power = weatherPower({ ...conditions, venue: venueName });
@@ -323,7 +360,14 @@ async function buildBoard(date, { withOdds = true } = {}) {
     });
   });
 
-  const bettable = priced.filter((l) => l.americanOdds != null);
+  // Backstop: a double-digit edge on a liquid market is far more likely to be
+  // a data mismatch than a real opportunity. Flag rather than silently drop, so
+  // the cause stays visible instead of being swallowed.
+  for (const leg of priced) {
+    if (leg.edge != null && Math.abs(leg.edge) > EDGE_SANITY_LIMIT) leg.suspect = true;
+  }
+
+  const bettable = priced.filter((l) => l.americanOdds != null && !l.suspect);
   const parlays = bettable.length ? buildParlays(bettable) : [];
 
   return {
@@ -448,7 +492,11 @@ async function main() {
 }
 
 async function write(board) {
-  console.log(`Board for ${board.date}: ${board.status}, ${board.legs?.length ?? 0} legs, ${board.parlays?.length ?? 0} parlays`);
+  console.log(`Board for ${board.date}: ${board.status}` +
+    (board.gameState ? ` (${board.gameState})` : '') +
+    `, ${board.legs?.length ?? 0} legs, ${board.parlays?.length ?? 0} parlays`);
+  const suspect = (board.legs ?? []).filter((l) => l.suspect).length;
+  if (suspect) console.log(`Held back ${suspect} legs with implausible edges (>${EDGE_SANITY_LIMIT} pts)`);
   console.log(`Odds: ${board.oddsStatus ?? 'n/a'}${board.books ? ` across ${board.books} books` : ''}` +
     `${ODDS_KEY ? '' : ' (no ODDS_API_KEY set — model-only mode)'}`);
   console.log(`Lineup source: ${board.lineupSource ?? 'n/a'}`);
