@@ -22,6 +22,9 @@ const require_projections = () => projections;
 import * as oddsLib from '../lib/odds.js';
 const projections_odds = () => oddsLib;
 
+import * as parlayLibModule from '../lib/parlay.js';
+const parlayLib = () => parlayLibModule;
+
 const near = (a, b, tol = 1e-6, msg) => assert.ok(Math.abs(a - b) < tol, msg ?? `${a} !~= ${b}`);
 
 /* ---------------------------------------------------------------- odds --- */
@@ -395,4 +398,64 @@ test('buildParlays ignores unpriced legs instead of throwing', () => {
   for (const t of buildParlays(candidates)) {
     for (const l of t.legs) assert.ok(l.americanOdds, 'every leg on a ticket has a real price');
   }
+});
+
+/* ------------------------------------------------------- payout window --- */
+
+test('tickets must clear the $100 floor but have no ceiling', () => {
+  const { PAYOUT_WINDOW } = parlayLib();
+  assert.equal(PAYOUT_WINDOW.min, 100);
+  assert.equal(PAYOUT_WINDOW.max, Infinity);
+});
+
+test('a ticket paying well over $200 is allowed', () => {
+  const longshot = [
+    leg(1, 'total_bases_3', 330, 0.27, 1),
+    leg(2, 'total_bases_3', 340, 0.26, 2),
+    leg(3, 'hits_2', 280, 0.29, 3),
+    leg(4, 'home_run_1', 420, 0.12, 4),
+  ];
+  const tickets = buildParlays(longshot, { limit: 5 });
+  assert.ok(tickets.length > 0, 'a long ticket should qualify');
+  assert.ok(tickets.some((t) => t.payout > 200), 'payouts above $200 are kept');
+  for (const t of tickets) assert.ok(t.payout >= 100, 'the floor still applies');
+});
+
+test('a ticket paying under $100 is still rejected', () => {
+  const shortish = [
+    leg(1, 'hits_1', -200, 0.68, 1),
+    leg(2, 'hits_1', -210, 0.69, 2),
+    leg(3, 'hits_1', -190, 0.67, 3),
+  ];
+  for (const t of buildParlays(shortish)) assert.ok(t.payout >= 100);
+});
+
+test('the board spreads across payout bands instead of only long shots', () => {
+  // A mix that can produce both short and long tickets. Ranking on expected
+  // value alone would fill every slot with the longest ones.
+  const candidates = [
+    leg(1, 'hits_1', -140, 0.62, 1),
+    leg(2, 'hits_1', -130, 0.61, 2),
+    leg(3, 'hits_1', -125, 0.60, 3),
+    leg(4, 'total_bases_2', 140, 0.45, 4),
+    leg(5, 'total_bases_2', 150, 0.44, 5),
+    leg(6, 'total_bases_3', 330, 0.28, 6),
+    leg(7, 'total_bases_3', 350, 0.27, 7),
+    leg(8, 'hits_2', 280, 0.30, 8),
+    leg(9, 'home_run_1', 450, 0.13, 9),
+  ];
+  const tickets = buildParlays(candidates, { limit: 6, maxPerBand: 3 });
+  const counts = {};
+  for (const t of tickets) counts[t.band] = (counts[t.band] ?? 0) + 1;
+  for (const [band, n] of Object.entries(counts)) {
+    assert.ok(n <= 3, `${band} band returned ${n} tickets, cap is 3`);
+  }
+  assert.ok(Object.keys(counts).length > 1, 'expected more than one payout band represented');
+});
+
+test('every ticket carries its band label', () => {
+  const { payoutBand } = parlayLib();
+  assert.equal(payoutBand(150), 'short');
+  assert.equal(payoutBand(250), 'medium');
+  assert.equal(payoutBand(900), 'long');
 });

@@ -61,7 +61,7 @@ does not.
 | `lib/projections.js` | The hitter model. Pure math. |
 | `lib/parlay.js` | Ticket assembly and the rules that constrain it. |
 | `scripts/props.js` | Builds the nightly bet board. |
-| `test/` | 65 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
+| `test/` | 74 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
 | `assets/app.js` | Renders `data/latest.json`. Formats only — never computes. |
 | `.github/workflows/update.yml` | The schedule. |
 
@@ -103,9 +103,15 @@ this surfaces as a clear message instead of a wrong number on the page.
 ## Bet board
 
 A second tab projects Brewers hitters for tonight and, when odds are available,
-assembles parlays under fixed rules: 3-5 legs, a $100-$200 return on a $5 stake,
-weighted toward hits and total bases, at most one home run leg, and never a
-"player hits 2+ home runs" market.
+assembles parlays under fixed rules: 3-5 legs, at least a $100 return on a $5
+stake with no upper limit, weighted toward hits and total bases, at most one
+home run leg, and never a "player hits 2+ home runs" market.
+
+With no ceiling, ranking purely on expected value pushes every slot toward the
+longest tickets — the model's disagreements with the book compound across legs,
+so more legs means more apparent edge, and the board degenerates into six
+lottery tickets. Results are therefore capped at three per payout band (under
+$200, $200-400, over $400) so a short likely ticket sits next to a long shot.
 
 ### The model
 

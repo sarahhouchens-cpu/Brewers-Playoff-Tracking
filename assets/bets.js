@@ -152,7 +152,7 @@ function renderParlays(board) {
   if (!board.parlays?.length) {
     host.append(el('div', 'empty',
       board.oddsStatus === 'ok'
-        ? 'No parlay in the $100–$200 window cleared the rules tonight.'
+        ? 'No parlay clearing $100 on $5 met the rules tonight.'
         : 'Parlays need live odds. Once an odds key is configured they appear here.'));
     return;
   }
@@ -163,7 +163,10 @@ function renderParlays(board) {
     const head = el('div', 'parlay-head');
     head.append(el('span', 'parlay-rank', `#${i + 1}`));
     const pay = el('div', 'parlay-pay');
-    pay.append(el('span', 'pay-amt', money(parlay.payout)), el('span', 'pay-sub', `on ${money(parlay.stake)} · ${parlay.legs.length} legs`));
+    pay.append(
+      el('span', 'pay-amt', money(parlay.payout)),
+      el('span', 'pay-sub', `on ${money(parlay.stake)} · ${parlay.legs.length} legs`)
+    );
     head.append(pay);
     card.append(head);
 
