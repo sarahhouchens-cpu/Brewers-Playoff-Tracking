@@ -38,6 +38,7 @@ jobs:
         run: node scripts/props.js || echo "Bet board failed; keeping the previous board."
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
 
       - name: Upload debug output on failure
         if: failure()

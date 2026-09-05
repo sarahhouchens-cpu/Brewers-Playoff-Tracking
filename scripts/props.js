@@ -36,6 +36,9 @@ const DRY_RUN = args.has('--dry-run');
 const ODDS_KEY = process.env.ODDS_API_KEY ?? '';
 const ODDS_BASE = process.env.ODDS_API_BASE ?? 'https://api.the-odds-api.com/v4';
 
+const FP_KEY = process.env.FANTASYPROS_API_KEY ?? '';
+const FP_BASE = 'https://api.fantasypros.com/public/v2/json';
+
 const centralDate = (offset = 0) => {
   const d = new Date();
   d.setUTCDate(d.getUTCDate() + offset);
@@ -171,6 +174,37 @@ async function venueConditions(gamePk) {
   }
 }
 
+/**
+ * Confirmed lineup from FantasyPros, used only when StatsAPI has not posted one.
+ *
+ * StatsAPI's lineup hydrate is usually empty until an hour or so before first
+ * pitch, and without a lineup there are no batters to project and the board
+ * comes up empty. This fills that window.
+ */
+async function fantasyProsLineup() {
+  if (!FP_KEY) return [];
+  try {
+    const res = await fetch(`${FP_BASE}/mlb/lineups`, {
+      headers: { 'x-api-key': FP_KEY, Accept: 'application/json' },
+    });
+    if (!res.ok) return [];
+    const payload = await res.json();
+
+    // Shape is unverified until the probe runs, so accept several plausible
+    // containers rather than committing to one and crashing on the others.
+    const teams = payload?.lineups ?? payload?.teams ?? payload?.data ?? [];
+    const brewers = (Array.isArray(teams) ? teams : []).find((t) =>
+      /brewers|milwaukee|\bMIL\b/i.test(JSON.stringify(t?.team ?? t?.name ?? ''))
+    );
+    const players = brewers?.players ?? brewers?.lineup ?? [];
+    return (Array.isArray(players) ? players : [])
+      .map((p) => ({ id: p?.mlb_id ?? p?.player_id ?? p?.id, fullName: p?.name ?? p?.player_name }))
+      .filter((p) => p.id && p.fullName);
+  } catch {
+    return [];
+  }
+}
+
 /* ---------------------------------------------------------------- odds --- */
 
 /**
@@ -240,7 +274,16 @@ async function buildBoard(date) {
   const starterHand = starter?.pitchHand?.code ?? 'R';
 
   const lineupKey = isHome ? 'home' : 'away';
-  const lineup = game?.lineups?.[`${lineupKey}Players`] ?? [];
+  let lineup = game?.lineups?.[`${lineupKey}Players`] ?? [];
+  let lineupSource = lineup.length ? 'statsapi' : 'none';
+
+  if (!lineup.length) {
+    const fallback = await fantasyProsLineup();
+    if (fallback.length) {
+      lineup = fallback;
+      lineupSource = 'fantasypros';
+    }
+  }
 
   const conditions = await venueConditions(game.gamePk);
   const power = weatherPower(conditions);
@@ -309,6 +352,7 @@ async function buildBoard(date) {
       venue: game?.venue?.name ?? null,
     },
     starter: starter ? { id: starter.id, name: starter.fullName, hand: starterHand, opponentAvg: starterAvg } : null,
+    lineupSource,
     conditions,
     factors: { starterContact, bullpenContact: penContact, power },
     legs: priced.sort((a, b) => (b.edge ?? -99) - (a.edge ?? -99) || b.modelProbability - a.modelProbability),
@@ -378,6 +422,7 @@ async function main() {
 async function write(board) {
   console.log(`Board for ${board.date}: ${board.status}, ${board.legs?.length ?? 0} legs, ${board.parlays?.length ?? 0} parlays`);
   console.log(`Odds: ${board.oddsStatus ?? 'n/a'}${ODDS_KEY ? '' : ' (no ODDS_API_KEY set — model-only mode)'}`);
+  console.log(`Lineup source: ${board.lineupSource ?? 'n/a'}`);
   if (DRY_RUN) return console.log('--dry-run: nothing written.');
 
   await mkdir(DATA_DIR, { recursive: true });

@@ -1,0 +1,19 @@
+name: Probe data provider
+
+# Manual only. Reports what an API key unlocks, so adapters can be written
+# against real response shapes instead of assumed ones.
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Probe FantasyPros
+        run: node scripts/probe-provider.js
+        env:
+          FANTASYPROS_API_KEY: ${{ secrets.FANTASYPROS_API_KEY }}
