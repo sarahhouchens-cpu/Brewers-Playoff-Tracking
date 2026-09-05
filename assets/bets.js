@@ -1,0 +1,237 @@
+/**
+ * Bet board tab. Renders data/props-latest.json — formats only, never computes
+ * a price or a probability of its own.
+ */
+
+const $ = (id) => document.getElementById(id);
+const pct = (p) => `${(p * 100).toFixed(1)}%`;
+const money = (n) => `$${n.toFixed(2)}`;
+const sign = (n) => (n > 0 ? `+${Math.round(n)}` : String(Math.round(n)));
+
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text != null) node.textContent = text;
+  return node;
+}
+
+/* --------------------------------------------------------------- tabs --- */
+
+function initTabs() {
+  const tabs = [...document.querySelectorAll('.tab')];
+  const select = (active) => {
+    for (const tab of tabs) {
+      const on = tab === active;
+      tab.classList.toggle('is-active', on);
+      tab.setAttribute('aria-selected', String(on));
+      tab.tabIndex = on ? 0 : -1;
+      $(tab.getAttribute('aria-controls')).hidden = !on;
+    }
+    active.focus();
+  };
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      select(tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]);
+    });
+  });
+}
+
+/* -------------------------------------------------------------- render --- */
+
+function renderNotice(board) {
+  const host = $('bets-notice');
+  host.replaceChildren();
+
+  if (board.source !== 'live') {
+    const box = el('div', 'notice');
+    box.append(el('strong', null, 'Example data. '),
+      document.createTextNode('These players, prices and parlays are invented so the page has something to show. Do not bet them.'));
+    host.append(box);
+    return;
+  }
+  if (board.oddsStatus !== 'ok') {
+    const box = el('div', 'notice');
+    box.append(el('strong', null, 'Model-only mode. '),
+      document.createTextNode(`No live odds available (${board.oddsStatus}), so no parlay payouts are shown — only the model's own fair prices. Nothing here is priced against a real book.`));
+    host.append(box);
+  }
+}
+
+function renderGame(board) {
+  const host = $('bets-game');
+  host.replaceChildren();
+
+  if (board.status === 'no-game') {
+    host.append(el('div', 'empty', 'No Brewers game scheduled today.'));
+    return;
+  }
+
+  const card = el('div', 'matchup');
+  const head = el('div', 'matchup-head');
+  head.append(
+    el('h3', null, `${board.game.isHome ? 'vs.' : 'at'} ${board.game.opponent}`),
+    el('span', 'matchup-when', new Date(board.game.startTime).toLocaleString('en-US', {
+      timeZone: 'America/Chicago', weekday: 'short', hour: 'numeric', minute: '2-digit',
+    }) + ' CT')
+  );
+  card.append(head);
+
+  const facts = el('div', 'facts');
+  const fact = (label, value, detail) => {
+    const f = el('div', 'fact');
+    f.append(el('span', 'fl', label), el('div', 'fv', value));
+    if (detail) f.append(el('span', 'fd', detail));
+    return f;
+  };
+
+  if (board.starter) {
+    facts.append(fact('Opposing starter', board.starter.name,
+      `${board.starter.hand === 'L' ? 'Left' : 'Right'}-handed${board.starter.opponentAvg ? ` · .${String(Math.round(board.starter.opponentAvg * 1000)).padStart(3, '0')} against` : ''}`));
+  }
+  facts.append(fact('Conditions', board.conditions.roofClosed ? 'Roof closed' : `${Math.round(board.conditions.temperatureF)}°F`,
+    board.conditions.description));
+
+  const f = board.factors ?? {};
+  facts.append(fact('Starter factor', f.starterContact?.toFixed(2) ?? '—',
+    f.starterContact > 1 ? 'Hitter-friendly' : 'Suppresses contact'));
+  facts.append(fact('Power factor', f.power?.toFixed(2) ?? '—',
+    board.conditions.roofClosed ? 'Roof closed — weather neutral'
+      : f.power > 1 ? 'Wind and air help the ball' : 'Conditions hold the ball down'));
+
+  card.append(facts);
+  host.append(card);
+}
+
+function legRow(leg, { showResult = false } = {}) {
+  const row = el('div', 'leg' + (showResult && typeof leg.hit === 'boolean' ? (leg.hit ? ' won' : ' lost') : ''));
+
+  const main = el('div');
+  main.append(el('span', 'leg-name', leg.playerName), el('span', 'leg-market', ` ${leg.marketLabel ?? leg.market}`));
+  if (leg.lineupSlot) main.append(el('span', 'leg-slot', ` · bats ${leg.lineupSlot}`));
+  row.append(main);
+
+  const right = el('div', 'leg-nums');
+  right.append(el('span', 'leg-prob', pct(leg.modelProbability)));
+  right.append(el('span', 'leg-odds', leg.americanOdds != null ? sign(leg.americanOdds) : `model ${sign(leg.modelFairOdds)}`));
+  if (leg.edge != null) {
+    right.append(el('span', 'leg-edge' + (leg.edge > 0 ? ' pos' : ' neg'), `${leg.edge > 0 ? '+' : ''}${leg.edge.toFixed(1)} pts`));
+  }
+  if (showResult && typeof leg.hit === 'boolean') {
+    right.append(el('span', 'leg-result', leg.hit ? 'Hit' : 'Miss'));
+  }
+  row.append(right);
+  return row;
+}
+
+function renderParlays(board) {
+  const host = $('bets-parlays');
+  host.replaceChildren();
+
+  if (!board.parlays?.length) {
+    host.append(el('div', 'empty',
+      board.oddsStatus === 'ok'
+        ? 'No parlay in the $100–$200 window cleared the rules tonight.'
+        : 'Parlays need live odds. Once an odds key is configured they appear here.'));
+    return;
+  }
+
+  for (const [i, parlay] of board.parlays.entries()) {
+    const card = el('article', 'parlay');
+
+    const head = el('div', 'parlay-head');
+    head.append(el('span', 'parlay-rank', `#${i + 1}`));
+    const pay = el('div', 'parlay-pay');
+    pay.append(el('span', 'pay-amt', money(parlay.payout)), el('span', 'pay-sub', `on ${money(parlay.stake)} · ${parlay.legs.length} legs`));
+    head.append(pay);
+    card.append(head);
+
+    const legs = el('div', 'parlay-legs');
+    for (const leg of parlay.legs) legs.append(legRow(leg));
+    card.append(legs);
+
+    const foot = el('div', 'parlay-foot');
+    const stat = (label, value, cls) => {
+      const s = el('div', 'pstat');
+      s.append(el('span', 'psl', label), el('span', 'psv' + (cls ? ` ${cls}` : ''), value));
+      return s;
+    };
+    foot.append(stat('Model chance', pct(parlay.probability)));
+    foot.append(stat('Expected value', money(parlay.expectedValue), parlay.expectedValue > 0 ? 'pos' : 'neg'));
+    if (typeof parlay.hit === 'boolean') foot.append(stat('Result', parlay.hit ? 'Cashed' : 'Lost', parlay.hit ? 'pos' : 'neg'));
+    card.append(foot);
+
+    host.append(card);
+  }
+}
+
+function renderLegs(board) {
+  const host = $('bets-legs');
+  host.replaceChildren();
+  if (!board.legs?.length) {
+    host.append(el('div', 'empty', 'No legs projected — the lineup may not be posted yet.'));
+    return;
+  }
+  const list = el('div', 'leg-list');
+  for (const leg of board.legs.slice(0, 12)) list.append(legRow(leg));
+  host.append(list);
+}
+
+function renderHistory(board) {
+  const host = $('bets-history');
+  host.replaceChildren();
+
+  const days = (board.history ?? []).filter((d) => d.parlays?.some((p) => p.graded));
+  if (!days.length) {
+    host.append(el('div', 'empty',
+      'No graded nights yet. The record fills in as the board runs each day — the first entries appear tomorrow.'));
+    return;
+  }
+
+  let wins = 0, total = 0;
+  for (const day of days) for (const p of day.parlays) if (p.graded) { total++; if (p.hit) wins++; }
+
+  const summary = el('div', 'record');
+  summary.append(el('span', 'rec-n', `${wins}–${total - wins}`), el('span', 'rec-l', `top parlays over ${days.length} nights`));
+  host.append(summary);
+
+  for (const day of days) {
+    const best = day.parlays.find((p) => p.graded);
+    if (!best) continue;
+    const card = el('article', 'parlay' + (best.hit ? ' won' : ' lost'));
+    const head = el('div', 'parlay-head');
+    head.append(el('span', 'parlay-rank', new Date(day.date + 'T12:00:00Z').toLocaleDateString('en-US', { timeZone: 'America/Chicago', month: 'short', day: 'numeric' })));
+    const pay = el('div', 'parlay-pay');
+    pay.append(el('span', 'pay-amt', money(best.payout)), el('span', 'pay-sub', best.hit ? 'would have cashed' : 'lost'));
+    head.append(pay);
+    card.append(head);
+
+    const legs = el('div', 'parlay-legs');
+    for (const leg of best.legs) legs.append(legRow(leg, { showResult: true }));
+    card.append(legs);
+    host.append(card);
+  }
+}
+
+async function main() {
+  initTabs();
+  try {
+    const res = await fetch(`data/props-latest.json?t=${Date.now()}`);
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    const board = await res.json();
+    renderNotice(board);
+    renderGame(board);
+    renderParlays(board);
+    renderLegs(board);
+    renderHistory(board);
+  } catch (err) {
+    $('bets-notice').replaceChildren(
+      el('div', 'notice', `Could not load the bet board: ${err.message}. The scheduled update may not have run yet.`)
+    );
+  }
+}
+
+main();

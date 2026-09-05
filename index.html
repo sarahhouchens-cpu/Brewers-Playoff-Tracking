@@ -17,9 +17,14 @@
     <h1>Brewers Magic Number</h1>
     <div class="record" id="record">Loading…</div>
   </div>
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <button class="tab is-active" role="tab" id="tab-magic" aria-controls="panel-magic" aria-selected="true">Magic Number</button>
+    <button class="tab" role="tab" id="tab-bets" aria-controls="panel-bets" aria-selected="false" tabindex="-1">Bet Board</button>
+  </nav>
 </header>
 
 <div class="wrap">
+  <div id="panel-magic" role="tabpanel" aria-labelledby="tab-magic">
   <div id="notice"></div>
 
   <main class="hero" id="hero" aria-live="polite">
@@ -73,12 +78,69 @@
     </div>
   </section>
 
+  </div><!-- /panel-magic -->
+
+  <div id="panel-bets" role="tabpanel" aria-labelledby="tab-bets" hidden>
+    <div id="bets-notice"></div>
+
+    <section class="first">
+      <div class="sec-head">
+        <div class="eyebrow">Tonight</div>
+        <h2>Bet board</h2>
+        <p>Parlays of 3&ndash;5 legs returning $100&ndash;$200 on a $5 stake, weighted toward hits and total bases, with at most one home run leg.</p>
+      </div>
+      <div id="bets-game"></div>
+      <div id="bets-parlays"></div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="eyebrow">The model</div>
+        <h2>Best individual legs</h2>
+        <p>Every leg the model likes, ranked by edge over the book&rsquo;s devigged price.</p>
+      </div>
+      <div id="bets-legs"></div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="eyebrow">Past 7 days</div>
+        <h2>How the model did</h2>
+        <p>Each night&rsquo;s board graded against what actually happened.</p>
+      </div>
+      <div id="bets-history"></div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <div class="eyebrow">Method</div>
+        <h2>What goes into a projection</h2>
+      </div>
+      <div class="explain">
+        <ul>
+          <li><strong>Recent form</strong> &mdash; last 15 games, blended at 30% against a 45% season baseline. Fifteen games is roughly 60 plate appearances, too noisy to trust on its own.</li>
+          <li><strong>Platoon split</strong> &mdash; performance against the handedness of tonight&rsquo;s probable starter, at 25%.</li>
+          <li><strong>Starter and bullpen</strong> &mdash; opponent batting average for the starter and for the rested relievers likely to appear, blended by expected exposure.</li>
+          <li><strong>Park and weather</strong> &mdash; temperature and wind, applied only to extra-base outcomes. A closed roof zeroes this out entirely.</li>
+          <li><strong>Lineup slot</strong> &mdash; leadoff hitters get a fifth trip far more often than the bottom third, which moves a total-bases line more than most matchup factors.</li>
+        </ul>
+        <p class="fine">Legs are priced by convolving the per-plate-appearance outcome distribution, not by a normal approximation &mdash; across 3&ndash;5 trips the distribution is lumpy, and &ldquo;2+ total bases&rdquo; depends on exactly that.</p>
+      </div>
+    </section>
+
+    <div class="note-bad">
+      <span class="h">Read this before betting</span>
+      <p>The model is a projection, not a prediction, and it can be confidently wrong. Parlay legs from the same game are correlated &mdash; they share a pitcher, a park and a game state &mdash; so the combined probability shown is shaded down but still optimistic. Every added leg multiplies the house edge along with the payout. Bet only what you would shrug off losing.</p>
+    </div>
+  </div><!-- /panel-bets -->
+
   <footer>
-    <p>Data from the <a href="https://statsapi.mlb.com/api/v1/standings?leagueId=104&amp;standingsTypes=regularSeason">MLB Stats API</a>, refreshed on a schedule. Not affiliated with or endorsed by the Milwaukee Brewers or MLB.</p>
+    <p>Standings and player data from the <a href="https://statsapi.mlb.com/api/v1/standings?leagueId=104&amp;standingsTypes=regularSeason">MLB Stats API</a>, refreshed on a schedule. Odds, where shown, come from a third-party feed. Not affiliated with or endorsed by the Milwaukee Brewers or MLB.</p>
     <p id="footer-stamp"></p>
   </footer>
 </div>
 
 <script type="module" src="assets/app.js"></script>
+<script type="module" src="assets/bets.js"></script>
 </body>
 </html>

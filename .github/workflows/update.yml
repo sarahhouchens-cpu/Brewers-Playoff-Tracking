@@ -32,6 +32,13 @@ jobs:
       - name: Fetch standings and recompute
         run: node scripts/update.js
 
+      # The bet board is optional: a failure here must not block the magic
+      # numbers, which are the point of the site.
+      - name: Build tonight's bet board
+        run: node scripts/props.js || echo "Bet board failed; keeping the previous board."
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+
       - name: Upload debug output on failure
         if: failure()
         uses: actions/upload-artifact@v5

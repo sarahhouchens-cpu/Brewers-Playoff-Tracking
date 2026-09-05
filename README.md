@@ -56,7 +56,11 @@ does not.
 | --- | --- |
 | `lib/magic.js` | Pure math. No I/O, no DOM. Runs in Node and the browser. |
 | `scripts/update.js` | Fetches, computes, writes `data/`. |
-| `test/` | 17 tests covering the math, chaser selection, and diffing. |
+| `lib/odds.js` | Odds conversion, devigging, parlay pricing, expected value. |
+| `lib/projections.js` | The hitter model. Pure math. |
+| `lib/parlay.js` | Ticket assembly and the rules that constrain it. |
+| `scripts/props.js` | Builds the nightly bet board. |
+| `test/` | 49 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
 | `assets/app.js` | Renders `data/latest.json`. Formats only — never computes. |
 | `.github/workflows/update.yml` | The schedule. |
 
@@ -94,6 +98,55 @@ first run, so the parser in `scripts/update.js` may need a field name adjusted. 
 failure the job uploads a `debug-raw.json` artifact showing the actual response
 structure — open it from the run's summary page. The `assertUsable` check exists so
 this surfaces as a clear message instead of a wrong number on the page.
+
+## Bet board
+
+A second tab projects Brewers hitters for tonight and, when odds are available,
+assembles parlays under fixed rules: 3-5 legs, a $100-$200 return on a $5 stake,
+weighted toward hits and total bases, at most one home run leg, and never a
+"player hits 2+ home runs" market.
+
+### The model
+
+Each hitter's per-plate-appearance outcome rates are blended from three views —
+season (45%), last 15 games (30%), and platoon split against tonight's probable
+starter (25%) — then adjusted for the pitchers he will actually face and for
+park and weather, and convolved over an uncertain number of plate appearances.
+
+Convolving matters: across 3-5 trips the total-bases distribution is lumpy and
+discrete, and "2+ total bases" depends on exactly that lumpiness. A normal
+approximation would smooth away the thing being priced.
+
+| Input | How it enters |
+| --- | --- |
+| Recent form | Last 15 games, capped at 30% — roughly 60 PA, too noisy to outweigh the season |
+| Platoon split | vs. LHP/RHP matching the probable starter |
+| Starter | Opponent batting average, clamped to a 0.75-1.30 contact multiplier |
+| Bullpen | Mean opponent average of rested relievers, blended by expected exposure |
+| Park and weather | Temperature and wind, applied only to extra-base outcomes; a closed roof zeroes it out |
+| Lineup slot | Sets the plate-appearance distribution |
+
+### Odds
+
+Set an `ODDS_API_KEY` repository secret to enable live prices. Without one the
+board still runs in **model-only mode**: ranked legs with the model's own fair
+prices and no parlay payouts. That is deliberate — a payout figure computed from
+invented odds is worse than no figure, so none is produced.
+
+Edges are computed against the **devigged** two-way price. Where only one side
+of a market is available the edge is reported as null rather than measured
+against a vigged number, which would flatter the model.
+
+Note that historical player-prop odds are a paid product on every provider
+surveyed, so the "past 7 days" view grades the model's own board against actual
+results rather than replaying real historical prices. It fills in as the job
+runs each day.
+
+### Caveats
+
+Parlay legs from the same game are correlated — shared pitcher, park and game
+state — so the combined probability is shaded down per shared game but remains
+optimistic. Every added leg multiplies the house edge along with the payout.
 
 ## Data source
 
