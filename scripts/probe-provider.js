@@ -17,6 +17,44 @@ const FP_KEY = process.env.FANTASYPROS_API_KEY ?? '';
 const FP_BASE = 'https://api.fantasypros.com/public/v2/json';
 const season = new Date().getUTCFullYear();
 
+/**
+ * Print the nested shape of an object: key names, types and array lengths.
+ *
+ * Scalars are shown only for a short allow-list of fields whose literal values
+ * we need in order to parse them correctly (wind direction units, roof status,
+ * team identifiers). Everything else prints as a type so the log stays a
+ * structural map rather than a data dump.
+ */
+const SHOW_VALUE = new Set([
+  'status', 'weather', 'temp', 'wind', 'wind_direction', 'deg_offset',
+  'chance_rain', 'roof', 'team_id', 'team', 'abbr', 'abbreviation', 'name',
+  'league_key', 'public_api_limited', 'tier', 'limit', 'count', 'position',
+  'batting_order', 'order', 'lineup_status',
+]);
+
+function shape(value, indent = '    ', depth = 0) {
+  if (depth > 4) return;
+  if (Array.isArray(value)) {
+    console.log(`${indent}[array of ${value.length}]`);
+    if (value.length) shape(value[0], indent + '  ', depth + 1);
+    return;
+  }
+  if (!value || typeof value !== 'object') return;
+
+  for (const [key, val] of Object.entries(value)) {
+    if (Array.isArray(val)) {
+      console.log(`${indent}${key}: array(${val.length})`);
+      if (val.length && depth < 4) shape(val[0], indent + '  ', depth + 1);
+    } else if (val && typeof val === 'object') {
+      console.log(`${indent}${key}: object`);
+      shape(val, indent + '  ', depth + 1);
+    } else {
+      const show = SHOW_VALUE.has(key) && String(val).length <= 40;
+      console.log(`${indent}${key}: ${show ? JSON.stringify(val) : typeof val}`);
+    }
+  }
+}
+
 /** Endpoints worth knowing about, and why we care. */
 const TARGETS = [
   ['mlb/lineups', 'Confirmed starting lineups — would fix the empty-board problem'],
@@ -71,6 +109,26 @@ async function main() {
 
   console.log('\nEndpoints:');
   for (const [path, why] of TARGETS) await probe(path, why);
+
+  // The lineups payload is the one we are going to parse, so map it properly.
+  console.log('\n--- mlb/lineups, deep structure of one game ---');
+  try {
+    const res = await fetch(`${FP_BASE}/mlb/lineups`, {
+      headers: { 'x-api-key': FP_KEY, Accept: 'application/json' },
+    });
+    const payload = await res.json();
+    const games = payload?.games ?? [];
+    console.log(`  games: ${games.length}`);
+
+    const brewers = games.find((g) => /brewer|milwaukee|\bMIL\b/i.test(JSON.stringify(g?.teams ?? {})));
+    const sample = brewers ?? games[0];
+    if (!sample) return console.log('  no games in the payload right now');
+
+    console.log(`  showing: ${brewers ? 'the Brewers game' : 'the first game (no Brewers game today)'}`);
+    shape(sample);
+  } catch (err) {
+    console.log(`  deep probe failed: ${err.message}`);
+  }
 
   console.log('\nWhat to look for:');
   console.log('  - mlb/lineups returning 200 means the board can be built before StatsAPI posts a lineup.');
