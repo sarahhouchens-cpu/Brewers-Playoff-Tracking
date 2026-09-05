@@ -15,16 +15,18 @@
  *   node scripts/props.js --dry-run  # compute, write nothing
  */
 
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, readFile, readdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { projectBatter, weatherPower, pitcherContactFactor, isRoofed, parkPower } from '../lib/projections.js';
 import { buildParlays, withEdge, describeLeg, MARKET_LABELS } from '../lib/parlay.js';
 import { decimalToAmerican } from '../lib/odds.js';
+import { parseEventOdds, playersInFeed, normalizeName } from '../lib/odds-feed.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_DIR = join(ROOT, 'data');
+const BOARD_DIR = join(DATA_DIR, 'props');
 const API = 'https://statsapi.mlb.com/api/v1';
 const BREWERS = 158;
 const TZ = 'America/Chicago';
@@ -35,9 +37,6 @@ const DRY_RUN = args.has('--dry-run');
 
 const ODDS_KEY = process.env.ODDS_API_KEY ?? '';
 const ODDS_BASE = process.env.ODDS_API_BASE ?? 'https://api.the-odds-api.com/v4';
-
-const FP_KEY = process.env.FANTASYPROS_API_KEY ?? '';
-const FP_BASE = 'https://api.fantasypros.com/public/v2/json';
 
 const centralDate = (offset = 0) => {
   const d = new Date();
@@ -188,96 +187,51 @@ async function venueConditions(gamePk, venueName) {
   }
 }
 
-/**
- * Confirmed lineup from FantasyPros, used only when StatsAPI has not posted one.
- *
- * StatsAPI's lineup hydrate is usually empty until an hour or so before first
- * pitch, and without a lineup there are no batters to project and the board
- * comes up empty. This fills that window.
- */
-async function fantasyProsLineup() {
-  if (!FP_KEY) return [];
-  try {
-    const res = await fetch(`${FP_BASE}/mlb/lineups`, {
-      headers: { 'x-api-key': FP_KEY, Accept: 'application/json' },
-    });
-    if (!res.ok) return [];
-    const payload = await res.json();
-
-    // Shape is unverified until the probe runs, so accept several plausible
-    // containers rather than committing to one and crashing on the others.
-    const teams = payload?.lineups ?? payload?.teams ?? payload?.data ?? [];
-    const brewers = (Array.isArray(teams) ? teams : []).find((t) =>
-      /brewers|milwaukee|\bMIL\b/i.test(JSON.stringify(t?.team ?? t?.name ?? ''))
-    );
-    const players = brewers?.players ?? brewers?.lineup ?? [];
-    return (Array.isArray(players) ? players : [])
-      .map((p) => ({ id: p?.mlb_id ?? p?.player_id ?? p?.id, fullName: p?.name ?? p?.player_name }))
-      .filter((p) => p.id && p.fullName);
-  } catch {
-    return [];
-  }
-}
-
 /* ---------------------------------------------------------------- odds --- */
 
 /**
- * Live player props, if a key is configured.
+ * Live player props for the Brewers game.
  *
- * Returns a map of `${playerName}|${market}` to { americanOdds,
- * oppositeAmericanOdds }. An empty map means model-only mode — never invented
- * prices.
+ * Quota matters here. The free tier is 500 credits a month and an odds call
+ * costs one credit per market per region, so the three markets below cost three
+ * credits every time this runs. The events listing is free. At four runs a day
+ * that is roughly 360 credits a month; running it hourly would exhaust the
+ * month in under two days, which is why the props job has its own schedule.
  */
-async function fetchOdds(gameDate) {
-  if (!ODDS_KEY) return { map: new Map(), status: 'no-key' };
+async function fetchOdds() {
+  if (!ODDS_KEY) return { quotes: new Map(), status: 'no-key' };
 
   const markets = 'batter_hits,batter_total_bases,batter_home_runs';
   try {
-    const events = await getJSON(
-      `${ODDS_BASE}/sports/baseball_mlb/events?apiKey=${ODDS_KEY}&dateFormat=iso`
-    );
-    const event = (events ?? []).find(
-      (e) => /Brewers/i.test(`${e.home_team} ${e.away_team}`) && String(e.commence_time).startsWith(gameDate)
-    );
-    if (!event) return { map: new Map(), status: 'no-event' };
+    const events = await getJSON(`${ODDS_BASE}/sports/baseball_mlb/events?apiKey=${ODDS_KEY}`);
+    const event = (events ?? []).find((e) => /brewers/i.test(`${e.home_team} ${e.away_team}`));
+    if (!event) return { quotes: new Map(), status: 'no-event' };
 
-    const odds = await getJSON(
+    const payload = await getJSON(
       `${ODDS_BASE}/sports/baseball_mlb/events/${event.id}/odds` +
         `?apiKey=${ODDS_KEY}&regions=us&markets=${markets}&oddsFormat=american`
     );
-
-    const map = new Map();
-    for (const book of odds?.bookmakers ?? []) {
-      for (const market of book?.markets ?? []) {
-        for (const outcome of market?.outcomes ?? []) {
-          const key = normalizeMarket(market.key, outcome.point, outcome.name);
-          if (!key) continue;
-          const id = `${outcome.description ?? outcome.name}|${key}`;
-          if (!map.has(id)) map.set(id, { americanOdds: outcome.price, book: book.title });
-          else if (/under/i.test(outcome.name)) map.get(id).oppositeAmericanOdds = outcome.price;
-        }
-      }
-    }
-    return { map, status: map.size ? 'ok' : 'no-props' };
+    const quotes = parseEventOdds(payload);
+    return { quotes, status: quotes.size ? 'ok' : 'no-props', books: (payload?.bookmakers ?? []).length };
   } catch (err) {
-    return { map: new Map(), status: `error: ${err.message}` };
+    return { quotes: new Map(), status: `error: ${err.message}` };
   }
 }
 
-/** Map a book's market naming onto ours. Unknown markets are dropped. */
-function normalizeMarket(marketKey, point, name) {
-  if (!/over/i.test(name ?? '') && !/under/i.test(name ?? '')) return null;
-  const line = Number(point);
-  if (marketKey === 'batter_hits') return line >= 1.5 ? 'hits_2' : 'hits_1';
-  if (marketKey === 'batter_total_bases') return line >= 2.5 ? 'total_bases_3' : 'total_bases_2';
-  // Only the single-home-run market is ever allowed on a ticket.
-  if (marketKey === 'batter_home_runs' && line < 1.5) return 'home_run_1';
-  return null;
+/** Brewers roster as a normalized-name to MLB-id map, for joining the odds feed. */
+async function rosterByName() {
+  const roster = await getJSON(`${API}/teams/${BREWERS}/roster?rosterType=active`);
+  const map = new Map();
+  for (const entry of roster?.roster ?? []) {
+    const person = entry?.person;
+    if (person?.id && person?.fullName) map.set(normalizeName(person.fullName), person);
+  }
+  return map;
 }
 
 /* ----------------------------------------------------------------- run --- */
 
-async function buildBoard(date) {
+async function buildBoard(date, { withOdds = true } = {}) {
   const game = await findGame(date);
   if (!game) return { date, status: 'no-game', legs: [], parlays: [] };
 
@@ -291,14 +245,6 @@ async function buildBoard(date) {
   let lineup = game?.lineups?.[`${lineupKey}Players`] ?? [];
   let lineupSource = lineup.length ? 'statsapi' : 'none';
 
-  if (!lineup.length) {
-    const fallback = await fantasyProsLineup();
-    if (fallback.length) {
-      lineup = fallback;
-      lineupSource = 'fantasypros';
-    }
-  }
-
   const venueName = game?.venue?.name ?? null;
   const conditions = await venueConditions(game.gamePk, venueName);
   const power = weatherPower({ ...conditions, venue: venueName });
@@ -309,7 +255,10 @@ async function buildBoard(date) {
   ]);
   const starterContact = pitcherContactFactor(starterAvg ?? 0.243);
 
-  const batters = lineup.length ? lineup.slice(0, 9) : [];
+  const batters = lineup.slice(0, 9);
+  // Without a posted batting order every hitter is treated as a middle-of-the-
+  // order bat rather than pretending to know who leads off.
+  const slotKnown = lineupSource === 'statsapi';
   const legs = [];
 
   for (const [index, player] of batters.entries()) {
@@ -318,7 +267,7 @@ async function buildBoard(date) {
 
     const projection = projectBatter({
       views,
-      lineupSlot: index + 1,
+      lineupSlot: slotKnown ? index + 1 : 5,
       starterContact,
       bullpenContact: penContact,
       power,
@@ -334,7 +283,7 @@ async function buildBoard(date) {
       legs.push({
         playerId: player.id,
         playerName: player.fullName ?? `Player ${player.id}`,
-        lineupSlot: index + 1,
+        lineupSlot: slotKnown ? index + 1 : null,
         market,
         marketLabel: MARKET_LABELS[market],
         modelProbability: probability,
@@ -344,12 +293,34 @@ async function buildBoard(date) {
     }
   }
 
-  const { map: oddsMap, status: oddsStatus } = await fetchOdds(date);
+  const { quotes, status: oddsStatus, books } = withOdds
+    ? await fetchOdds()
+    : { quotes: new Map(), status: 'skipped' };
+
+  // If StatsAPI has not posted a lineup yet, fall back to whoever the book has
+  // priced. A player carrying props is almost certainly starting, and this is
+  // what keeps the board from being empty for most of the day.
+  if (!lineup.length && quotes.size) {
+    const roster = await rosterByName();
+    const seen = new Set();
+    for (const [key, displayName] of playersInFeed(quotes)) {
+      const person = roster.get(key);
+      if (!person || seen.has(person.id)) continue;
+      seen.add(person.id);
+      lineup.push({ id: person.id, fullName: person.fullName });
+    }
+    if (lineup.length) lineupSource = 'odds-feed';
+  }
 
   const priced = legs.map((leg) => {
-    const quote = oddsMap.get(`${leg.playerName}|${leg.market}`);
+    const quote = quotes.get(`${normalizeName(leg.playerName)}|${leg.market}`);
     if (!quote) return { ...leg, americanOdds: null, edge: null };
-    return withEdge({ ...leg, americanOdds: quote.americanOdds, oppositeAmericanOdds: quote.oppositeAmericanOdds, book: quote.book });
+    return withEdge({
+      ...leg,
+      americanOdds: quote.americanOdds,
+      oppositeAmericanOdds: quote.oppositeAmericanOdds,
+      book: quote.book,
+    });
   });
 
   const bettable = priced.filter((l) => l.americanOdds != null);
@@ -359,6 +330,7 @@ async function buildBoard(date) {
     date,
     status: 'ok',
     oddsStatus,
+    books: books ?? 0,
     game: {
       gamePk: game.gamePk,
       opponent: opponent?.name ?? 'TBD',
@@ -412,6 +384,48 @@ async function gradeDay(board) {
   return board;
 }
 
+/**
+ * Grade the stored boards from the last week.
+ *
+ * Deliberately reads boards off disk instead of rebuilding them. Rebuilding
+ * would spend odds credits re-fetching prices for games already played, and
+ * worse, it would fetch *today's* prices for a past game — historical prop odds
+ * are a paid product. The board captured at the time is the only honest record
+ * of what was actually available, so each run stores one and later runs grade
+ * it in place.
+ */
+async function gradeStoredBoards() {
+  let files = [];
+  try {
+    files = (await readdir(BOARD_DIR)).filter((f) => f.endsWith('.json')).sort().slice(-8);
+  } catch {
+    return [];
+  }
+
+  const today = centralDate();
+  const graded = [];
+
+  for (const file of files) {
+    const path = join(BOARD_DIR, file);
+    let board;
+    try {
+      board = JSON.parse(await readFile(path, 'utf8'));
+    } catch {
+      continue;
+    }
+    if (board.date === today) continue;
+
+    // Grade once, then leave it alone.
+    if (!board.parlays?.some((p) => p.graded)) {
+      board = await gradeDay(board);
+      await writeFile(path, JSON.stringify(board, null, 2));
+    }
+    graded.push(board);
+  }
+
+  return graded.slice(-7);
+}
+
 async function main() {
   if (DEMO) {
     const { demoBoard } = await import('../test/fixture-props.js');
@@ -420,24 +434,25 @@ async function main() {
   }
 
   const today = await buildBoard(centralDate());
+  today.generatedAt = new Date().toISOString();
+  today.source = 'live';
 
-  // Grade yesterday so the seven-day record fills in as days pass.
-  const history = [];
-  for (let offset = -1; offset >= -7; offset--) {
-    const date = centralDate(offset);
-    try {
-      const board = await gradeDay(await buildBoard(date));
-      if (board.status === 'ok') history.push(board);
-    } catch { /* a missing day is not fatal */ }
+  // Store today's board before grading, so the prices it was built on survive.
+  if (!DRY_RUN && today.status === 'ok') {
+    await mkdir(BOARD_DIR, { recursive: true });
+    await writeFile(join(BOARD_DIR, `${today.date}.json`), JSON.stringify(today, null, 2));
   }
 
-  await write({ ...today, history, generatedAt: new Date().toISOString(), source: 'live' });
+  today.history = DRY_RUN ? [] : await gradeStoredBoards();
+  await write(today);
 }
 
 async function write(board) {
   console.log(`Board for ${board.date}: ${board.status}, ${board.legs?.length ?? 0} legs, ${board.parlays?.length ?? 0} parlays`);
-  console.log(`Odds: ${board.oddsStatus ?? 'n/a'}${ODDS_KEY ? '' : ' (no ODDS_API_KEY set — model-only mode)'}`);
+  console.log(`Odds: ${board.oddsStatus ?? 'n/a'}${board.books ? ` across ${board.books} books` : ''}` +
+    `${ODDS_KEY ? '' : ' (no ODDS_API_KEY set — model-only mode)'}`);
   console.log(`Lineup source: ${board.lineupSource ?? 'n/a'}`);
+  console.log(`Graded history: ${board.history?.length ?? 0} nights`);
   if (DRY_RUN) return console.log('--dry-run: nothing written.');
 
   await mkdir(DATA_DIR, { recursive: true });

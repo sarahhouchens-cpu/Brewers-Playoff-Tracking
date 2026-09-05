@@ -1,0 +1,55 @@
+name: Update bet board
+
+# Four runs a day, not hourly.
+#
+# The Odds API free tier allows 500 credits a month and charges one credit per
+# market per region. Three markets means three credits per run, so four runs a
+# day costs about 360 a month and leaves headroom. Running this hourly like the
+# standings job would spend the entire month in under two days.
+#
+# Times are chosen around a typical MLB schedule in Central time: late morning
+# for early lines, then afternoon and two evening passes as lineups are posted
+# and prices firm up.
+on:
+  schedule:
+    - cron: '0 16 * * *'   # 11:00 CT — opening lines
+    - cron: '0 21 * * *'   #  4:00 PM CT — afternoon move
+    - cron: '30 23 * * *'  #  6:30 PM CT — lineups posted
+    - cron: '30 0 * * *'   #  7:30 PM CT — last look before first pitch
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-bet-board
+  cancel-in-progress: false
+
+jobs:
+  board:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Verify the betting math
+        run: npm test
+
+      - name: Build the board
+        run: node scripts/props.js
+        env:
+          ODDS_API_KEY: ${{ secrets.TheOdds_API_Key }}
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "Board unchanged; nothing to commit."
+          else
+            git commit -m "Update bet board ($(date -u +%Y-%m-%d\ %H:%M) UTC)"
+            git push
+          fi

@@ -57,10 +57,11 @@ does not.
 | `lib/magic.js` | Pure math. No I/O, no DOM. Runs in Node and the browser. |
 | `scripts/update.js` | Fetches, computes, writes `data/`. |
 | `lib/odds.js` | Odds conversion, devigging, parlay pricing, expected value. |
+| `lib/odds-feed.js` | Parsing The Odds API payloads: line thresholds, name matching, best price. |
 | `lib/projections.js` | The hitter model. Pure math. |
 | `lib/parlay.js` | Ticket assembly and the rules that constrain it. |
 | `scripts/props.js` | Builds the nightly bet board. |
-| `test/` | 49 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
+| `test/` | 65 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
 | `assets/app.js` | Renders `data/latest.json`. Formats only — never computes. |
 | `.github/workflows/update.yml` | The schedule. |
 
@@ -128,19 +129,50 @@ approximation would smooth away the thing being priced.
 
 ### Odds
 
-Set an `ODDS_API_KEY` repository secret to enable live prices. Without one the
-board still runs in **model-only mode**: ranked legs with the model's own fair
-prices and no parlay payouts. That is deliberate — a payout figure computed from
-invented odds is worse than no figure, so none is produced.
+Prices come from The Odds API (`batter_hits`, `batter_total_bases`,
+`batter_home_runs`, US books). The key lives in the `TheOdds_API_Key`
+repository secret, which the workflow maps onto `ODDS_API_KEY`.
 
-Edges are computed against the **devigged** two-way price. Where only one side
-of a market is available the edge is reported as null rather than measured
-against a vigged number, which would flatter the model.
+Without a key the board runs in **model-only mode**: ranked legs with the
+model's own fair prices and no parlay payouts. A payout computed from invented
+odds is worse than no payout, so none is produced.
 
-Note that historical player-prop odds are a paid product on every provider
-surveyed, so the "past 7 days" view grades the model's own board against actual
-results rather than replaying real historical prices. It fills in as the job
-runs each day.
+**Quota is the binding constraint.** The free tier is 500 credits a month and
+charges one credit per market per region — three credits per run here. The
+board therefore has its own schedule of four runs a day (~360/month) rather
+than sharing the standings job's hourly cron, which would exhaust the month in
+under two days. The events listing is free; only the odds call is charged.
+
+Two things happen when a quote is read:
+
+- **Best price wins.** The same prop is priced differently at each book, and
+  taking the best available over is line shopping — the one edge available to a
+  retail bettor that requires no opinion at all.
+- **Over and under are paired from the same book.** Devigging mixes two sides
+  of one market, so pairing DraftKings' over with BetMGM's under would produce
+  a fair probability neither book ever offered.
+
+Edges are computed against the devigged price. Where only one side is available
+the edge is null rather than measured against a vigged number.
+
+#### Reading the lines correctly
+
+Books quote "Over N.5", so the threshold a bet needs is `ceil(point)`: over 0.5
+hits is 1+, over 2.5 hits is **3+**, not 2+. Misreading that prices a much
+harder bet as an easier one. `lib/odds-feed.js` maps only the lines the model
+covers and drops the rest — including `batter_home_runs` at 1.5, which is the
+banned "2+ home runs by one player" market arriving under an ordinary-looking
+name.
+
+### Past seven days
+
+Each run stores that night's board under `data/props/YYYY-MM-DD.json` with the
+prices it was built on, and later runs grade it in place against actual results.
+
+History is never rebuilt from scratch. Rebuilding would spend credits
+re-fetching prices for games already played and would fetch *today's* prices
+for a past game, since historical prop odds are a separate paid product. The
+board captured at the time is the only honest record of what was available.
 
 ### Caveats
 
