@@ -19,6 +19,9 @@ import * as projections from '../lib/projections.js';
 
 const require_projections = () => projections;
 
+import * as oddsLib from '../lib/odds.js';
+const projections_odds = () => oddsLib;
+
 const near = (a, b, tol = 1e-6, msg) => assert.ok(Math.abs(a - b) < tol, msg ?? `${a} !~= ${b}`);
 
 /* ---------------------------------------------------------------- odds --- */
@@ -352,4 +355,44 @@ test('a hot night in Cincinnati compounds park and weather', () => {
   const neutral = weatherPower({ venue: 'Some Unlisted Field', temperatureF: 72, windMph: 0 });
   assert.ok(cincy > neutral * 1.1, `expected a clear boost, got ${cincy} vs ${neutral}`);
   assert.ok(cincy <= 1.35, 'still clamped against runaway multipliers');
+});
+
+/* -------------------------------------------------- missing-price guards --- */
+
+test('a missing price is not a valid price', () => {
+  const { isValidAmerican } = projections_odds();
+  for (const bad of [null, undefined, '', 0, NaN, 'abc', {}]) {
+    assert.equal(isValidAmerican(bad), false, `${JSON.stringify(bad)} should be rejected`);
+  }
+  for (const good of [100, -110, '150', -350]) {
+    assert.equal(isValidAmerican(good), true, `${good} should be accepted`);
+  }
+});
+
+test('a leg with no price never becomes eligible', () => {
+  // Number(null) is 0 and passes isFinite, which is how a null price once
+  // reached the odds converter and crashed the nightly job.
+  assert.equal(isEligibleLeg({ ...leg(1, 'hits_1', -150, 0.6), americanOdds: null }), false);
+  assert.equal(isEligibleLeg({ ...leg(1, 'hits_1', -150, 0.6), americanOdds: 0 }), false);
+});
+
+test('withEdge survives an over with no under posted', () => {
+  const scored = withEdge({ ...leg(1, 'total_bases_2', 130, 0.5), oppositeAmericanOdds: null });
+  assert.equal(scored.fairProbability, null);
+  assert.equal(scored.edge, null);
+  assert.ok(scored.impliedProbability > 0, 'the over is still priced');
+});
+
+test('buildParlays ignores unpriced legs instead of throwing', () => {
+  const candidates = [
+    { ...leg(1, 'hits_1', -140, 0.60, 1) },
+    { ...leg(2, 'total_bases_2', 145, 0.44, 2) },
+    { ...leg(3, 'total_bases_2', 160, 0.42, 3) },
+    { ...leg(4, 'hits_2', 260, 0.30, 4), americanOdds: null },
+    { ...leg(5, 'hits_1', -125, 0.58, 5), americanOdds: undefined },
+  ];
+  assert.doesNotThrow(() => buildParlays(candidates));
+  for (const t of buildParlays(candidates)) {
+    for (const l of t.legs) assert.ok(l.americanOdds, 'every leg on a ticket has a real price');
+  }
 });
