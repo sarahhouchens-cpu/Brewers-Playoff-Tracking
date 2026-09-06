@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T00:28:18.635Z",
+  "generatedAt": "2026-09-06T00:49:44.345Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
@@ -50,9 +50,9 @@
       "headline": "to lock up the No. 1 seed",
       "chaserNote": "best record among other NL teams",
       "chaser": {
-        "id": 144,
-        "name": "Atlanta Braves",
-        "abbrev": "ATL",
+        "id": 119,
+        "name": "Los Angeles Dodgers",
+        "abbrev": "LAD",
         "wins": 84,
         "losses": 57
       },
@@ -66,9 +66,9 @@
       "headline": "to secure World Series home field",
       "chaserNote": "best record anywhere in baseball",
       "chaser": {
-        "id": 144,
-        "name": "Atlanta Braves",
-        "abbrev": "ATL",
+        "id": 119,
+        "name": "Los Angeles Dodgers",
+        "abbrev": "LAD",
         "wins": 84,
         "losses": 57
       },
@@ -96,15 +96,27 @@
     {
       "key": "leagueSeed",
       "delta": 0,
-      "chaserChanged": false,
-      "previousChaser": null,
+      "chaserChanged": true,
+      "previousChaser": {
+        "id": 144,
+        "name": "Atlanta Braves",
+        "abbrev": "ATL",
+        "wins": 84,
+        "losses": 57
+      },
       "previousMagic": 18
     },
     {
       "key": "bestRecord",
       "delta": 0,
-      "chaserChanged": false,
-      "previousChaser": null,
+      "chaserChanged": true,
+      "previousChaser": {
+        "id": 144,
+        "name": "Atlanta Braves",
+        "abbrev": "ATL",
+        "wins": 84,
+        "losses": 57
+      },
       "previousMagic": 18
     }
   ],
