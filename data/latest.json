@@ -1,16 +1,16 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T03:42:12.371Z",
+  "generatedAt": "2026-09-06T03:55:15.709Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
     "abbrev": "MIL",
     "wins": 88,
-    "losses": 54
+    "losses": 55
   },
-  "gamesPlayed": 142,
-  "gamesRemaining": 20,
+  "gamesPlayed": 143,
+  "gamesRemaining": 19,
   "races": [
     {
       "key": "berth",
@@ -25,7 +25,7 @@
         "losses": 68
       },
       "magic": 7,
-      "elimination": 35,
+      "elimination": 34,
       "clinched": false
     },
     {
@@ -41,7 +41,7 @@
         "losses": 62
       },
       "magic": 13,
-      "elimination": 28,
+      "elimination": 27,
       "clinched": false
     },
     {
@@ -57,7 +57,7 @@
         "losses": 57
       },
       "magic": 18,
-      "elimination": 25,
+      "elimination": 24,
       "clinched": false
     },
     {
@@ -73,7 +73,7 @@
         "losses": 57
       },
       "magic": 18,
-      "elimination": 24,
+      "elimination": 23,
       "clinched": false
     }
   ],
