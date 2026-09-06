@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T04:15:53.065Z",
+  "generatedAt": "2026-09-06T04:16:06.815Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
@@ -103,14 +103,8 @@
     {
       "key": "bestRecord",
       "delta": 0,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 139,
-        "name": "Tampa Bay Rays",
-        "abbrev": "TB",
-        "wins": 85,
-        "losses": 57
-      },
+      "chaserChanged": false,
+      "previousChaser": null,
       "previousMagic": 18
     }
   ],
