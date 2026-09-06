@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T03:55:15.709Z",
+  "generatedAt": "2026-09-06T04:15:53.065Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
@@ -53,11 +53,11 @@
         "id": 119,
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
-        "wins": 84,
+        "wins": 85,
         "losses": 57
       },
       "magic": 18,
-      "elimination": 24,
+      "elimination": 23,
       "clinched": false
     },
     {
@@ -66,9 +66,9 @@
       "headline": "to secure World Series home field",
       "chaserNote": "best record anywhere in baseball",
       "chaser": {
-        "id": 139,
-        "name": "Tampa Bay Rays",
-        "abbrev": "TB",
+        "id": 119,
+        "name": "Los Angeles Dodgers",
+        "abbrev": "LAD",
         "wins": 85,
         "losses": 57
       },
@@ -103,12 +103,25 @@
     {
       "key": "bestRecord",
       "delta": 0,
-      "chaserChanged": false,
-      "previousChaser": null,
+      "chaserChanged": true,
+      "previousChaser": {
+        "id": 139,
+        "name": "Tampa Bay Rays",
+        "abbrev": "TB",
+        "wins": 85,
+        "losses": 57
+      },
       "previousMagic": 18
     }
   ],
   "feed": [
+    {
+      "kind": "brewers-loss",
+      "tag": "Brewers · Final",
+      "score": "Cincinnati Reds 5, Milwaukee Brewers 3",
+      "why": "A loss never raises a magic number. It just burns a game off the schedule.",
+      "impacts": []
+    },
     {
       "kind": "chaser-loss",
       "tag": "Chaser · Playoff berth",
@@ -131,9 +144,9 @@
     },
     {
       "kind": "chaser-win",
-      "tag": "Chaser · Best record, MLB",
-      "score": "Tampa Bay Rays 6, Texas Rangers 3",
-      "why": "Tampa Bay Rays holds the mark for Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "tag": "Chaser · No. 1 seed, NL",
+      "score": "Los Angeles Dodgers 6, Washington Nationals 5",
+      "why": "Los Angeles Dodgers holds the mark for No. 1 seed, NL and Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
