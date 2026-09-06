@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T01:45:18.502Z",
+  "generatedAt": "2026-09-06T02:15:29.289Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
@@ -66,14 +66,14 @@
       "headline": "to secure World Series home field",
       "chaserNote": "best record anywhere in baseball",
       "chaser": {
-        "id": 119,
-        "name": "Los Angeles Dodgers",
-        "abbrev": "LAD",
-        "wins": 84,
+        "id": 139,
+        "name": "Tampa Bay Rays",
+        "abbrev": "TB",
+        "wins": 85,
         "losses": 57
       },
       "magic": 18,
-      "elimination": 25,
+      "elimination": 24,
       "clinched": false
     }
   ],
@@ -103,8 +103,14 @@
     {
       "key": "bestRecord",
       "delta": 0,
-      "chaserChanged": false,
-      "previousChaser": null,
+      "chaserChanged": true,
+      "previousChaser": {
+        "id": 119,
+        "name": "Los Angeles Dodgers",
+        "abbrev": "LAD",
+        "wins": 84,
+        "losses": 57
+      },
       "previousMagic": 18
     }
   ],
@@ -114,6 +120,13 @@
       "tag": "Chaser · NL Central",
       "score": "Chicago Cubs 6, Miami Marlins 5",
       "why": "Chicago Cubs holds the mark for NL Central. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · Best record, MLB",
+      "score": "Tampa Bay Rays 6, Texas Rangers 3",
+      "why": "Tampa Bay Rays holds the mark for Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
