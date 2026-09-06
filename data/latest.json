@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T02:41:46.967Z",
+  "generatedAt": "2026-09-06T02:54:47.200Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
@@ -82,14 +82,8 @@
     {
       "key": "berth",
       "delta": 0,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 109,
-        "name": "Arizona Diamondbacks",
-        "abbrev": "AZ",
-        "wins": 74,
-        "losses": 68
-      },
+      "chaserChanged": false,
+      "previousChaser": null,
       "previousMagic": 7
     },
     {
