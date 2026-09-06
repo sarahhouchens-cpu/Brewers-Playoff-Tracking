@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T22:15:53.929Z",
+  "generatedAt": "2026-09-06T23:14:16.282Z",
   "slateDate": "2026-09-06",
   "team": {
     "id": 158,
@@ -21,11 +21,11 @@
         "id": 135,
         "name": "San Diego Padres",
         "abbrev": "SD",
-        "wins": 74,
+        "wins": 75,
         "losses": 68
       },
       "magic": 7,
-      "elimination": 33,
+      "elimination": 32,
       "clinched": false
     },
     {
@@ -128,6 +128,13 @@
           "delta": -1
         }
       ]
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · Playoff berth",
+      "score": "San Diego Padres 4, New York Yankees 3",
+      "why": "San Diego Padres holds the mark for Playoff berth. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     }
   ]
 }
