@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T21:15:05.333Z",
+  "generatedAt": "2026-09-06T22:15:53.929Z",
   "slateDate": "2026-09-06",
   "team": {
     "id": 158,
@@ -88,10 +88,10 @@
     },
     {
       "key": "division",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 13
+      "previousMagic": 12
     },
     {
       "key": "leagueSeed",
