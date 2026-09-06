@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T00:49:44.345Z",
+  "generatedAt": "2026-09-06T01:13:39.091Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
@@ -96,27 +96,15 @@
     {
       "key": "leagueSeed",
       "delta": 0,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 144,
-        "name": "Atlanta Braves",
-        "abbrev": "ATL",
-        "wins": 84,
-        "losses": 57
-      },
+      "chaserChanged": false,
+      "previousChaser": null,
       "previousMagic": 18
     },
     {
       "key": "bestRecord",
       "delta": 0,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 144,
-        "name": "Atlanta Braves",
-        "abbrev": "ATL",
-        "wins": 84,
-        "losses": 57
-      },
+      "chaserChanged": false,
+      "previousChaser": null,
       "previousMagic": 18
     }
   ],
