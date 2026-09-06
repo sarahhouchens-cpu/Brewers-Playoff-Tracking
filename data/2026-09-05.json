@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T02:15:29.289Z",
+  "generatedAt": "2026-09-06T02:15:45.186Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
@@ -103,14 +103,8 @@
     {
       "key": "bestRecord",
       "delta": 0,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 119,
-        "name": "Los Angeles Dodgers",
-        "abbrev": "LAD",
-        "wins": 84,
-        "losses": 57
-      },
+      "chaserChanged": false,
+      "previousChaser": null,
       "previousMagic": 18
     }
   ],
