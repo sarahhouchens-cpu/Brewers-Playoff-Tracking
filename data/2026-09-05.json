@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T02:15:45.186Z",
+  "generatedAt": "2026-09-06T02:41:46.967Z",
   "slateDate": "2026-09-05",
   "team": {
     "id": 158,
@@ -18,9 +18,9 @@
       "headline": "to clinch a playoff berth",
       "chaserNote": "first team out of the playoff field",
       "chaser": {
-        "id": 109,
-        "name": "Arizona Diamondbacks",
-        "abbrev": "AZ",
+        "id": 135,
+        "name": "San Diego Padres",
+        "abbrev": "SD",
         "wins": 74,
         "losses": 68
       },
@@ -82,8 +82,14 @@
     {
       "key": "berth",
       "delta": 0,
-      "chaserChanged": false,
-      "previousChaser": null,
+      "chaserChanged": true,
+      "previousChaser": {
+        "id": 109,
+        "name": "Arizona Diamondbacks",
+        "abbrev": "AZ",
+        "wins": 74,
+        "losses": 68
+      },
       "previousMagic": 7
     },
     {
@@ -109,6 +115,19 @@
     }
   ],
   "feed": [
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · Playoff berth",
+      "score": "New York Yankees 5, San Diego Padres 1",
+      "why": "San Diego Padres is the team the Playoff berth number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        }
+      ]
+    },
     {
       "kind": "chaser-win",
       "tag": "Chaser · NL Central",
