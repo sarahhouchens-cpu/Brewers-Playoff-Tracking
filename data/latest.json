@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-06T20:16:09.928Z",
+  "generatedAt": "2026-09-06T21:15:05.333Z",
   "slateDate": "2026-09-06",
   "team": {
     "id": 158,
@@ -38,9 +38,9 @@
         "name": "Chicago Cubs",
         "abbrev": "CHC",
         "wins": 81,
-        "losses": 62
+        "losses": 63
       },
-      "magic": 13,
+      "magic": 12,
       "elimination": 26,
       "clinched": false
     },
@@ -88,7 +88,7 @@
     },
     {
       "key": "division",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 13
@@ -115,6 +115,19 @@
       "score": "Cincinnati Reds 12, Milwaukee Brewers 8",
       "why": "A loss never raises a magic number. It just burns a game off the schedule.",
       "impacts": []
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · NL Central",
+      "score": "Miami Marlins 10, Chicago Cubs 3",
+      "why": "Chicago Cubs is the team the NL Central number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        }
+      ]
     }
   ]
 }
