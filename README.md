@@ -60,8 +60,9 @@ does not.
 | `lib/odds-feed.js` | Parsing The Odds API payloads: line thresholds, name matching, best price. |
 | `lib/projections.js` | The hitter model. Pure math. |
 | `lib/parlay.js` | Ticket assembly and the rules that constrain it. |
+| `lib/calibration.js` | Scores the model against graded results, with shrinkage. |
 | `scripts/props.js` | Builds the nightly bet board. |
-| `test/` | 74 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
+| `test/` | 84 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
 | `assets/app.js` | Renders `data/latest.json`. Formats only — never computes. |
 | `.github/workflows/update.yml` | The schedule. |
 
@@ -169,6 +170,26 @@ harder bet as an easier one. `lib/odds-feed.js` maps only the lines the model
 covers and drops the rest — including `batter_home_runs` at 1.5, which is the
 banned "2+ home runs by one player" market arriving under an ordinary-looking
 name.
+
+### Calibration
+
+Graded results feed back into the projections. `lib/calibration.js` compares
+expected occurrences against actual ones and produces a multiplier applied to
+each hitter's per-plate-appearance rates.
+
+The hard part is sample size, not arithmetic. After one game there are ~40
+graded legs, and a gap of "expected 16.1, got 14" sits about 0.7 standard
+deviations from nothing — correcting on that is fitting the last game. So the
+ratio is shrunk toward 1.0 with pseudo-counts (`PRIOR_STRENGTH`, in units of
+expected occurrences): the raw 0.871 from night one becomes an applied 0.969,
+and only sustained evidence moves it further. No threshold decides when the
+sample is "big enough"; the shrinkage handles it continuously.
+
+Per-market factors are tracked and displayed but only applied once a market
+carries real weight of its own, since each market's sample is a fraction of the
+whole. The multiplier scales the underlying rates rather than the finished
+probability — scaling an output probability breaks down near 1, while scaling
+the rate flows through the convolution correctly.
 
 ### Past seven days
 

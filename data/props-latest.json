@@ -1339,5 +1339,58 @@
       "generatedAt": "2026-09-05T21:33:33.848Z",
       "source": "live"
     }
-  ]
+  ],
+  "calibration": {
+    "overall": {
+      "n": 40,
+      "expected": 16.08,
+      "actual": 14,
+      "raw": 0.8708,
+      "factor": 0.9686,
+      "weight": 0.243
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 9,
+        "expected": 6.34,
+        "actual": 6,
+        "raw": 0.9465,
+        "factor": 0.994,
+        "weight": 0.113
+      },
+      "total_bases_2": {
+        "n": 9,
+        "expected": 4,
+        "actual": 3,
+        "raw": 0.7503,
+        "factor": 0.9815,
+        "weight": 0.074
+      },
+      "hits_2": {
+        "n": 9,
+        "expected": 2.71,
+        "actual": 2,
+        "raw": 0.7386,
+        "factor": 0.9866,
+        "weight": 0.051
+      },
+      "total_bases_3": {
+        "n": 9,
+        "expected": 2.36,
+        "actual": 2,
+        "raw": 0.8479,
+        "factor": 0.9931,
+        "weight": 0.045
+      },
+      "home_run_1": {
+        "n": 4,
+        "expected": 0.67,
+        "actual": 1,
+        "raw": 1.4847,
+        "factor": 1.0064,
+        "weight": 0.013
+      }
+    },
+    "updatedAt": "2026-09-06T18:27:52.247Z"
+  }
 }

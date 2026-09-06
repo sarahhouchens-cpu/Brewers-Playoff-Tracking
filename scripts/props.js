@@ -23,6 +23,7 @@ import { projectBatter, weatherPower, pitcherContactFactor, isRoofed, parkPower 
 import { buildParlays, withEdge, describeLeg, MARKET_LABELS } from '../lib/parlay.js';
 import { decimalToAmerican } from '../lib/odds.js';
 import { parseEventOdds, playersInFeed, normalizeName } from '../lib/odds-feed.js';
+import { calibrate, rateFactor, describe as describeCalibration } from '../lib/calibration.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA_DIR = join(ROOT, 'data');
@@ -249,7 +250,7 @@ async function rosterByName() {
 
 /* ----------------------------------------------------------------- run --- */
 
-async function buildBoard(date, { withOdds = true } = {}) {
+async function buildBoard(date, { withOdds = true, calibration = null } = {}) {
   const game = await findGame(date);
   if (!game) return { date, status: 'no-game', legs: [], parlays: [] };
 
@@ -303,6 +304,11 @@ async function buildBoard(date, { withOdds = true } = {}) {
   ]);
   const starterContact = pitcherContactFactor(starterAvg ?? 0.243);
 
+  // The overall factor is applied, not the per-market ones. Each market's
+  // sample is a fraction of the whole and shrinks far harder, so acting on them
+  // separately would be reading noise. They are tracked and shown regardless.
+  const calibrationFactor = rateFactor(calibration);
+
   const hoursOut = (startsAt - new Date()) / 3600000;
   const inOddsWindow = hoursOut <= ODDS_WINDOW_HOURS;
 
@@ -346,7 +352,7 @@ async function buildBoard(date, { withOdds = true } = {}) {
     const projection = projectBatter({
       views,
       lineupSlot: slotKnown ? index + 1 : 5,
-      starterContact,
+      starterContact: starterContact * calibrationFactor,
       bullpenContact: penContact,
       power,
     });
@@ -416,7 +422,14 @@ async function buildBoard(date, { withOdds = true } = {}) {
     starter: starter ? { id: starter.id, name: starter.fullName, hand: starterHand, opponentAvg: starterAvg } : null,
     lineupSource,
     conditions,
-    factors: { starterContact, bullpenContact: penContact, power, park: parkPower(venueName) },
+    factors: {
+      starterContact,
+      bullpenContact: penContact,
+      power,
+      park: parkPower(venueName),
+      calibration: calibrationFactor,
+    },
+    calibration,
     battersResolved: batters.length,
     battersSkipped: skipped,
     legs: priced.sort((a, b) => (b.edge ?? -99) - (a.edge ?? -99) || b.modelProbability - a.modelProbability),
@@ -510,7 +523,13 @@ async function main() {
     return;
   }
 
-  const today = await buildBoard(centralDate());
+  // Grade what is already stored before building today, so tonight's board is
+  // projected through everything the model has been shown to get right or wrong.
+  const history = DRY_RUN ? [] : await gradeStoredBoards();
+  const calibration = calibrate(history.flatMap((b) => b.legs ?? []));
+  console.log(`Calibration: ${describeCalibration(calibration)}`);
+
+  const today = await buildBoard(centralDate(), { calibration });
   today.generatedAt = new Date().toISOString();
   today.source = 'live';
 
@@ -520,7 +539,7 @@ async function main() {
     await writeFile(join(BOARD_DIR, `${today.date}.json`), JSON.stringify(today, null, 2));
   }
 
-  today.history = DRY_RUN ? [] : await gradeStoredBoards();
+  today.history = history;
   await write(today);
 }
 

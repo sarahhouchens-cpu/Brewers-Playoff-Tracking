@@ -208,33 +208,99 @@ function renderHistory(board) {
   const days = (board.history ?? []).filter((d) => d.parlays?.some((p) => p.graded));
   if (!days.length) {
     host.append(el('div', 'empty',
-      'No graded nights yet. The record fills in as the board runs each day — the first entries appear tomorrow.'));
+      'No graded nights yet. The record fills in as the board runs each day.'));
     return;
   }
 
-  let wins = 0, total = 0;
-  for (const day of days) for (const p of day.parlays) if (p.graded) { total++; if (p.hit) wins++; }
+  // Ticket record and leg record are different questions: a 5-leg ticket can go
+  // 4-for-5 and still lose, so leg accuracy is the honest read on the model
+  // while ticket record is what the bankroll actually did.
+  let won = 0, played = 0, legHits = 0, legTotal = 0, expected = 0;
+  for (const day of days) {
+    for (const p of day.parlays) {
+      if (!p.graded) continue;
+      played++;
+      if (p.hit) won++;
+    }
+    for (const leg of day.legs ?? []) {
+      if (typeof leg.hit !== 'boolean') continue;
+      legTotal++;
+      if (leg.hit) legHits++;
+      expected += leg.modelProbability;
+    }
+  }
 
   const summary = el('div', 'record');
-  summary.append(el('span', 'rec-n', `${wins}–${total - wins}`), el('span', 'rec-l', `top parlays over ${days.length} nights`));
+  const block = (value, label) => {
+    const b = el('div', 'rec-block');
+    b.append(el('span', 'rec-n', value), el('span', 'rec-l', label));
+    return b;
+  };
+  summary.append(block(`${won}\u2013${played - won}`, `tickets over ${days.length} ${days.length === 1 ? 'night' : 'nights'}`));
+  summary.append(block(`${legHits}/${legTotal}`, 'legs hit'));
+  if (legTotal) {
+    summary.append(block(expected.toFixed(1), 'legs the model expected'));
+  }
   host.append(summary);
 
-  for (const day of days) {
-    const best = day.parlays.find((p) => p.graded);
-    if (!best) continue;
-    const card = el('article', 'parlay' + (best.hit ? ' won' : ' lost'));
-    const head = el('div', 'parlay-head');
-    head.append(el('span', 'parlay-rank', new Date(day.date + 'T12:00:00Z').toLocaleDateString('en-US', { timeZone: 'America/Chicago', month: 'short', day: 'numeric' })));
-    const pay = el('div', 'parlay-pay');
-    pay.append(el('span', 'pay-amt', money(best.payout)), el('span', 'pay-sub', best.hit ? 'would have cashed' : 'lost'));
-    head.append(pay);
-    card.append(head);
-
-    const legs = el('div', 'parlay-legs');
-    for (const leg of best.legs) legs.append(legRow(leg, { showResult: true }));
-    card.append(legs);
-    host.append(card);
+  if (board.calibration?.overall?.n) {
+    const c = board.calibration.overall;
+    const note = el('div', 'calib');
+    const pct = Math.round((c.factor - 1) * 100);
+    note.append(
+      el('strong', null, pct === 0 ? 'No net correction. ' : `Model adjusted ${Math.abs(pct)}% ${pct < 0 ? 'down' : 'up'}. `),
+      document.createTextNode(
+        `Across ${c.n} graded legs the model expected ${c.expected.toFixed(1)} and got ${c.actual}. ` +
+        (c.weight < 0.25
+          ? 'That gap is still small enough to be chance, so the correction is deliberately held near zero until more nights accumulate.'
+          : c.weight < 0.6
+            ? 'Evidence is starting to outweigh the prior.'
+            : 'The correction is now driven by the data.')
+      )
+    );
+    host.append(note);
   }
+
+  for (const day of days) {
+    const heading = el('div', 'day-head');
+    const dayWon = day.parlays.filter((p) => p.graded && p.hit).length;
+    const dayPlayed = day.parlays.filter((p) => p.graded).length;
+    heading.append(
+      el('h3', null, new Date(day.date + 'T12:00:00Z').toLocaleDateString('en-US', {
+        timeZone: 'America/Chicago', weekday: 'long', month: 'short', day: 'numeric',
+      })),
+      el('span', 'day-rec', `${dayWon} of ${dayPlayed} cashed`)
+    );
+    host.append(heading);
+
+    for (const parlay of day.parlays.filter((p) => p.graded)) {
+      const card = el('article', `parlay ${parlay.hit ? 'won' : 'lost'}`);
+
+      const head = el('div', 'parlay-head');
+      const hits = parlay.legs.filter((l) => legResult(day, l) === true).length;
+      head.append(el('span', 'parlay-rank', `${hits}/${parlay.legs.length} legs`));
+      const pay = el('div', 'parlay-pay');
+      pay.append(
+        el('span', 'pay-amt' + (parlay.hit ? '' : ' missed'), money(parlay.payout)),
+        el('span', 'pay-sub', parlay.hit ? 'would have cashed' : 'lost')
+      );
+      head.append(pay);
+      card.append(head);
+
+      const legs = el('div', 'parlay-legs');
+      for (const leg of parlay.legs) {
+        legs.append(legRow({ ...leg, hit: legResult(day, leg) }, { showResult: true }));
+      }
+      card.append(legs);
+      host.append(card);
+    }
+  }
+}
+
+/** Find a leg's graded outcome on its day. Parlay legs are copies, not refs. */
+function legResult(day, leg) {
+  const match = (day.legs ?? []).find((l) => l.playerId === leg.playerId && l.market === leg.market);
+  return typeof match?.hit === 'boolean' ? match.hit : undefined;
 }
 
 async function main() {
