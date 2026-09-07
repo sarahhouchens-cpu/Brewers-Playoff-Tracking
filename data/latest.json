@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-07T23:40:04.103Z",
+  "generatedAt": "2026-09-07T23:52:58.697Z",
   "slateDate": "2026-09-07",
   "team": {
     "id": 158,
@@ -21,11 +21,11 @@
         "id": 135,
         "name": "San Diego Padres",
         "abbrev": "SD",
-        "wins": 75,
+        "wins": 76,
         "losses": 68
       },
       "magic": 6,
-      "elimination": 32,
+      "elimination": 31,
       "clinched": false
     },
     {
@@ -136,6 +136,13 @@
           "delta": -1
         }
       ]
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · Playoff berth",
+      "score": "San Diego Padres 3, Washington Nationals 2",
+      "why": "San Diego Padres holds the mark for Playoff berth. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     }
   ]
 }
