@@ -404,7 +404,10 @@ async function buildBoard(date, { withOdds = true, calibration = null } = {}) {
   }
 
   const bettable = priced.filter((l) => l.americanOdds != null && !l.suspect);
-  const parlays = bettable.length ? buildParlays(bettable) : [];
+  // Long tickets are discounted while the model is unproven; the discount fades
+  // as calibration earns confidence.
+  const confidence = calibration?.overall?.weight ?? 0;
+  const parlays = bettable.length ? buildParlays(bettable, { confidence }) : [];
 
   return {
     date,

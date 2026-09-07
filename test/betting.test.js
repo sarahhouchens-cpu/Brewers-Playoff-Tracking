@@ -459,3 +459,100 @@ test('every ticket carries its band label', () => {
   assert.equal(payoutBand(250), 'medium');
   assert.equal(payoutBand(900), 'long');
 });
+
+/* ------------------------------------------------- leg-count uncertainty --- */
+
+test('the haircut compounds with leg count', () => {
+  const { confidenceAdjusted } = parlayLib();
+  const three = confidenceAdjusted(0.2, 3, 0);
+  const five = confidenceAdjusted(0.2, 5, 0);
+  assert.ok(five / 0.2 < three / 0.2, 'more legs means a bigger discount');
+});
+
+test('the haircut disappears once the model is proven', () => {
+  const { confidenceAdjusted } = parlayLib();
+  assert.equal(confidenceAdjusted(0.2, 5, 1), 0.2);
+  assert.ok(confidenceAdjusted(0.2, 5, 0) < 0.2);
+  // Partial confidence lands in between.
+  const half = confidenceAdjusted(0.2, 5, 0.5);
+  assert.ok(half > confidenceAdjusted(0.2, 5, 0) && half < 0.2);
+});
+
+test('confidence outside 0-1 is clamped rather than inverting the haircut', () => {
+  const { confidenceAdjusted } = parlayLib();
+  assert.equal(confidenceAdjusted(0.2, 3, 2), 0.2);
+  assert.equal(confidenceAdjusted(0.2, 3, -1), confidenceAdjusted(0.2, 3, 0));
+});
+
+test('an unproven model ranks a short ticket above a long one it used to prefer', () => {
+  // Legs priced so the five-leg ticket wins on raw EV but not after the haircut.
+  const candidates = [
+    leg(1, 'hits_1', -140, 0.62, 1),
+    leg(2, 'hits_1', -130, 0.61, 2),
+    leg(3, 'total_bases_2', 150, 0.44, 3),
+    leg(4, 'total_bases_2', 155, 0.43, 4),
+    leg(5, 'total_bases_3', 330, 0.28, 5),
+    leg(6, 'hits_2', 270, 0.30, 6),
+  ];
+  const unproven = buildParlays(candidates, { confidence: 0, limit: 6 });
+  const proven = buildParlays(candidates, { confidence: 1, limit: 6 });
+
+  const avgLegs = (ts) => ts.reduce((s, t) => s + t.legs.length, 0) / ts.length;
+  assert.ok(avgLegs(unproven) <= avgLegs(proven),
+    `unproven board should not be longer on average (${avgLegs(unproven)} vs ${avgLegs(proven)})`);
+});
+
+test('the board always offers a three-leg ticket when one qualifies', () => {
+  const candidates = [
+    leg(1, 'total_bases_3', 330, 0.28, 1),
+    leg(2, 'total_bases_3', 340, 0.27, 2),
+    leg(3, 'hits_2', 280, 0.29, 3),
+    leg(4, 'total_bases_2', 150, 0.44, 4),
+    leg(5, 'hits_1', -130, 0.61, 5),
+    leg(6, 'hits_1', -140, 0.62, 6),
+    leg(7, 'total_bases_2', 160, 0.42, 7),
+  ];
+  const tickets = buildParlays(candidates, { confidence: 0, limit: 4 });
+  assert.ok(tickets.some((t) => t.legs.length === 3),
+    'a three-leg option must be on the board');
+});
+
+test('both the raw and shaded probabilities are reported', () => {
+  const candidates = [
+    leg(1, 'hits_1', -140, 0.62, 1),
+    leg(2, 'total_bases_2', 150, 0.44, 2),
+    leg(3, 'total_bases_3', 330, 0.28, 3),
+  ];
+  for (const t of buildParlays(candidates, { confidence: 0.2 })) {
+    assert.ok(t.adjustedProbability < t.probability, 'the shaded number is lower');
+    assert.ok(t.expectedValue < t.rawExpectedValue, 'ranking EV uses the shaded number');
+  }
+});
+
+test('long-priced legs are not excluded just because their edge is unmeasured', () => {
+  // Home run props usually have no under posted, so edge is null. Treating that
+  // as zero edge once kept every long price out of the pool, which meant no
+  // three-leg ticket could reach the payout floor.
+  const candidates = [
+    { ...leg(1, 'hits_1', -223, 0.79, 1), edge: 13.9 },
+    { ...leg(2, 'hits_1', -185, 0.74, 2), edge: 12.9 },
+    { ...leg(3, 'total_bases_2', 155, 0.43, 3), edge: 11.8 },
+    { ...leg(4, 'hits_1', -140, 0.65, 4), edge: 10.8 },
+    { ...leg(5, 'hits_1', -220, 0.75, 5), edge: 10.5 },
+    { ...leg(6, 'total_bases_2', 130, 0.49, 6), edge: 8.5 },
+    { ...leg(7, 'total_bases_2', 112, 0.52, 7), edge: 7.2 },
+    { ...leg(8, 'total_bases_2', 140, 0.45, 8), edge: 6.4 },
+    { ...leg(9, 'total_bases_2', 155, 0.42, 9), edge: 5.4 },
+    { ...leg(10, 'hits_2', 165, 0.41, 10), edge: 5.0 },
+    // Long prices with no measurable edge.
+    { ...leg(11, 'home_run_1', 950, 0.09, 11), edge: null },
+    { ...leg(12, 'total_bases_3', 330, 0.28, 12), edge: null },
+    { ...leg(13, 'total_bases_3', 340, 0.27, 13), edge: null },
+  ];
+  const tickets = buildParlays(candidates, { confidence: 0, limit: 6 });
+  const used = new Set(tickets.flatMap((t) => t.legs.map((l) => l.playerId)));
+  assert.ok([11, 12, 13].some((id) => used.has(id)),
+    'at least one long-priced leg should reach the board');
+  assert.ok(tickets.some((t) => t.legs.length === 3),
+    'long prices make a three-leg ticket reachable');
+});

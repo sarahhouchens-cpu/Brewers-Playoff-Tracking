@@ -62,7 +62,7 @@ does not.
 | `lib/parlay.js` | Ticket assembly and the rules that constrain it. |
 | `lib/calibration.js` | Scores the model against graded results, with shrinkage. |
 | `scripts/props.js` | Builds the nightly bet board. |
-| `test/` | 84 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
+| `test/` | 91 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
 | `assets/app.js` | Renders `data/latest.json`. Formats only — never computes. |
 | `.github/workflows/update.yml` | The schedule. |
 
@@ -111,8 +111,26 @@ home run leg, and never a "player hits 2+ home runs" market.
 With no ceiling, ranking purely on expected value pushes every slot toward the
 longest tickets — the model's disagreements with the book compound across legs,
 so more legs means more apparent edge, and the board degenerates into six
-lottery tickets. Results are therefore capped at three per payout band (under
-$200, $200-400, over $400) so a short likely ticket sits next to a long shot.
+lottery tickets. Three things counter that:
+
+- **Payout bands.** At most three results per band (under $200, $200-400, over
+  $400), so a short likely ticket sits next to a long shot.
+- **A leg-count haircut.** Model error compounds: if each leg is overstated by a
+  factor f, an n-leg ticket is overstated by f^n. Night one implied f of about
+  1.15, which is roughly 2x on a five-leg ticket. Each leg is therefore
+  discounted by up to 8%, scaled by how unproven the model is, and tickets are
+  ranked on the shaded number. The discount fades to nothing as calibration
+  earns confidence.
+- **A guaranteed short option.** If no three-leg ticket makes the board on
+  merit, the lowest-ranked result is replaced by the best one available.
+
+#### Candidate pool
+
+The pool reserves places for the longest prices rather than ranking purely by
+edge. Home run props rarely have an "under" posted, so they cannot be devigged
+and their edge is null — and treating unknown as zero sorted every long price
+below every measured favourite. The effect was that no three-leg ticket could
+reach the $100 floor and the one home run leg the rules allow never appeared.
 
 ### The model
 

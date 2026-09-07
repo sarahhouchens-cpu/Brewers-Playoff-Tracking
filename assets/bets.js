@@ -181,6 +181,16 @@ function renderParlays(board) {
       return s;
     };
     foot.append(stat('Model chance', pct(parlay.probability)));
+    if (parlay.adjustedProbability != null && parlay.adjustedProbability < parlay.probability - 0.0005) {
+      const s2 = el('div', 'pstat');
+      s2.append(
+        el('span', 'psl', `After ${parlay.legs.length}-leg discount`),
+        el('span', 'psv', pct(parlay.adjustedProbability))
+      );
+      s2.title = 'Model error compounds with leg count, so longer tickets are '
+        + 'discounted more while the model is unproven. The discount fades as results accumulate.';
+      foot.append(s2);
+    }
     foot.append(stat('Expected value', money(parlay.expectedValue), parlay.expectedValue > 0 ? 'pos' : 'neg'));
     if (typeof parlay.hit === 'boolean') foot.append(stat('Result', parlay.hit ? 'Cashed' : 'Lost', parlay.hit ? 'pos' : 'neg'));
     card.append(foot);
