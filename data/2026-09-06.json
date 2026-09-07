@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-07T05:16:02.832Z",
+  "generatedAt": "2026-09-07T05:18:23.478Z",
   "slateDate": "2026-09-06",
   "team": {
     "id": 158,
@@ -134,6 +134,13 @@
       "tag": "Chaser · Playoff berth",
       "score": "San Diego Padres 4, New York Yankees 3",
       "why": "San Diego Padres holds the mark for Playoff berth. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · No. 1 seed, NL",
+      "score": "Los Angeles Dodgers 7, Washington Nationals 5",
+      "why": "Los Angeles Dodgers holds the mark for No. 1 seed, NL and Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
