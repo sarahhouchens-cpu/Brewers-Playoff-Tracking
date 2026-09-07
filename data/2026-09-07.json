@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-07T21:16:01.602Z",
+  "generatedAt": "2026-09-07T22:16:02.160Z",
   "slateDate": "2026-09-07",
   "team": {
     "id": 158,
@@ -81,31 +81,31 @@
   "deltas": [
     {
       "key": "berth",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 7
+      "previousMagic": 6
     },
     {
       "key": "division",
-      "delta": -2,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 12
+      "previousMagic": 10
     },
     {
       "key": "leagueSeed",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 18
+      "previousMagic": 17
     },
     {
       "key": "bestRecord",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 18
+      "previousMagic": 17
     }
   ],
   "feed": [
