@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-08T00:43:24.421Z",
+  "generatedAt": "2026-09-08T00:46:02.509Z",
   "slateDate": "2026-09-07",
   "team": {
     "id": 158,
@@ -17,7 +17,11 @@
       "label": "Playoff berth",
       "headline": "to clinch a playoff berth",
       "chaserNote": "first team out of the playoff field",
-      "series": null,
+      "series": {
+        "wins": 2,
+        "losses": 4,
+        "remaining": 0
+      },
       "tiebreaker": false,
       "chaser": {
         "id": 135,
@@ -35,7 +39,11 @@
       "label": "NL Central",
       "headline": "to win the NL Central",
       "chaserNote": "closest pursuer in the division",
-      "series": null,
+      "series": {
+        "wins": 7,
+        "losses": 4,
+        "remaining": 2
+      },
       "tiebreaker": false,
       "chaser": {
         "id": 112,
@@ -53,8 +61,12 @@
       "label": "No. 1 seed, NL",
       "headline": "to lock up the No. 1 seed",
       "chaserNote": "best record among other NL teams",
-      "series": null,
-      "tiebreaker": false,
+      "series": {
+        "wins": 4,
+        "losses": 3,
+        "remaining": 0
+      },
+      "tiebreaker": true,
       "chaser": {
         "id": 119,
         "name": "Los Angeles Dodgers",
@@ -62,7 +74,7 @@
         "wins": 86,
         "losses": 57
       },
-      "magic": 17,
+      "magic": 16,
       "elimination": 21,
       "clinched": false
     },
@@ -71,8 +83,12 @@
       "label": "Best record, MLB",
       "headline": "to secure World Series home field",
       "chaserNote": "best record anywhere in baseball",
-      "series": null,
-      "tiebreaker": false,
+      "series": {
+        "wins": 4,
+        "losses": 3,
+        "remaining": 0
+      },
+      "tiebreaker": true,
       "chaser": {
         "id": 119,
         "name": "Los Angeles Dodgers",
@@ -80,7 +96,7 @@
         "wins": 86,
         "losses": 57
       },
-      "magic": 17,
+      "magic": 16,
       "elimination": 21,
       "clinched": false
     }
@@ -103,14 +119,14 @@
     },
     {
       "key": "leagueSeed",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 17
     },
     {
       "key": "bestRecord",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 17
