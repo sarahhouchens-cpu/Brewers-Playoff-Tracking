@@ -772,3 +772,16 @@ section.first { margin-top: 26px; }
 .leg.won { background: color-mix(in srgb, var(--clinch) 7%, transparent); }
 .leg.lost { background: color-mix(in srgb, var(--watch) 6%, transparent); }
 .leg.won .leg-name, .leg.lost .leg-name { font-weight: 700; }
+
+/* A head-to-head win moves a race twice; make that read at a glance. */
+.impact .d.big {
+  background: var(--clinch);
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.race .rs.tiebreak {
+  color: var(--gold);
+  font-weight: 600;
+}

@@ -8,6 +8,8 @@ import {
   computeRaces,
   headlineRace,
   diffRaces,
+  ownsTiebreaker,
+  TOTAL_GAMES,
 } from '../lib/magic.js';
 import { fixtureTeams, BREWERS_ID } from './fixture-standings.js';
 
@@ -172,4 +174,68 @@ test('diffRaces tolerates a missing previous snapshot', () => {
 
 test('computeRaces fails loudly on an unknown team id', () => {
   assert.throws(() => computeRaces(fixtureTeams, 999), /not found in standings/);
+});
+
+/* ---------------------------------------------------------- tiebreakers --- */
+
+test('owning the head-to-head tiebreaker lowers the magic number by exactly one', () => {
+  // Without the tiebreaker you must finish ahead; with it, level is enough.
+  assert.equal(magicNumber(89, 64), 10);
+  assert.equal(magicNumber(89, 64, TOTAL_GAMES, true), 9);
+});
+
+test('a tiebreaker is only owned once the season series is finished and won', () => {
+  assert.equal(ownsTiebreaker({ wins: 8, losses: 5, remaining: 0 }), true);
+  assert.equal(ownsTiebreaker({ wins: 8, losses: 5, remaining: 1 }), false,
+    'leading a series with a game left is not the same as having won it');
+  assert.equal(ownsTiebreaker({ wins: 6, losses: 7, remaining: 0 }), false);
+  assert.equal(ownsTiebreaker({ wins: 6, losses: 6, remaining: 0 }), false,
+    'a split series does not win a tiebreaker');
+  assert.equal(ownsTiebreaker(null), false);
+});
+
+test('computeRaces applies the tiebreaker only to the race it belongs to', () => {
+  const cubs = fixtureTeams.find((t) => t.abbrev === 'CHC');
+  const withSeries = computeRaces(fixtureTeams, BREWERS_ID, undefined, {
+    [cubs.id]: { wins: 8, losses: 5, remaining: 0 },
+  });
+  const without = computeRaces(fixtureTeams, BREWERS_ID);
+
+  const magicOf = (r, key) => r.races.find((x) => x.key === key).magic;
+  assert.equal(magicOf(withSeries, 'division'), magicOf(without, 'division') - 1);
+  assert.equal(magicOf(withSeries, 'berth'), magicOf(without, 'berth'),
+    'a Cubs tiebreaker must not move the berth race, which has a different chaser');
+});
+
+test('an unfinished series leaves the number where it was', () => {
+  const cubs = fixtureTeams.find((t) => t.abbrev === 'CHC');
+  const live = computeRaces(fixtureTeams, BREWERS_ID, undefined, {
+    [cubs.id]: { wins: 8, losses: 5, remaining: 3 },
+  });
+  assert.equal(live.races.find((r) => r.key === 'division').magic, 14);
+  assert.equal(live.races.find((r) => r.key === 'division').tiebreaker, false);
+});
+
+test('the series and tiebreaker state are reported on each race', () => {
+  const cubs = fixtureTeams.find((t) => t.abbrev === 'CHC');
+  const r = computeRaces(fixtureTeams, BREWERS_ID, undefined, {
+    [cubs.id]: { wins: 8, losses: 5, remaining: 0 },
+  }).races.find((x) => x.key === 'division');
+  assert.deepEqual(r.series, { wins: 8, losses: 5, remaining: 0 });
+  assert.equal(r.tiebreaker, true);
+});
+
+test('beating the chaser head-to-head is worth two, not one', () => {
+  // Sept 7, 2026: Brewers beat the Cubs. MIL 88-56 / CHC 81-63 became
+  // MIL 89-56 / CHC 81-64, and the division number went 12 to 10.
+  const before = magicNumber(88, 63);
+  const after = magicNumber(89, 64);
+  assert.equal(before, 12);
+  assert.equal(after, 10);
+  assert.equal(before - after, 2,
+    'a win over the chaser adds a Brewers win and a chaser loss in one game');
+});
+
+test('beating a non-chaser is worth one', () => {
+  assert.equal(magicNumber(88, 63) - magicNumber(89, 63), 1);
 });

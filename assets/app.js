@@ -108,6 +108,13 @@ function renderRaces(data) {
         sub.append(el('span', 'elim', ` · E# ${race.elimination}`));
       }
       cell.append(sub);
+
+      if (race.tiebreaker) {
+        const tb = el('span', 'rs tiebreak', 'Tiebreaker won');
+        tb.title = `The Brewers took the season series ${race.series.wins}–${race.series.losses}, `
+          + 'so finishing level is enough. That makes this number one lower than the standard formula.';
+        cell.append(tb);
+      }
     }
 
     if (diff?.chaserChanged && diff.previousChaser) {
@@ -144,7 +151,11 @@ function renderFeed(data) {
     if (card.impacts.length) {
       for (const i of card.impacts) {
         const row = el('div');
-        row.append(el('span', 'd', '−1'), document.createTextNode(` ${i.label}`));
+        const delta = i.delta ?? -1;
+        row.append(
+          el('span', 'd' + (delta <= -2 ? ' big' : ''), `−${Math.abs(delta)}`),
+          document.createTextNode(` ${i.label}`)
+        );
         impact.append(row);
       }
     } else {

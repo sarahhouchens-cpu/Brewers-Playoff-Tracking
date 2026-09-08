@@ -31,9 +31,18 @@ clinch. Consequences worth knowing:
 - If the chaser changes overnight, a number can **rise** even after a win. The feed
   flags this rather than letting it look like a bug.
 
-MLB now breaks ties mathematically instead of playing a Game 163, so where the
-Brewers already own the head-to-head tiebreaker the true number is one lower than
-this formula reports. The conservative standard formula is what ships.
+The `+1` assumes finishing level is not enough. MLB no longer plays a Game 163 —
+ties are broken mathematically, head-to-head record first — so once the Brewers
+have won a season series outright, a tie takes the race and the target drops to
+162. The season series is fetched per chaser and the tiebreaker is only claimed
+when the series is finished and won; leading a series with games left does not
+count, because it can still be lost.
+
+Note also that beating a chaser head-to-head moves that race by **two**. The
+same game is a Brewers win and a chaser loss, and the formula counts both.
+
+One limitation: a tie involving three or more clubs is resolved by a longer
+chain of rules than head-to-head, so the two-team case is the only one modelled.
 
 ## Architecture
 
@@ -62,7 +71,7 @@ does not.
 | `lib/parlay.js` | Ticket assembly and the rules that constrain it. |
 | `lib/calibration.js` | Scores the model against graded results, with shrinkage. |
 | `scripts/props.js` | Builds the nightly bet board. |
-| `test/` | 91 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
+| `test/` | 98 tests covering the magic numbers, the odds math, the model, and the parlay rules. |
 | `assets/app.js` | Renders `data/latest.json`. Formats only — never computes. |
 | `.github/workflows/update.yml` | The schedule. |
 

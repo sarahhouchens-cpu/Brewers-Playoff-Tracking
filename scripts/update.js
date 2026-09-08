@@ -156,14 +156,35 @@ function buildFeed(finals, result, brewersId) {
 
     if (involves(brewersId)) {
       const won = winnerId === brewersId;
+      const opponentId = g.homeId === brewersId ? g.awayId : g.homeId;
+
+      // Beating a chaser head-to-head moves that race twice: the win is a
+      // Brewers win AND a chaser loss, and the magic number counts both. Any
+      // other opponent moves every race once.
+      const headToHead = won ? (chaserRaces.get(opponentId) ?? []) : [];
+      const doubled = new Set(headToHead.map((r) => r.key));
+
+      const impacts = won
+        ? races.map((r) => ({
+            key: r.key,
+            label: r.label,
+            delta: doubled.has(r.key) ? -2 : -1,
+          }))
+        : [];
+
+      const opponentName = g.homeId === brewersId ? g.awayName : g.homeName;
       cards.push({
         kind: won ? 'brewers-win' : 'brewers-loss',
         tag: 'Brewers · Final',
         score: score(),
-        why: won
-          ? 'A win drops every magic number by one — the only result that moves all four at once.'
-          : 'A loss never raises a magic number. It just burns a game off the schedule.',
-        impacts: won ? races.map((r) => ({ key: r.key, label: r.label, delta: -1 })) : [],
+        why: !won
+          ? 'A loss never raises a magic number. It just burns a game off the schedule.'
+          : doubled.size
+            ? `Beating ${opponentName} head-to-head counts twice for the ${headToHead
+                .map((r) => r.label)
+                .join(' and ')} number — a Brewers win and a chaser loss in the same game.`
+            : 'A win drops every magic number by one — the only result that moves all four at once.',
+        impacts,
       });
       continue;
     }
@@ -190,6 +211,49 @@ function buildFeed(finals, result, brewersId) {
   // Brewers first, then games that moved something, then the rest.
   const rank = (c) => (c.tag.startsWith('Brewers') ? 0 : c.impacts.length ? 1 : 2);
   return cards.sort((a, b) => rank(a) - rank(b));
+}
+
+/**
+ * Season series against one opponent, from the Brewers' perspective.
+ *
+ * The tiebreaker only counts once the series is mathematically decided, so
+ * remaining games are tracked as carefully as completed ones — leading a series
+ * with games left is not the same as having won it.
+ */
+async function seasonSeries(opponentId, season) {
+  const payload = await getJSON(
+    `${API}/schedule?sportId=1&teamId=${BREWERS}&opponentId=${opponentId}` +
+      `&season=${season}&startDate=${season}-01-01&endDate=${season}-12-31&gameType=R`
+  );
+  const games = (payload?.dates ?? []).flatMap((d) => d?.games ?? []);
+
+  let wins = 0, losses = 0, remaining = 0;
+  for (const g of games) {
+    const state = g?.status?.abstractGameState ?? '';
+    const home = g?.teams?.home, away = g?.teams?.away;
+    if (state !== 'Final') {
+      // Postponed games with no rescheduled date never get played; anything
+      // else still on the schedule can still swing the series.
+      if (!/postponed|cancelled/i.test(g?.status?.detailedState ?? '')) remaining++;
+      continue;
+    }
+    const mine = home?.team?.id === BREWERS ? home : away;
+    const theirs = home?.team?.id === BREWERS ? away : home;
+    if (Number(mine?.score ?? 0) > Number(theirs?.score ?? 0)) wins++;
+    else losses++;
+  }
+  return { wins, losses, remaining };
+}
+
+/** Season series against every team that fronts a race. */
+async function seriesForChasers(chaserIds, season) {
+  const out = {};
+  for (const id of new Set(chaserIds.filter(Boolean))) {
+    try {
+      out[id] = await seasonSeries(id, season);
+    } catch { /* a missing series just falls back to the +1 formula */ }
+  }
+  return out;
 }
 
 async function readPrevious() {
@@ -244,7 +308,25 @@ async function main() {
   }
 
   const brewers = teams.find((t) => t.name === TEAM_NAME);
-  const result = computeRaces(teams, brewers.id);
+  const season = new Date().getUTCFullYear();
+
+  // Work out who fronts each race first, then look up only those season series.
+  const provisional = computeRaces(teams, brewers.id);
+  const series = await seriesForChasers(
+    provisional.races.map((r) => r.chaser?.id),
+    season
+  );
+  const result = computeRaces(teams, brewers.id, undefined, series);
+
+  for (const race of result.races) {
+    if (!race.chaser) continue;
+    const s = race.series;
+    console.log(
+      `${race.label.padEnd(18)} vs ${race.chaser.abbrev.padEnd(4)}` +
+      (s ? ` season series ${s.wins}-${s.losses}${s.remaining ? `, ${s.remaining} left` : ' (final)'}` : ' series unknown') +
+      (race.tiebreaker ? '  -> tiebreaker owned, magic number one lower' : '')
+    );
+  }
   const previous = await readPrevious();
 
   // Use the most recent slate that actually moved something for the Brewers.
