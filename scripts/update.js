@@ -220,9 +220,9 @@ function buildFeed(finals, result, brewersId) {
  * remaining games are tracked as carefully as completed ones — leading a series
  * with games left is not the same as having won it.
  */
-async function seasonSeries(opponentId, season) {
+async function seasonSeries(teamId, opponentId, season) {
   const payload = await getJSON(
-    `${API}/schedule?sportId=1&teamId=${BREWERS}&opponentId=${opponentId}` +
+    `${API}/schedule?sportId=1&teamId=${teamId}&opponentId=${opponentId}` +
       `&startDate=${season}-03-01&endDate=${season}-11-15&gameType=R`
   );
   const games = (payload?.dates ?? []).flatMap((d) => d?.games ?? []);
@@ -237,8 +237,8 @@ async function seasonSeries(opponentId, season) {
       if (!/postponed|cancelled/i.test(g?.status?.detailedState ?? '')) remaining++;
       continue;
     }
-    const mine = home?.team?.id === BREWERS ? home : away;
-    const theirs = home?.team?.id === BREWERS ? away : home;
+    const mine = home?.team?.id === teamId ? home : away;
+    const theirs = home?.team?.id === teamId ? away : home;
     if (Number(mine?.score ?? 0) > Number(theirs?.score ?? 0)) wins++;
     else losses++;
   }
@@ -246,11 +246,11 @@ async function seasonSeries(opponentId, season) {
 }
 
 /** Season series against every team that fronts a race. */
-async function seriesForChasers(chaserIds, season) {
+async function seriesForChasers(teamId, chaserIds, season) {
   const out = {};
   for (const id of new Set(chaserIds.filter(Boolean))) {
     try {
-      out[id] = await seasonSeries(id, season);
+      out[id] = await seasonSeries(teamId, id, season);
     } catch (err) {
       // Falls back to the conservative +1 formula, but say why: a swallowed
       // failure is indistinguishable from a series that has not been played.
@@ -317,6 +317,7 @@ async function main() {
   // Work out who fronts each race first, then look up only those season series.
   const provisional = computeRaces(teams, brewers.id);
   const series = await seriesForChasers(
+    brewers.id,
     provisional.races.map((r) => r.chaser?.id),
     season
   );
