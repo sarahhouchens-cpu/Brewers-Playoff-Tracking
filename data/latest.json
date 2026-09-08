@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-08T00:27:18.137Z",
+  "generatedAt": "2026-09-08T00:41:03.168Z",
   "slateDate": "2026-09-07",
   "team": {
     "id": 158,
@@ -17,6 +17,8 @@
       "label": "Playoff berth",
       "headline": "to clinch a playoff berth",
       "chaserNote": "first team out of the playoff field",
+      "series": null,
+      "tiebreaker": false,
       "chaser": {
         "id": 135,
         "name": "San Diego Padres",
@@ -33,6 +35,8 @@
       "label": "NL Central",
       "headline": "to win the NL Central",
       "chaserNote": "closest pursuer in the division",
+      "series": null,
+      "tiebreaker": false,
       "chaser": {
         "id": 112,
         "name": "Chicago Cubs",
@@ -49,6 +53,8 @@
       "label": "No. 1 seed, NL",
       "headline": "to lock up the No. 1 seed",
       "chaserNote": "best record among other NL teams",
+      "series": null,
+      "tiebreaker": false,
       "chaser": {
         "id": 119,
         "name": "Los Angeles Dodgers",
@@ -65,6 +71,8 @@
       "label": "Best record, MLB",
       "headline": "to secure World Series home field",
       "chaserNote": "best record anywhere in baseball",
+      "series": null,
+      "tiebreaker": false,
       "chaser": {
         "id": 119,
         "name": "Los Angeles Dodgers",
@@ -113,7 +121,7 @@
       "kind": "brewers-win",
       "tag": "Brewers · Final",
       "score": "Milwaukee Brewers 4, Chicago Cubs 3",
-      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "why": "Beating Chicago Cubs head-to-head counts twice for the NL Central number — a Brewers win and a chaser loss in the same game.",
       "impacts": [
         {
           "key": "berth",
@@ -123,7 +131,7 @@
         {
           "key": "division",
           "label": "NL Central",
-          "delta": -1
+          "delta": -2
         },
         {
           "key": "leagueSeed",
