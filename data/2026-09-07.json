@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-08T00:46:02.509Z",
+  "generatedAt": "2026-09-08T00:49:58.015Z",
   "slateDate": "2026-09-07",
   "team": {
     "id": 158,
@@ -119,17 +119,17 @@
     },
     {
       "key": "leagueSeed",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 17
+      "previousMagic": 16
     },
     {
       "key": "bestRecord",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 17
+      "previousMagic": 16
     }
   ],
   "feed": [
