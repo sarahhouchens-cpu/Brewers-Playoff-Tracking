@@ -223,7 +223,7 @@ function buildFeed(finals, result, brewersId) {
 async function seasonSeries(opponentId, season) {
   const payload = await getJSON(
     `${API}/schedule?sportId=1&teamId=${BREWERS}&opponentId=${opponentId}` +
-      `&season=${season}&startDate=${season}-01-01&endDate=${season}-12-31&gameType=R`
+      `&startDate=${season}-03-01&endDate=${season}-11-15&gameType=R`
   );
   const games = (payload?.dates ?? []).flatMap((d) => d?.games ?? []);
 
@@ -251,7 +251,11 @@ async function seriesForChasers(chaserIds, season) {
   for (const id of new Set(chaserIds.filter(Boolean))) {
     try {
       out[id] = await seasonSeries(id, season);
-    } catch { /* a missing series just falls back to the +1 formula */ }
+    } catch (err) {
+      // Falls back to the conservative +1 formula, but say why: a swallowed
+      // failure is indistinguishable from a series that has not been played.
+      console.error(`Season series vs ${id} unavailable (${err.message}); using the +1 formula.`);
+    }
   }
   return out;
 }
