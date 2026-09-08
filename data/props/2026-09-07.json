@@ -104,7 +104,13 @@
       "book": "DraftKings",
       "impliedProbability": 0.5934959349593496,
       "fairProbability": 0.5548317046688382,
-      "edge": 11.138691507178166
+      "edge": 11.138691507178166,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": true
     },
     {
       "playerId": 683734,
@@ -120,7 +126,13 @@
       "book": "DraftKings",
       "impliedProbability": 0.6644295302013422,
       "fairProbability": 0.6223258643414783,
-      "edge": 10.869490066707577
+      "edge": 10.869490066707577,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": true
     },
     {
       "playerId": 661388,
@@ -136,7 +148,13 @@
       "book": "DraftKings",
       "impliedProbability": 0.6763754045307443,
       "fairProbability": 0.6339036064641487,
-      "edge": 7.977953380046088
+      "edge": 7.977953380046088,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 661388,
@@ -152,7 +170,13 @@
       "book": "Bovada",
       "impliedProbability": 0.4,
       "fairProbability": 0.375,
-      "edge": 6.363258598821597
+      "edge": 6.363258598821597,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 592885,
@@ -168,7 +192,13 @@
       "book": "BetOnline.ag",
       "impliedProbability": 0.3968253968253968,
       "fairProbability": 0.3731343283582089,
-      "edge": 1.449673889076264
+      "edge": 1.449673889076264,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 668930,
@@ -184,7 +214,13 @@
       "book": "BetOnline.ag",
       "impliedProbability": 0.3921568627450981,
       "fairProbability": 0.3688425139529241,
-      "edge": 1.2278990061874828
+      "edge": 1.2278990061874828,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 668930,
@@ -200,7 +236,13 @@
       "book": "BetOnline.ag",
       "impliedProbability": 0.6753246753246753,
       "fairProbability": 0.6344473984048614,
-      "edge": 0.02791292614949814
+      "edge": 0.02791292614949814,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 592885,
@@ -216,7 +258,13 @@
       "book": "BetOnline.ag",
       "impliedProbability": 0.6941896024464832,
       "fairProbability": 0.6529288769542652,
-      "edge": -0.5710117170453888
+      "edge": -0.5710117170453888,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 694192,
@@ -232,7 +280,13 @@
       "book": "BetOnline.ag",
       "impliedProbability": 0.3597122302158273,
       "fairProbability": 0.3381217238205755,
-      "edge": -2.4491673687400684
+      "edge": -2.4491673687400684,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 694192,
@@ -248,7 +302,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.7354497354497355,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": true
     },
     {
       "playerId": 800325,
@@ -264,7 +324,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.607843137254902,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": true
     },
     {
       "playerId": 806198,
@@ -280,7 +346,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.6363636363636364,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": true
     },
     {
       "playerId": 687401,
@@ -296,7 +368,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.5967741935483871,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 2,
+        "homeRuns": 0
+      },
+      "hit": true
     },
     {
       "playerId": 694192,
@@ -312,7 +390,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.4716981132075471,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 683734,
@@ -328,7 +412,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.3846153846153846,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 669003,
@@ -340,7 +430,13 @@
       "modelFairOdds": 155,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 800325,
@@ -352,7 +448,13 @@
       "modelFairOdds": 200,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 683734,
@@ -364,7 +466,13 @@
       "modelFairOdds": 212,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 687401,
@@ -376,7 +484,13 @@
       "modelFairOdds": 226,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 2,
+        "homeRuns": 0
+      },
+      "hit": true
     },
     {
       "playerId": 661388,
@@ -388,7 +502,13 @@
       "modelFairOdds": 231,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 806198,
@@ -400,7 +520,13 @@
       "modelFairOdds": 252,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 694192,
@@ -412,7 +538,13 @@
       "modelFairOdds": 253,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 669003,
@@ -424,7 +556,13 @@
       "modelFairOdds": 309,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 661388,
@@ -436,7 +574,13 @@
       "modelFairOdds": 315,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 800325,
@@ -448,7 +592,13 @@
       "modelFairOdds": 319,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 592885,
@@ -460,7 +610,13 @@
       "modelFairOdds": 331,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 668930,
@@ -472,7 +628,13 @@
       "modelFairOdds": 347,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 668930,
@@ -484,7 +646,13 @@
       "modelFairOdds": 371,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 669003,
@@ -496,7 +664,13 @@
       "modelFairOdds": 373,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 683734,
@@ -508,7 +682,13 @@
       "modelFairOdds": 375,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 806198,
@@ -520,7 +700,13 @@
       "modelFairOdds": 395,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 592885,
@@ -532,7 +718,13 @@
       "modelFairOdds": 399,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 687401,
@@ -544,7 +736,13 @@
       "modelFairOdds": 421,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 2,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 694192,
@@ -560,7 +758,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.18518518518518517,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 687401,
@@ -572,7 +776,13 @@
       "modelFairOdds": 498,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 2,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 800325,
@@ -584,7 +794,13 @@
       "modelFairOdds": 543,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 806198,
@@ -596,7 +812,13 @@
       "modelFairOdds": 603,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 1,
+        "totalBases": 1,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 668930,
@@ -612,7 +834,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.11764705882352941,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 661388,
@@ -628,7 +856,13 @@
       "book": "BetRivers",
       "impliedProbability": 0.14285714285714285,
       "fairProbability": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 592885,
@@ -640,7 +874,13 @@
       "modelFairOdds": 1112,
       "gamePk": 823742,
       "americanOdds": null,
-      "edge": null
+      "edge": null,
+      "result": {
+        "hits": 0,
+        "totalBases": 0,
+        "homeRuns": 0
+      },
+      "hit": false
     },
     {
       "playerId": 683734,
@@ -799,7 +1039,9 @@
       "expectedValue": -0.5215611030118001,
       "rawExpectedValue": 0.48171096455242957,
       "band": "medium",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": true
     },
     {
       "legs": [
@@ -863,7 +1105,9 @@
       "expectedValue": -0.5253209662176168,
       "rawExpectedValue": 0.2071968845733254,
       "band": "short",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": true
     },
     {
       "legs": [
@@ -944,7 +1188,9 @@
       "expectedValue": -1.3042984636070396,
       "rawExpectedValue": -0.4763773493967296,
       "band": "short",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": true
     },
     {
       "legs": [
@@ -1008,7 +1254,9 @@
       "expectedValue": -1.4641284849272318,
       "rawExpectedValue": -0.8852961299494382,
       "band": "short",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     },
     {
       "legs": [
@@ -1072,7 +1320,9 @@
       "expectedValue": -1.4837756321031446,
       "rawExpectedValue": -0.9081595717276718,
       "band": "medium",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     },
     {
       "legs": [
@@ -1136,7 +1386,9 @@
       "expectedValue": -2.7092224782497447,
       "rawExpectedValue": -2.3342155974871086,
       "band": "medium",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     }
   ],
   "generatedAt": "2026-09-07T16:00:58.562Z",

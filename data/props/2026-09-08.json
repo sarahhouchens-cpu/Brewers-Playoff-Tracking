@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-08",
+  "status": "ok",
+  "oddsStatus": "too-early (9.6h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 9.62,
+  "game": {
+    "gamePk": 823738,
+    "opponent": "Chicago Cubs",
+    "isHome": true,
+    "startTime": "2026-09-08T23:40:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 656849,
+    "name": "David Peterson",
+    "hand": "R",
+    "opponentAvg": 0.277
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.139917695473251,
+    "bullpenContact": 1.005829903978052,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 0.8937
+  },
+  "calibration": {
+    "overall": {
+      "n": 120,
+      "expected": 45.11,
+      "actual": 35,
+      "raw": 0.7759,
+      "factor": 0.8937,
+      "weight": 0.474
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 27,
+        "expected": 18.41,
+        "actual": 17,
+        "raw": 0.9235,
+        "factor": 0.9794,
+        "weight": 0.269
+      },
+      "total_bases_2": {
+        "n": 27,
+        "expected": 11.1,
+        "actual": 7,
+        "raw": 0.6309,
+        "factor": 0.933,
+        "weight": 0.182
+      },
+      "hits_2": {
+        "n": 26,
+        "expected": 7.33,
+        "actual": 4,
+        "raw": 0.546,
+        "factor": 0.942,
+        "weight": 0.128
+      },
+      "total_bases_3": {
+        "n": 27,
+        "expected": 6.36,
+        "actual": 5,
+        "raw": 0.7864,
+        "factor": 0.9759,
+        "weight": 0.113
+      },
+      "home_run_1": {
+        "n": 13,
+        "expected": 1.92,
+        "actual": 2,
+        "raw": 1.0418,
+        "factor": 1.0015,
+        "weight": 0.037
+      }
+    },
+    "updatedAt": "2026-09-08T14:02:48.066Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-08T14:02:48.196Z",
+  "source": "live"
+}
