@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-09",
+  "status": "ok",
+  "oddsStatus": "too-early (9.6h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 9.64,
+  "game": {
+    "gamePk": 823739,
+    "opponent": "Chicago Cubs",
+    "isHome": true,
+    "startTime": "2026-09-09T23:40:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 592332,
+    "name": "Kevin Gausman",
+    "hand": "R",
+    "opponentAvg": 0.255
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0493827160493827,
+    "bullpenContact": 1.009945130315501,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 0.8862
+  },
+  "calibration": {
+    "overall": {
+      "n": 160,
+      "expected": 59.46,
+      "actual": 47,
+      "raw": 0.7905,
+      "factor": 0.8862,
+      "weight": 0.543
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 36,
+        "expected": 24.39,
+        "actual": 22,
+        "raw": 0.9021,
+        "factor": 0.9679,
+        "weight": 0.328
+      },
+      "total_bases_2": {
+        "n": 36,
+        "expected": 14.63,
+        "actual": 9,
+        "raw": 0.6154,
+        "factor": 0.9129,
+        "weight": 0.226
+      },
+      "hits_2": {
+        "n": 35,
+        "expected": 9.63,
+        "actual": 6,
+        "raw": 0.6234,
+        "factor": 0.9392,
+        "weight": 0.161
+      },
+      "total_bases_3": {
+        "n": 36,
+        "expected": 8.33,
+        "actual": 7,
+        "raw": 0.8406,
+        "factor": 0.9772,
+        "weight": 0.143
+      },
+      "home_run_1": {
+        "n": 17,
+        "expected": 2.49,
+        "actual": 3,
+        "raw": 1.2038,
+        "factor": 1.0097,
+        "weight": 0.047
+      }
+    },
+    "updatedAt": "2026-09-09T14:01:44.631Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-09T14:01:45.676Z",
+  "source": "live"
+}
