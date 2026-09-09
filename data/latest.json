@@ -1,16 +1,16 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-09T02:43:43.135Z",
+  "generatedAt": "2026-09-09T02:57:45.780Z",
   "slateDate": "2026-09-07",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
     "abbrev": "MIL",
-    "wins": 89,
+    "wins": 90,
     "losses": 56
   },
-  "gamesPlayed": 145,
-  "gamesRemaining": 17,
+  "gamesPlayed": 146,
+  "gamesRemaining": 16,
   "races": [
     {
       "key": "berth",
@@ -30,7 +30,7 @@
         "wins": 76,
         "losses": 68
       },
-      "magic": 6,
+      "magic": 5,
       "elimination": 31,
       "clinched": false
     },
@@ -40,9 +40,9 @@
       "headline": "to win the NL Central",
       "chaserNote": "closest pursuer in the division",
       "series": {
-        "wins": 7,
+        "wins": 8,
         "losses": 4,
-        "remaining": 2
+        "remaining": 1
       },
       "tiebreaker": false,
       "chaser": {
@@ -50,9 +50,9 @@
         "name": "Chicago Cubs",
         "abbrev": "CHC",
         "wins": 81,
-        "losses": 64
+        "losses": 65
       },
-      "magic": 10,
+      "magic": 8,
       "elimination": 26,
       "clinched": false
     },
@@ -74,7 +74,7 @@
         "wins": 87,
         "losses": 57
       },
-      "magic": 16,
+      "magic": 15,
       "elimination": 20,
       "clinched": false
     },
@@ -96,7 +96,7 @@
         "wins": 87,
         "losses": 57
       },
-      "magic": 16,
+      "magic": 15,
       "elimination": 20,
       "clinched": false
     }
@@ -105,28 +105,28 @@
   "deltas": [
     {
       "key": "berth",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 6
     },
     {
       "key": "division",
-      "delta": 0,
+      "delta": -2,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 10
     },
     {
       "key": "leagueSeed",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 16
     },
     {
       "key": "bestRecord",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 16
