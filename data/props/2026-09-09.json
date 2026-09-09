@@ -1,9 +1,9 @@
 {
   "date": "2026-09-09",
   "status": "ok",
-  "oddsStatus": "too-early (7.6h to first pitch)",
+  "oddsStatus": "too-early (5.4h to first pitch)",
   "books": 0,
-  "hoursToFirstPitch": 7.64,
+  "hoursToFirstPitch": 5.38,
   "game": {
     "gamePk": 823739,
     "opponent": "Chicago Cubs",
@@ -85,12 +85,12 @@
         "weight": 0.047
       }
     },
-    "updatedAt": "2026-09-09T16:01:17.125Z"
+    "updatedAt": "2026-09-09T18:17:23.498Z"
   },
   "battersResolved": 0,
   "battersSkipped": [],
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-09-09T16:01:18.056Z",
+  "generatedAt": "2026-09-09T18:17:24.517Z",
   "source": "live"
 }
