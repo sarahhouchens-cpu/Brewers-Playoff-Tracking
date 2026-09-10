@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-10T02:58:51.319Z",
+  "generatedAt": "2026-09-10T03:17:49.470Z",
   "slateDate": "2026-09-09",
   "team": {
     "id": 158,
@@ -18,19 +18,19 @@
       "headline": "to clinch a playoff berth",
       "chaserNote": "first team out of the playoff field",
       "series": {
-        "wins": 2,
-        "losses": 4,
+        "wins": 4,
+        "losses": 2,
         "remaining": 0
       },
-      "tiebreaker": false,
+      "tiebreaker": true,
       "chaser": {
-        "id": 135,
-        "name": "San Diego Padres",
-        "abbrev": "SD",
+        "id": 109,
+        "name": "Arizona Diamondbacks",
+        "abbrev": "AZ",
         "wins": 78,
-        "losses": 68
+        "losses": 69
       },
-      "magic": 4,
+      "magic": 2,
       "elimination": 29,
       "clinched": false
     },
@@ -105,9 +105,15 @@
   "deltas": [
     {
       "key": "berth",
-      "delta": 0,
-      "chaserChanged": false,
-      "previousChaser": null,
+      "delta": -2,
+      "chaserChanged": true,
+      "previousChaser": {
+        "id": 135,
+        "name": "San Diego Padres",
+        "abbrev": "SD",
+        "wins": 78,
+        "losses": 68
+      },
       "previousMagic": 4
     },
     {
@@ -160,13 +166,6 @@
           "delta": -1
         }
       ]
-    },
-    {
-      "kind": "chaser-win",
-      "tag": "Chaser · Playoff berth",
-      "score": "San Diego Padres 9, Washington Nationals 2",
-      "why": "San Diego Padres holds the mark for Playoff berth. A win for them doesn't raise the number — it just removes a chance for it to fall.",
-      "impacts": []
     }
   ]
 }
