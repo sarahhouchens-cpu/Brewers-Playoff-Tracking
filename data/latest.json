@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-10T02:44:02.821Z",
+  "generatedAt": "2026-09-10T02:58:51.319Z",
   "slateDate": "2026-09-09",
   "team": {
     "id": 158,
@@ -105,34 +105,62 @@
   "deltas": [
     {
       "key": "berth",
-      "delta": -1,
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 4
+    },
+    {
+      "key": "division",
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 5
     },
     {
-      "key": "division",
-      "delta": -3,
-      "chaserChanged": false,
-      "previousChaser": null,
-      "previousMagic": 8
-    },
-    {
       "key": "leagueSeed",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 15
+      "previousMagic": 14
     },
     {
       "key": "bestRecord",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 15
+      "previousMagic": 14
     }
   ],
   "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 8, Chicago Cubs 6",
+      "why": "Beating Chicago Cubs head-to-head counts twice for the NL Central number — a Brewers win and a chaser loss in the same game.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -2
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
     {
       "kind": "chaser-win",
       "tag": "Chaser · Playoff berth",
