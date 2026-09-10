@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-10T04:44:17.450Z",
+  "generatedAt": "2026-09-10T04:58:01.149Z",
   "slateDate": "2026-09-09",
   "team": {
     "id": 158,
@@ -71,11 +71,11 @@
         "id": 119,
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
-        "wins": 88,
+        "wins": 89,
         "losses": 57
       },
       "magic": 14,
-      "elimination": 19,
+      "elimination": 18,
       "clinched": false
     },
     {
@@ -93,11 +93,11 @@
         "id": 119,
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
-        "wins": 88,
+        "wins": 89,
         "losses": 57
       },
       "magic": 14,
-      "elimination": 19,
+      "elimination": 18,
       "clinched": false
     }
   ],
