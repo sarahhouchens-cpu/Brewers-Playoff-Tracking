@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-10T03:20:32.328Z",
+  "generatedAt": "2026-09-10T03:44:00.921Z",
   "slateDate": "2026-09-09",
   "team": {
     "id": 158,
@@ -157,6 +157,19 @@
         {
           "key": "bestRecord",
           "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · Playoff berth",
+      "score": "Kansas City Royals 5, Arizona Diamondbacks 2",
+      "why": "Arizona Diamondbacks is the team the Playoff berth number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
           "delta": -1
         }
       ]
