@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-10T04:58:01.149Z",
+  "generatedAt": "2026-09-10T05:15:42.466Z",
   "slateDate": "2026-09-09",
   "team": {
     "id": 158,
@@ -173,6 +173,13 @@
           "delta": -1
         }
       ]
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · No. 1 seed, NL",
+      "score": "Los Angeles Dodgers 14, Cincinnati Reds 1",
+      "why": "Los Angeles Dodgers holds the mark for No. 1 seed, NL and Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     }
   ]
 }
