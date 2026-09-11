@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-11",
+  "status": "ok",
+  "oddsStatus": "too-early (9.7h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 9.71,
+  "game": {
+    "gamePk": 823736,
+    "opponent": "Cincinnati Reds",
+    "isHome": true,
+    "startTime": "2026-09-11T23:45:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 671096,
+    "name": "Andrew Abbott",
+    "hand": "R",
+    "opponentAvg": 0.251
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0329218106995885,
+    "bullpenContact": 0.9650205761316871,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 0.9226
+  },
+  "calibration": {
+    "overall": {
+      "n": 200,
+      "expected": 73.56,
+      "actual": 64,
+      "raw": 0.87,
+      "factor": 0.9226,
+      "weight": 0.595
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 45,
+        "expected": 30.33,
+        "actual": 28,
+        "raw": 0.923,
+        "factor": 0.9709,
+        "weight": 0.378
+      },
+      "total_bases_2": {
+        "n": 45,
+        "expected": 18.11,
+        "actual": 12,
+        "raw": 0.6628,
+        "factor": 0.9104,
+        "weight": 0.266
+      },
+      "hits_2": {
+        "n": 44,
+        "expected": 11.86,
+        "actual": 8,
+        "raw": 0.6745,
+        "factor": 0.9376,
+        "weight": 0.192
+      },
+      "total_bases_3": {
+        "n": 45,
+        "expected": 10.24,
+        "actual": 10,
+        "raw": 0.9766,
+        "factor": 0.996,
+        "weight": 0.17
+      },
+      "home_run_1": {
+        "n": 21,
+        "expected": 3.02,
+        "actual": 6,
+        "raw": 1.9846,
+        "factor": 1.0561,
+        "weight": 0.057
+      }
+    },
+    "updatedAt": "2026-09-11T14:02:06.338Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-11T14:02:06.736Z",
+  "source": "live"
+}
