@@ -132,6 +132,7 @@ async function main() {
     console.log(`  deep probe failed: ${err.message}`);
   }
 
+  await probeStandings();
   await probeIdSpace();
   await probeTheOddsApi();
 
@@ -174,6 +175,52 @@ async function probeIdSpace() {
   } catch (err) {
     console.log(`  failed: ${err.message}`);
   }
+}
+
+/**
+ * What does a standings teamRecord actually contain?
+ *
+ * The clinch overlay read `clinched`, `clinchIndicator`, `magicNumber` and
+ * `eliminationNumber` and got nothing back, so either the query has to ask for
+ * them or they are named something else. Dumps the Brewers' record so the
+ * parser can be written against real field names instead of assumed ones.
+ */
+async function probeStandings() {
+  console.log('\n--- MLB standings: what is in a teamRecord? ---');
+  const season = new Date().getUTCFullYear();
+
+  const variants = [
+    ['plain', `?leagueId=104&season=${season}&standingsTypes=regularSeason`],
+    ['hydrated', `?leagueId=104&season=${season}&standingsTypes=regularSeason&hydrate=team(division)`],
+    ['byDivision', `?leagueId=104&season=${season}&standingsTypes=byDivision`],
+  ];
+
+  for (const [label, query] of variants) {
+    try {
+      const res = await fetch(`https://statsapi.mlb.com/api/v1/standings${query}`);
+      if (!res.ok) { console.log(`  ${label.padEnd(11)} ${res.status} ${res.statusText}`); continue; }
+      const payload = await res.json();
+
+      let brewers = null;
+      for (const record of payload?.records ?? []) {
+        for (const tr of record?.teamRecords ?? []) {
+          if (tr?.team?.id === 158) brewers = tr;
+        }
+      }
+      if (!brewers) { console.log(`  ${label.padEnd(11)} 200 OK but no Brewers record`); continue; }
+
+      console.log(`  ${label.padEnd(11)} 200 OK`);
+      console.log(`    keys: ${Object.keys(brewers).join(', ')}`);
+      for (const k of ['clinched', 'clinchIndicator', 'magicNumber', 'eliminationNumber',
+                       'wildCardEliminationNumber', 'divisionLeader', 'divisionRank', 'leagueRank',
+                       'wins', 'losses', 'gamesPlayed']) {
+        if (k in brewers) console.log(`    ${k}: ${JSON.stringify(brewers[k])}`);
+      }
+    } catch (err) {
+      console.log(`  ${label.padEnd(11)} failed: ${err.message}`);
+    }
+  }
+  console.log('  Whichever variant carries a clinch indicator is the query to use.');
 }
 
 /** Does the Odds API key actually return MLB player props? */
