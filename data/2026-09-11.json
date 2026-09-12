@@ -1,16 +1,16 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-12T01:57:55.815Z",
+  "generatedAt": "2026-09-12T02:16:38.816Z",
   "slateDate": "2026-09-11",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
     "abbrev": "MIL",
-    "wins": 91,
+    "wins": 92,
     "losses": 56
   },
-  "gamesPlayed": 147,
-  "gamesRemaining": 15,
+  "gamesPlayed": 148,
+  "gamesRemaining": 14,
   "races": [
     {
       "key": "berth",
@@ -30,7 +30,7 @@
         "wins": 78,
         "losses": 69
       },
-      "magic": 2,
+      "magic": 1,
       "elimination": 29,
       "clinched": false
     },
@@ -52,7 +52,7 @@
         "wins": 82,
         "losses": 66
       },
-      "magic": 5,
+      "magic": 4,
       "elimination": 25,
       "clinched": false
     },
@@ -71,11 +71,11 @@
         "id": 119,
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
-        "wins": 89,
+        "wins": 90,
         "losses": 57
       },
-      "magic": 14,
-      "elimination": 18,
+      "magic": 13,
+      "elimination": 17,
       "clinched": false
     },
     {
@@ -93,11 +93,11 @@
         "id": 119,
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
-        "wins": 89,
+        "wins": 90,
         "losses": 57
       },
-      "magic": 14,
-      "elimination": 18,
+      "magic": 13,
+      "elimination": 17,
       "clinched": false
     }
   ],
@@ -105,28 +105,28 @@
   "deltas": [
     {
       "key": "berth",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 2
     },
     {
       "key": "division",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 5
     },
     {
       "key": "leagueSeed",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 14
     },
     {
       "key": "bestRecord",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 14
