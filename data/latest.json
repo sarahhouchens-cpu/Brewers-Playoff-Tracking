@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-12T04:15:47.126Z",
+  "generatedAt": "2026-09-12T04:42:57.475Z",
   "slateDate": "2026-09-11",
   "team": {
     "id": 158,
@@ -27,11 +27,11 @@
         "id": 109,
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
-        "wins": 78,
+        "wins": 79,
         "losses": 69
       },
       "magic": 0,
-      "elimination": 29,
+      "elimination": 28,
       "clinched": true,
       "clinchSource": "mlb"
     },
