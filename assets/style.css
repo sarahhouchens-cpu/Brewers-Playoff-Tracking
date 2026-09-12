@@ -785,3 +785,17 @@ section.first { margin-top: 26px; }
   color: var(--gold);
   font-weight: 600;
 }
+
+.clinched-note {
+  margin: 18px 0 0;
+  padding: 13px 18px;
+  border-left: 4px solid var(--clinch);
+  background: var(--surface);
+  border-top: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0 4px 4px 0;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.clinched-note strong { color: var(--clinch); font-weight: 700; }

@@ -54,6 +54,22 @@ function renderHero(data) {
   text(numeral, headline.clinched ? 'CLINCHED' : String(headline.magic));
   text($('headline'), headline.clinched ? `The ${headline.label} is locked up` : headline.headline);
 
+  // Once a race is clinched the hero moves to the next one, so say plainly
+  // which ones are already banked rather than letting them scroll past.
+  const done = data.races.filter((r) => r.clinched);
+  const banner = $('clinched-banner');
+  if (banner) {
+    banner.replaceChildren();
+    if (done.length) {
+      const box = el('div', 'clinched-note');
+      box.append(
+        el('strong', null, done.length === 1 ? 'Clinched: ' : 'Clinched so far: '),
+        document.createTextNode(done.map((r) => r.label.toLowerCase()).join(', ') + '.')
+      );
+      banner.append(box);
+    }
+  }
+
   text(
     $('explainer'),
     headline.clinched
@@ -96,7 +112,9 @@ function renderRaces(data) {
     cell.append(line);
 
     if (race.clinched) {
-      cell.append(el('span', 'chip', 'Clinched'));
+      const chip = el('span', 'chip', 'Clinched');
+      if (race.clinchSource === 'mlb') chip.title = 'Confirmed by MLB’s official clinch indicator.';
+      cell.append(chip);
     } else if (race.chaser) {
       const sub = el('span', 'rs');
       sub.append(

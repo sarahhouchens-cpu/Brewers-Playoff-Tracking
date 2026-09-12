@@ -245,6 +245,52 @@ async function seasonSeries(teamId, opponentId, season) {
   return { wins, losses, remaining };
 }
 
+/**
+ * Overlay MLB's official clinch indicators onto the computed races.
+ *
+ * Indicators are single letters: w a wild card, x a playoff berth, y the
+ * division, z home-field advantage. They are cumulative in practice — a club
+ * that has clinched the division has clinched a berth — so a division
+ * indicator implies the berth too.
+ *
+ * A second, independent check backs this up: a team is guaranteed a top-six
+ * finish once fewer than six clubs in its league can still finish above its
+ * floor. That is the question a berth actually asks, and it is cheap to answer
+ * exactly rather than approximate with one head-to-head comparison.
+ */
+export function applyOfficialClinches(result, me, teams) {
+  const indicator = String(me.clinchIndicator ?? '').toLowerCase();
+  const clinchedDivision = /[yz]/.test(indicator);
+  const clinchedBerth = Boolean(me.clinched) || /[wxyz]/.test(indicator);
+
+  // Independent arithmetic: how many league rivals can still pass our floor?
+  const floor = me.wins;
+  const rivals = teams.filter((t) => t.leagueId === me.leagueId && t.id !== me.id);
+  const canPass = rivals.filter((t) => t.wins + Math.max(0, 162 - t.wins - t.losses) > floor);
+  const guaranteedTopSix = canPass.length < 6;
+
+  console.log(
+    `Berth check: ${canPass.length} NL clubs can still finish above ${floor} wins` +
+    ` -> ${guaranteedTopSix ? 'top six is guaranteed' : 'not yet guaranteed'}`
+  );
+
+  for (const race of result.races) {
+    if (race.key === 'berth' && (clinchedBerth || guaranteedTopSix)) {
+      race.clinched = true;
+      race.magic = 0;
+      race.clinchSource = clinchedBerth ? 'mlb' : 'computed';
+    }
+    if (race.key === 'division' && clinchedDivision) {
+      race.clinched = true;
+      race.magic = 0;
+      race.clinchSource = 'mlb';
+    }
+  }
+  result.clinchIndicator = me.clinchIndicator ?? null;
+  result.rivalsWhoCanPass = canPass.length;
+  return result;
+}
+
 /** Season series against every team that fronts a race. */
 async function seriesForChasers(teamId, chaserIds, season) {
   const out = {};
@@ -322,6 +368,18 @@ async function main() {
     season
   );
   const result = computeRaces(teams, brewers.id, undefined, series);
+
+  // MLB is authoritative on clinching. Our formula asks only whether the
+  // seventh-place club can catch us; an actual berth requires six teams to
+  // finish ahead, which is a different and much harder thing to do. Where MLB
+  // says a race is decided, that wins.
+  const me = teams.find((t) => t.id === brewers.id);
+  console.log(
+    `MLB clinch flags: clinched=${me.clinched} indicator=${me.clinchIndicator ?? 'none'} ` +
+    `magic=${me.mlbMagicNumber ?? 'n/a'} elim=${me.mlbEliminationNumber ?? 'n/a'} ` +
+    `wcElim=${me.mlbWildCardEliminationNumber ?? 'n/a'}`
+  );
+  applyOfficialClinches(result, me, teams);
 
   for (const race of result.races) {
     if (!race.chaser) continue;
