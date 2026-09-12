@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-12T03:45:07.055Z",
+  "generatedAt": "2026-09-12T03:55:22.822Z",
   "slateDate": "2026-09-11",
   "team": {
     "id": 158,
@@ -106,10 +106,10 @@
   "deltas": [
     {
       "key": "berth",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 1
+      "previousMagic": 0
     },
     {
       "key": "division",
