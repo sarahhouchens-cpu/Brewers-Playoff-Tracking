@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-12T03:42:38.921Z",
+  "generatedAt": "2026-09-12T03:45:07.055Z",
   "slateDate": "2026-09-11",
   "team": {
     "id": 158,
@@ -30,9 +30,10 @@
         "wins": 78,
         "losses": 69
       },
-      "magic": 1,
+      "magic": 0,
       "elimination": 29,
-      "clinched": false
+      "clinched": true,
+      "clinchSource": "mlb"
     },
     {
       "key": "division",
@@ -101,11 +102,11 @@
       "clinched": false
     }
   ],
-  "headline": "berth",
+  "headline": "division",
   "deltas": [
     {
       "key": "berth",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 1
