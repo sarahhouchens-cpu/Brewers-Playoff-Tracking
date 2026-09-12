@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-12",
+  "status": "ok",
+  "oddsStatus": "too-early (9.1h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 9.13,
+  "game": {
+    "gamePk": 823737,
+    "opponent": "Cincinnati Reds",
+    "isHome": true,
+    "startTime": "2026-09-12T23:10:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 663903,
+    "name": "Brady Singer",
+    "hand": "R",
+    "opponentAvg": 0.279
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.1481481481481484,
+    "bullpenContact": 0.9876543209876542,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 1.0879
+  },
+  "calibration": {
+    "overall": {
+      "n": 240,
+      "expected": 86.96,
+      "actual": 99,
+      "raw": 1.1384,
+      "factor": 1.0879,
+      "weight": 0.635
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 54,
+        "expected": 36.11,
+        "actual": 37,
+        "raw": 1.0247,
+        "factor": 1.0104,
+        "weight": 0.419
+      },
+      "total_bases_2": {
+        "n": 54,
+        "expected": 21.29,
+        "actual": 20,
+        "raw": 0.9393,
+        "factor": 0.9819,
+        "weight": 0.299
+      },
+      "hits_2": {
+        "n": 53,
+        "expected": 13.94,
+        "actual": 16,
+        "raw": 1.1475,
+        "factor": 1.0322,
+        "weight": 0.218
+      },
+      "total_bases_3": {
+        "n": 54,
+        "expected": 12,
+        "actual": 17,
+        "raw": 1.4168,
+        "factor": 1.0807,
+        "weight": 0.194
+      },
+      "home_run_1": {
+        "n": 25,
+        "expected": 3.62,
+        "actual": 9,
+        "raw": 2.4862,
+        "factor": 1.1003,
+        "weight": 0.068
+      }
+    },
+    "updatedAt": "2026-09-12T14:01:54.322Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-12T14:01:55.053Z",
+  "source": "live"
+}
