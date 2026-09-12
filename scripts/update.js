@@ -50,6 +50,13 @@ async function getJSON(url) {
  * could not verify before first run, so every lookup is optional-chained and a
  * miss produces a diagnostic rather than a crash deep in the math.
  */
+/** MLB writes "-" where a number does not apply. Treat that as absent. */
+function numberOrNull(value) {
+  if (value == null || value === '-' || value === '') return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
 function normalize(standings, teamsPayload) {
   const meta = new Map();
   for (const t of teamsPayload?.teams ?? []) {
@@ -73,6 +80,17 @@ function normalize(standings, teamsPayload) {
         abbrev: extra.abbrev ?? String(id),
         wins: Number(tr.wins ?? 0),
         losses: Number(tr.losses ?? 0),
+        // MLB's own verdict on each race. It is computed across the whole
+        // league and accounts for every elimination path, which a single
+        // head-to-head formula cannot. "-" is how the API writes "not
+        // applicable", so it is normalised away here rather than downstream.
+        clinched: Boolean(tr.clinched),
+        clinchIndicator: tr.clinchIndicator || null,
+        divisionLeader: Boolean(tr.divisionLeader),
+        divisionChamp: Boolean(tr.divisionChamp),
+        mlbMagicNumber: numberOrNull(tr.magicNumber),
+        mlbEliminationNumber: numberOrNull(tr.eliminationNumber),
+        mlbWildCardEliminationNumber: numberOrNull(tr.wildCardEliminationNumber),
         // Prefer the standings grouping; fall back to the teams endpoint.
         leagueId: record?.league?.id ?? extra.leagueId ?? null,
         divisionId: record?.division?.id ?? extra.divisionId ?? null,
