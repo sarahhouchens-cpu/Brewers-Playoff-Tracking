@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-13T02:16:11.474Z",
+  "generatedAt": "2026-09-13T02:42:10.623Z",
   "slateDate": "2026-09-12",
   "team": {
     "id": 158,
@@ -134,6 +134,34 @@
     }
   ],
   "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 13, Cincinnati Reds 9",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
     {
       "kind": "chaser-loss",
       "tag": "Chaser · No. 1 seed, NL",
