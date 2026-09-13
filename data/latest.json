@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-13T03:16:34.201Z",
+  "generatedAt": "2026-09-13T03:42:39.732Z",
   "slateDate": "2026-09-12",
   "team": {
     "id": 158,
@@ -176,6 +176,19 @@
         {
           "key": "bestRecord",
           "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · Playoff berth",
+      "score": "Texas Rangers 6, Arizona Diamondbacks 2",
+      "why": "Arizona Diamondbacks is the team the Playoff berth number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
           "delta": -1
         }
       ]
