@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-13T22:15:46.344Z",
+  "generatedAt": "2026-09-13T23:14:20.517Z",
   "slateDate": "2026-09-13",
   "team": {
     "id": 158,
@@ -28,7 +28,7 @@
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
         "wins": 79,
-        "losses": 70
+        "losses": 71
       },
       "magic": 0,
       "elimination": 27,
@@ -168,6 +168,19 @@
         {
           "key": "division",
           "label": "NL Central",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · Playoff berth",
+      "score": "Texas Rangers 7, Arizona Diamondbacks 6",
+      "why": "Arizona Diamondbacks is the team the Playoff berth number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
           "delta": -1
         }
       ]
