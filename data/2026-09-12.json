@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-13T02:55:11.046Z",
+  "generatedAt": "2026-09-13T03:16:00.993Z",
   "slateDate": "2026-09-12",
   "team": {
     "id": 158,
@@ -28,7 +28,7 @@
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
         "wins": 79,
-        "losses": 69
+        "losses": 70
       },
       "magic": 0,
       "elimination": 28,
