@@ -1,16 +1,16 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-13T01:54:25.762Z",
+  "generatedAt": "2026-09-13T02:15:49.127Z",
   "slateDate": "2026-09-12",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
     "abbrev": "MIL",
-    "wins": 92,
+    "wins": 93,
     "losses": 56
   },
-  "gamesPlayed": 148,
-  "gamesRemaining": 14,
+  "gamesPlayed": 149,
+  "gamesRemaining": 13,
   "races": [
     {
       "key": "berth",
@@ -53,7 +53,7 @@
         "wins": 83,
         "losses": 66
       },
-      "magic": 4,
+      "magic": 3,
       "elimination": 24,
       "clinched": false
     },
@@ -75,7 +75,7 @@
         "wins": 90,
         "losses": 58
       },
-      "magic": 12,
+      "magic": 11,
       "elimination": 17,
       "clinched": false
     },
@@ -97,7 +97,7 @@
         "wins": 90,
         "losses": 58
       },
-      "magic": 12,
+      "magic": 11,
       "elimination": 17,
       "clinched": false
     }
@@ -113,21 +113,21 @@
     },
     {
       "key": "division",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 4
     },
     {
       "key": "leagueSeed",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 12
     },
     {
       "key": "bestRecord",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 12
