@@ -8,72 +8,11 @@ const pct = (p) => `${(p * 100).toFixed(1)}%`;
 const money = (n) => `$${n.toFixed(2)}`;
 const sign = (n) => (n > 0 ? `+${Math.round(n)}` : String(Math.round(n)));
 
-/**
- * The repository behind this page, used to link at the workflow that rebuilds
- * the board. Update both if the repo is ever moved or renamed.
- */
-const REPO = 'sarahhouchens-cpu/Brewers-Playoff-Tracking';
-const BOARD_WORKFLOW = 'props.yml';
-
 function el(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
   if (text != null) node.textContent = text;
   return node;
-}
-
-/* ------------------------------------------------------------ refresh --- */
-
-/**
- * Odds credits are the scarce resource here, so the board is rebuilt on a
- * schedule rather than on every page load. This bar says how stale the numbers
- * are and links to the only control that can rebuild them on demand: the
- * workflow's own Run button.
- *
- * It deliberately links out rather than firing the run itself. Dispatching a
- * workflow takes a token with write access, and this page is public — any token
- * shipped in it would be public too, and would let anyone drain the odds quota
- * or commit to the repo.
- */
-function renderRefresh(board) {
-  const host = $('bets-refresh');
-  if (!host) return;
-  host.replaceChildren();
-  if (!board.generatedAt) return;
-
-  const ageMin = Math.max(0, Math.round((Date.now() - new Date(board.generatedAt)) / 60000));
-  const ago =
-    ageMin < 1 ? 'just now'
-    : ageMin < 60 ? `${ageMin} min ago`
-    : ageMin < 36 * 60 ? `${Math.round(ageMin / 60)} hr ago`
-    : `${Math.round(ageMin / 1440)} days ago`;
-
-  // A board older than the gap between scheduled runs is worth a manual nudge.
-  const stale = ageMin > 100;
-  const bar = el('div', 'refresh-bar' + (stale ? ' is-stale' : ''));
-
-  const when = el('div', 'refresh-when');
-  when.append(
-    el('span', 'rl', 'Prices as of'),
-    el('strong', null, new Date(board.generatedAt).toLocaleString('en-US', {
-      timeZone: 'America/Chicago', hour: 'numeric', minute: '2-digit',
-    }) + ` CT · ${ago}`)
-  );
-  bar.append(when);
-
-  const link = el('a', 'refresh-go', 'Rebuild now');
-  link.href = `https://github.com/${REPO}/actions/workflows/${BOARD_WORKFLOW}`;
-  link.target = '_blank';
-  link.rel = 'noopener';
-  link.title = 'Opens the update job on GitHub. Press "Run workflow", wait about a minute, then reload this page.';
-  bar.append(link);
-
-  bar.append(el('p', 'refresh-fine',
-    stale
-      ? 'These prices are old enough that books have likely moved. Rebuilding pulls fresh odds — it spends three of the month’s API credits.'
-      : 'Rebuilding pulls fresh odds and spends three of the month’s API credits. Runs take about a minute; reload after it finishes.'));
-
-  host.append(bar);
 }
 
 /* --------------------------------------------------------------- tabs --- */
@@ -381,7 +320,6 @@ async function main() {
     if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
     const board = await res.json();
     renderNotice(board);
-    renderRefresh(board);
     renderGame(board);
     renderParlays(board);
     renderLegs(board);
