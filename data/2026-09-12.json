@@ -1,16 +1,16 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-14T00:48:05.052Z",
-  "slateDate": "2026-09-13",
+  "generatedAt": "2026-09-13T20:15:57.498Z",
+  "slateDate": "2026-09-12",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
     "abbrev": "MIL",
     "wins": 93,
-    "losses": 57
+    "losses": 56
   },
-  "gamesPlayed": 150,
-  "gamesRemaining": 12,
+  "gamesPlayed": 149,
+  "gamesRemaining": 13,
   "races": [
     {
       "key": "berth",
@@ -28,10 +28,10 @@
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
         "wins": 79,
-        "losses": 71
+        "losses": 70
       },
       "magic": 0,
-      "elimination": 27,
+      "elimination": 28,
       "clinched": true,
       "clinchSource": "mlb"
     },
@@ -51,10 +51,10 @@
         "name": "Chicago Cubs",
         "abbrev": "CHC",
         "wins": 83,
-        "losses": 67
+        "losses": 66
       },
-      "magic": 2,
-      "elimination": 23,
+      "magic": 3,
+      "elimination": 24,
       "clinched": false
     },
     {
@@ -73,10 +73,10 @@
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
         "wins": 90,
-        "losses": 59
+        "losses": 58
       },
-      "magic": 10,
-      "elimination": 16,
+      "magic": 11,
+      "elimination": 17,
       "clinched": false
     },
     {
@@ -95,10 +95,10 @@
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
         "wins": 90,
-        "losses": 59
+        "losses": 58
       },
-      "magic": 10,
-      "elimination": 16,
+      "magic": 11,
+      "elimination": 17,
       "clinched": false
     }
   ],
@@ -116,35 +116,56 @@
       "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 2
+      "previousMagic": 3
     },
     {
       "key": "leagueSeed",
       "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 10
+      "previousMagic": 11
     },
     {
       "key": "bestRecord",
       "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 10
+      "previousMagic": 11
     }
   ],
   "feed": [
     {
-      "kind": "brewers-loss",
+      "kind": "brewers-win",
       "tag": "Brewers · Final",
-      "score": "Cincinnati Reds 4, Milwaukee Brewers 3",
-      "why": "A loss never raises a magic number. It just burns a game off the schedule.",
-      "impacts": []
+      "score": "Milwaukee Brewers 13, Cincinnati Reds 9",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
     },
     {
       "kind": "chaser-loss",
       "tag": "Chaser · No. 1 seed, NL",
-      "score": "Miami Marlins 6, Los Angeles Dodgers 4",
+      "score": "Miami Marlins 4, Los Angeles Dodgers 3",
       "why": "Los Angeles Dodgers is the team the No. 1 seed, NL and Best record, MLB number is measured against, so their loss trims it by one.",
       "impacts": [
         {
@@ -161,21 +182,8 @@
     },
     {
       "kind": "chaser-loss",
-      "tag": "Chaser · NL Central",
-      "score": "Pittsburgh Pirates 4, Chicago Cubs 3",
-      "why": "Chicago Cubs is the team the NL Central number is measured against, so their loss trims it by one.",
-      "impacts": [
-        {
-          "key": "division",
-          "label": "NL Central",
-          "delta": -1
-        }
-      ]
-    },
-    {
-      "kind": "chaser-loss",
       "tag": "Chaser · Playoff berth",
-      "score": "Texas Rangers 7, Arizona Diamondbacks 6",
+      "score": "Texas Rangers 6, Arizona Diamondbacks 2",
       "why": "Arizona Diamondbacks is the team the Playoff berth number is measured against, so their loss trims it by one.",
       "impacts": [
         {
@@ -184,6 +192,13 @@
           "delta": -1
         }
       ]
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · NL Central",
+      "score": "Chicago Cubs 4, Pittsburgh Pirates 3",
+      "why": "Chicago Cubs holds the mark for NL Central. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     }
   ]
 }
