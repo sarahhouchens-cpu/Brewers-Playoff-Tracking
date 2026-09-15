@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-15",
+  "status": "ok",
+  "oddsStatus": "too-early (8.6h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 8.63,
+  "game": {
+    "gamePk": 823333,
+    "opponent": "Pittsburgh Pirates",
+    "isHome": false,
+    "startTime": "2026-09-15T22:40:00Z",
+    "venue": "PNC Park"
+  },
+  "starter": {
+    "id": 669199,
+    "name": "Lake Bachar",
+    "hand": "R",
+    "opponentAvg": 0.19
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "PNC Park",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 0.7818930041152263,
+    "bullpenContact": 0.920096021947874,
+    "power": 1,
+    "park": 1,
+    "calibration": 1.1089
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 102.4,
+      "actual": 119,
+      "raw": 1.1621,
+      "factor": 1.1089,
+      "weight": 0.672
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 42.28,
+        "actual": 43,
+        "raw": 1.017,
+        "factor": 1.0078,
+        "weight": 0.458
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 25.04,
+        "actual": 25,
+        "raw": 0.9983,
+        "factor": 0.9994,
+        "weight": 0.334
+      },
+      "hits_2": {
+        "n": 61,
+        "expected": 16.32,
+        "actual": 19,
+        "raw": 1.1642,
+        "factor": 1.0404,
+        "weight": 0.246
+      },
+      "total_bases_3": {
+        "n": 63,
+        "expected": 14.24,
+        "actual": 21,
+        "raw": 1.4746,
+        "factor": 1.1052,
+        "weight": 0.222
+      },
+      "home_run_1": {
+        "n": 30,
+        "expected": 4.52,
+        "actual": 11,
+        "raw": 2.4347,
+        "factor": 1.1189,
+        "weight": 0.083
+      }
+    },
+    "updatedAt": "2026-09-15T14:01:54.030Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-15T14:01:54.973Z",
+  "source": "live"
+}
