@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-15T04:45:48.785Z",
+  "generatedAt": "2026-09-15T05:16:09.275Z",
   "slateDate": "2026-09-14",
   "team": {
     "id": 158,
@@ -27,11 +27,11 @@
         "id": 109,
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
-        "wins": 79,
+        "wins": 80,
         "losses": 71
       },
       "magic": 0,
-      "elimination": 27,
+      "elimination": 26,
       "clinched": true,
       "clinchSource": "mlb"
     },
@@ -146,6 +146,13 @@
       "tag": "Chaser · NL Central",
       "score": "Chicago Cubs 7, Atlanta Braves 3",
       "why": "Chicago Cubs holds the mark for NL Central. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · Playoff berth",
+      "score": "Arizona Diamondbacks 8, Miami Marlins 7",
+      "why": "Arizona Diamondbacks holds the mark for Playoff berth. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
