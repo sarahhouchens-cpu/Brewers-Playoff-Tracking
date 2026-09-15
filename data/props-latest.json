@@ -1,9 +1,9 @@
 {
   "date": "2026-09-15",
   "status": "ok",
-  "oddsStatus": "too-early (8.6h to first pitch)",
+  "oddsStatus": "too-early (6.6h to first pitch)",
   "books": 0,
-  "hoursToFirstPitch": 8.63,
+  "hoursToFirstPitch": 6.65,
   "game": {
     "gamePk": 823333,
     "opponent": "Pittsburgh Pirates",
@@ -85,13 +85,13 @@
         "weight": 0.083
       }
     },
-    "updatedAt": "2026-09-15T14:01:54.030Z"
+    "updatedAt": "2026-09-15T16:01:08.012Z"
   },
   "battersResolved": 0,
   "battersSkipped": [],
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-09-15T14:01:54.973Z",
+  "generatedAt": "2026-09-15T16:01:09.138Z",
   "source": "live",
   "history": [
     {
