@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-15T02:18:12.811Z",
+  "generatedAt": "2026-09-15T02:31:10.653Z",
   "slateDate": "2026-09-14",
   "team": {
     "id": 158,
@@ -50,11 +50,11 @@
         "id": 112,
         "name": "Chicago Cubs",
         "abbrev": "CHC",
-        "wins": 83,
+        "wins": 84,
         "losses": 67
       },
       "magic": 2,
-      "elimination": 23,
+      "elimination": 22,
       "clinched": false
     },
     {
@@ -139,6 +139,13 @@
       "tag": "Chaser · No. 1 seed, NL",
       "score": "Los Angeles Dodgers 4, Cincinnati Reds 1",
       "why": "Los Angeles Dodgers holds the mark for No. 1 seed, NL and Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · NL Central",
+      "score": "Chicago Cubs 7, Atlanta Braves 3",
+      "why": "Chicago Cubs holds the mark for NL Central. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
