@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-16",
+  "status": "ok",
+  "oddsStatus": "too-early (8.6h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 8.62,
+  "game": {
+    "gamePk": 823332,
+    "opponent": "Pittsburgh Pirates",
+    "isHome": false,
+    "startTime": "2026-09-16T22:40:00Z",
+    "venue": "PNC Park"
+  },
+  "starter": {
+    "id": 683003,
+    "name": "Jared Jones",
+    "hand": "R",
+    "opponentAvg": 0.217
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "PNC Park",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 0.8930041152263375,
+    "bullpenContact": 0.9118655692729769,
+    "power": 1,
+    "park": 1,
+    "calibration": 1.114
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 99.91,
+      "actual": 117,
+      "raw": 1.1711,
+      "factor": 1.114,
+      "weight": 0.666
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 41.7,
+        "actual": 44,
+        "raw": 1.0551,
+        "factor": 1.025,
+        "weight": 0.455
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 24.33,
+        "actual": 26,
+        "raw": 1.0687,
+        "factor": 1.0225,
+        "weight": 0.327
+      },
+      "hits_2": {
+        "n": 62,
+        "expected": 15.81,
+        "actual": 18,
+        "raw": 1.1384,
+        "factor": 1.0332,
+        "weight": 0.24
+      },
+      "total_bases_3": {
+        "n": 62,
+        "expected": 13.63,
+        "actual": 19,
+        "raw": 1.394,
+        "factor": 1.0844,
+        "weight": 0.214
+      },
+      "home_run_1": {
+        "n": 30,
+        "expected": 4.43,
+        "actual": 10,
+        "raw": 2.2566,
+        "factor": 1.1023,
+        "weight": 0.081
+      }
+    },
+    "updatedAt": "2026-09-16T14:02:55.144Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-16T14:02:55.815Z",
+  "source": "live"
+}
