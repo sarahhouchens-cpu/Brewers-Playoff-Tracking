@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-17T01:57:57.061Z",
+  "generatedAt": "2026-09-17T02:16:31.563Z",
   "slateDate": "2026-09-16",
   "team": {
     "id": 158,
@@ -121,23 +121,17 @@
     },
     {
       "key": "leagueSeed",
-      "delta": -2,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 9
+      "previousMagic": 7
     },
     {
       "key": "bestRecord",
-      "delta": -1,
-      "chaserChanged": true,
-      "previousChaser": {
-        "id": 119,
-        "name": "Los Angeles Dodgers",
-        "abbrev": "LAD",
-        "wins": 92,
-        "losses": 59
-      },
-      "previousMagic": 9
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 8
     }
   ],
   "feed": [
