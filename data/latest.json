@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-17T04:20:09.910Z",
+  "generatedAt": "2026-09-17T04:44:04.624Z",
   "slateDate": "2026-09-16",
   "team": {
     "id": 158,
@@ -28,7 +28,7 @@
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
         "wins": 80,
-        "losses": 72
+        "losses": 73
       },
       "magic": 0,
       "elimination": 26,
@@ -172,6 +172,19 @@
         {
           "key": "leagueSeed",
           "label": "No. 1 seed, NL",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · Playoff berth",
+      "score": "Miami Marlins 4, Arizona Diamondbacks 3",
+      "why": "Arizona Diamondbacks is the team the Playoff berth number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
           "delta": -1
         }
       ]
