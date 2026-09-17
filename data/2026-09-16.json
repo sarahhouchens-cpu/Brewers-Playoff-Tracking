@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-17T02:19:02.529Z",
+  "generatedAt": "2026-09-17T02:43:47.389Z",
   "slateDate": "2026-09-16",
   "team": {
     "id": 158,
@@ -50,11 +50,11 @@
         "id": 112,
         "name": "Chicago Cubs",
         "abbrev": "CHC",
-        "wins": 84,
+        "wins": 85,
         "losses": 68
       },
       "magic": 0,
-      "elimination": 22,
+      "elimination": 21,
       "clinched": true,
       "clinchSource": "mlb"
     },
@@ -181,6 +181,13 @@
       "tag": "Chaser · Best record, MLB",
       "score": "Tampa Bay Rays 4, Athletics 3",
       "why": "Tampa Bay Rays holds the mark for Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · NL Central",
+      "score": "Chicago Cubs 8, Atlanta Braves 4",
+      "why": "Chicago Cubs holds the mark for NL Central. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
