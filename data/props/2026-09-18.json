@@ -1,0 +1,91 @@
+{
+  "date": "2026-09-18",
+  "status": "ok",
+  "oddsStatus": "too-early (9.1h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 9.05,
+  "game": {
+    "gamePk": 824790,
+    "opponent": "Baltimore Orioles",
+    "isHome": false,
+    "startTime": "2026-09-18T23:05:00Z",
+    "venue": "Oriole Park at Camden Yards"
+  },
+  "starter": null,
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "Oriole Park at Camden Yards",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1,
+    "bullpenContact": 0.9770233196159122,
+    "power": 1,
+    "park": 1,
+    "calibration": 1.1359
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 100.54,
+      "actual": 121,
+      "raw": 1.2035,
+      "factor": 1.1359,
+      "weight": 0.668
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 41.76,
+        "actual": 48,
+        "raw": 1.1494,
+        "factor": 1.068,
+        "weight": 0.455
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 24.42,
+        "actual": 28,
+        "raw": 1.1465,
+        "factor": 1.0481,
+        "weight": 0.328
+      },
+      "hits_2": {
+        "n": 62,
+        "expected": 15.97,
+        "actual": 18,
+        "raw": 1.1273,
+        "factor": 1.0308,
+        "weight": 0.242
+      },
+      "total_bases_3": {
+        "n": 62,
+        "expected": 13.73,
+        "actual": 18,
+        "raw": 1.3111,
+        "factor": 1.067,
+        "weight": 0.215
+      },
+      "home_run_1": {
+        "n": 30,
+        "expected": 4.66,
+        "actual": 9,
+        "raw": 1.9318,
+        "factor": 1.0794,
+        "weight": 0.085
+      }
+    },
+    "updatedAt": "2026-09-18T14:01:50.798Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-18T14:01:50.922Z",
+  "source": "live"
+}
