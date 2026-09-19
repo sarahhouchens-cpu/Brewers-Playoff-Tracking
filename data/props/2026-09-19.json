@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-19",
+  "status": "ok",
+  "oddsStatus": "too-early (6.1h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 6.05,
+  "game": {
+    "gamePk": 824788,
+    "opponent": "Baltimore Orioles",
+    "isHome": false,
+    "startTime": "2026-09-19T20:05:00Z",
+    "venue": "Oriole Park at Camden Yards"
+  },
+  "starter": {
+    "id": 669432,
+    "name": "Trevor Rogers",
+    "hand": "R",
+    "opponentAvg": 0.253
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "Oriole Park at Camden Yards",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0411522633744856,
+    "bullpenContact": 0.9715363511659807,
+    "power": 1,
+    "park": 1,
+    "calibration": 1.0972
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 103.12,
+      "actual": 118,
+      "raw": 1.1443,
+      "factor": 1.0972,
+      "weight": 0.673
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 42.46,
+        "actual": 49,
+        "raw": 1.1541,
+        "factor": 1.0707,
+        "weight": 0.459
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 25.03,
+        "actual": 28,
+        "raw": 1.1187,
+        "factor": 1.0396,
+        "weight": 0.334
+      },
+      "hits_2": {
+        "n": 62,
+        "expected": 16.71,
+        "actual": 18,
+        "raw": 1.0769,
+        "factor": 1.0193,
+        "weight": 0.251
+      },
+      "total_bases_3": {
+        "n": 62,
+        "expected": 14.15,
+        "actual": 16,
+        "raw": 1.1309,
+        "factor": 1.0289,
+        "weight": 0.221
+      },
+      "home_run_1": {
+        "n": 30,
+        "expected": 4.77,
+        "actual": 7,
+        "raw": 1.4674,
+        "factor": 1.0407,
+        "weight": 0.087
+      }
+    },
+    "updatedAt": "2026-09-19T14:01:54.499Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-19T14:01:54.674Z",
+  "source": "live"
+}
