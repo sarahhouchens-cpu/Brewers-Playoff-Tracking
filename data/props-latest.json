@@ -1,7 +1,7 @@
 {
   "date": "2026-09-19",
   "status": "game-started",
-  "gameState": "In Progress",
+  "gameState": "Final",
   "startTime": "2026-09-19T20:05:00Z",
   "game": {
     "gamePk": 824788,
@@ -12,7 +12,7 @@
   },
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-09-19T21:34:37.309Z",
+  "generatedAt": "2026-09-19T23:10:50.646Z",
   "source": "live",
   "history": [
     {
