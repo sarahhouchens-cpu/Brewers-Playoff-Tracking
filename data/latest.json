@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-19T02:54:34.861Z",
+  "generatedAt": "2026-09-19T03:15:21.472Z",
   "slateDate": "2026-09-18",
   "team": {
     "id": 158,
@@ -121,20 +121,48 @@
     },
     {
       "key": "leagueSeed",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 7
+      "previousMagic": 6
     },
     {
       "key": "bestRecord",
-      "delta": -1,
+      "delta": 0,
       "chaserChanged": false,
       "previousChaser": null,
-      "previousMagic": 7
+      "previousMagic": 6
     }
   ],
   "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 6, Baltimore Orioles 5",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
     {
       "kind": "chaser-loss",
       "tag": "Chaser · NL Central",
