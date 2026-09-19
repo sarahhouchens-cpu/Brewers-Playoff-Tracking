@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-19T04:16:10.093Z",
+  "generatedAt": "2026-09-19T04:41:48.927Z",
   "slateDate": "2026-09-18",
   "team": {
     "id": 158,
@@ -28,7 +28,7 @@
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
         "wins": 80,
-        "losses": 73
+        "losses": 74
       },
       "magic": 0,
       "elimination": 25,
@@ -172,6 +172,19 @@
         {
           "key": "division",
           "label": "NL Central",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · Playoff berth",
+      "score": "New York Yankees 9, Arizona Diamondbacks 2",
+      "why": "Arizona Diamondbacks is the team the Playoff berth number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
           "delta": -1
         }
       ]
