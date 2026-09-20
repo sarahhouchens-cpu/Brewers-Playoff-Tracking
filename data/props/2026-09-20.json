@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-20",
+  "status": "ok",
+  "oddsStatus": "too-early (9.3h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 9.3,
+  "game": {
+    "gamePk": 824789,
+    "opponent": "Baltimore Orioles",
+    "isHome": false,
+    "startTime": "2026-09-20T23:20:00Z",
+    "venue": "Oriole Park at Camden Yards"
+  },
+  "starter": {
+    "id": 687064,
+    "name": "Brandon Young",
+    "hand": "R",
+    "opponentAvg": 0.258
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "Oriole Park at Camden Yards",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0617283950617284,
+    "bullpenContact": 0.9539842873176206,
+    "power": 1,
+    "park": 1,
+    "calibration": 0.8925
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 104.63,
+      "actual": 88,
+      "raw": 0.8411,
+      "factor": 0.8925,
+      "weight": 0.677
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 42.83,
+        "actual": 43,
+        "raw": 1.0039,
+        "factor": 1.0018,
+        "weight": 0.461
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 25.46,
+        "actual": 21,
+        "raw": 0.8249,
+        "factor": 0.9409,
+        "weight": 0.337
+      },
+      "hits_2": {
+        "n": 61,
+        "expected": 17.01,
+        "actual": 10,
+        "raw": 0.5877,
+        "factor": 0.8953,
+        "weight": 0.254
+      },
+      "total_bases_3": {
+        "n": 62,
+        "expected": 14.4,
+        "actual": 10,
+        "raw": 0.6942,
+        "factor": 0.9316,
+        "weight": 0.224
+      },
+      "home_run_1": {
+        "n": 31,
+        "expected": 4.92,
+        "actual": 4,
+        "raw": 0.8136,
+        "factor": 0.9833,
+        "weight": 0.09
+      }
+    },
+    "updatedAt": "2026-09-20T14:01:49.991Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-20T14:01:50.170Z",
+  "source": "live"
+}
