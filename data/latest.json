@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-20T01:30:37.733Z",
+  "generatedAt": "2026-09-20T01:53:42.466Z",
   "slateDate": "2026-09-19",
   "team": {
     "id": 158,
@@ -162,6 +162,13 @@
           "delta": -1
         }
       ]
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · NL Central",
+      "score": "Chicago Cubs 5, Cincinnati Reds 2",
+      "why": "Chicago Cubs holds the mark for NL Central. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     }
   ]
 }
