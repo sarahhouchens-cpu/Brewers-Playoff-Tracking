@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-20T19:13:11.048Z",
+  "generatedAt": "2026-09-20T20:15:29.477Z",
   "slateDate": "2026-09-19",
   "team": {
     "id": 158,
@@ -50,11 +50,11 @@
         "id": 112,
         "name": "Chicago Cubs",
         "abbrev": "CHC",
-        "wins": 86,
+        "wins": 87,
         "losses": 69
       },
       "magic": 0,
-      "elimination": 19,
+      "elimination": 18,
       "clinched": true,
       "clinchSource": "mlb"
     },
