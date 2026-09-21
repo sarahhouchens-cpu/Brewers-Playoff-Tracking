@@ -1,16 +1,16 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-21T02:16:27.994Z",
+  "generatedAt": "2026-09-21T02:43:22.706Z",
   "slateDate": "2026-09-20",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
     "abbrev": "MIL",
-    "wins": 97,
+    "wins": 98,
     "losses": 58
   },
-  "gamesPlayed": 155,
-  "gamesRemaining": 7,
+  "gamesPlayed": 156,
+  "gamesRemaining": 6,
   "races": [
     {
       "key": "berth",
@@ -76,7 +76,7 @@
         "wins": 96,
         "losses": 60
       },
-      "magic": 5,
+      "magic": 4,
       "elimination": 9,
       "clinched": false
     },
@@ -98,7 +98,7 @@
         "wins": 96,
         "losses": 60
       },
-      "magic": 5,
+      "magic": 4,
       "elimination": 9,
       "clinched": false
     }
@@ -121,20 +121,48 @@
     },
     {
       "key": "leagueSeed",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 5
     },
     {
       "key": "bestRecord",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 5
     }
   ],
   "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 3, Baltimore Orioles 0",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
     {
       "kind": "chaser-win",
       "tag": "Chaser · NL Central",
