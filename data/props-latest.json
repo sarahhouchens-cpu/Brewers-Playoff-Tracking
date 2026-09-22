@@ -1,9 +1,97 @@
 {
-  "date": "2026-09-21",
-  "status": "no-game",
+  "date": "2026-09-22",
+  "status": "ok",
+  "oddsStatus": "too-early (8.6h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 8.63,
+  "game": {
+    "gamePk": 823412,
+    "opponent": "Philadelphia Phillies",
+    "isHome": false,
+    "startTime": "2026-09-22T22:40:00Z",
+    "venue": "Citizens Bank Park"
+  },
+  "starter": {
+    "id": 554430,
+    "name": "Zack Wheeler",
+    "hand": "R",
+    "opponentAvg": 0.207
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "Citizens Bank Park",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 0.8518518518518519,
+    "bullpenContact": 1.045267489711934,
+    "power": 1.08,
+    "park": 1.08,
+    "calibration": 0.8414
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 100.94,
+      "actual": 77,
+      "raw": 0.7628,
+      "factor": 0.8414,
+      "weight": 0.669
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 41.94,
+        "actual": 41,
+        "raw": 0.9776,
+        "factor": 0.9898,
+        "weight": 0.456
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 24.5,
+        "actual": 19,
+        "raw": 0.7756,
+        "factor": 0.9262,
+        "weight": 0.329
+      },
+      "hits_2": {
+        "n": 61,
+        "expected": 16.08,
+        "actual": 7,
+        "raw": 0.4352,
+        "factor": 0.8625,
+        "weight": 0.243
+      },
+      "total_bases_3": {
+        "n": 61,
+        "expected": 13.57,
+        "actual": 7,
+        "raw": 0.5158,
+        "factor": 0.8966,
+        "weight": 0.213
+      },
+      "home_run_1": {
+        "n": 32,
+        "expected": 4.85,
+        "actual": 3,
+        "raw": 0.619,
+        "factor": 0.9663,
+        "weight": 0.088
+      }
+    },
+    "updatedAt": "2026-09-22T14:02:11.028Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-09-22T01:05:12.334Z",
+  "generatedAt": "2026-09-22T14:02:11.391Z",
   "source": "live",
   "history": [
     {
