@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-23T03:57:13.297Z",
+  "generatedAt": "2026-09-23T04:17:11.132Z",
   "slateDate": "2026-09-22",
   "team": {
     "id": 158,
@@ -141,6 +141,19 @@
       "score": "Philadelphia Phillies 6, Milwaukee Brewers 4",
       "why": "A loss never raises a magic number. It just burns a game off the schedule.",
       "impacts": []
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · NL Central",
+      "score": "Miami Marlins 8, Chicago Cubs 2",
+      "why": "Chicago Cubs is the team the NL Central number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        }
+      ]
     },
     {
       "kind": "chaser-win",
