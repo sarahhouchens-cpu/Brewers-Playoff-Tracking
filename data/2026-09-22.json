@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-23T03:18:21.395Z",
+  "generatedAt": "2026-09-23T03:43:25.218Z",
   "slateDate": "2026-09-22",
   "team": {
     "id": 158,
@@ -140,6 +140,13 @@
       "tag": "Brewers · Final",
       "score": "Philadelphia Phillies 6, Milwaukee Brewers 4",
       "why": "A loss never raises a magic number. It just burns a game off the schedule.",
+      "impacts": []
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · Playoff berth",
+      "score": "Arizona Diamondbacks 7, Colorado Rockies 2",
+      "why": "Arizona Diamondbacks holds the mark for Playoff berth. A win for them doesn't raise the number — it just removes a chance for it to fall.",
       "impacts": []
     }
   ]
