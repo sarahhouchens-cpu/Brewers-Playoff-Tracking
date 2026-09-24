@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-24",
+  "status": "ok",
+  "oddsStatus": "too-early (8.0h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 8.04,
+  "game": {
+    "gamePk": 823411,
+    "opponent": "Philadelphia Phillies",
+    "isHome": false,
+    "startTime": "2026-09-24T22:05:00Z",
+    "venue": "Citizens Bank Park"
+  },
+  "starter": {
+    "id": 691725,
+    "name": "Andrew Painter",
+    "hand": "R",
+    "opponentAvg": 0.27
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "Citizens Bank Park",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.1111111111111112,
+    "bullpenContact": 1.0308641975308643,
+    "power": 1.08,
+    "park": 1.08,
+    "calibration": 0.8107
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 98.02,
+      "actual": 70,
+      "raw": 0.7141,
+      "factor": 0.8107,
+      "weight": 0.662
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 41.17,
+        "actual": 41,
+        "raw": 0.9959,
+        "factor": 0.9981,
+        "weight": 0.452
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 23.71,
+        "actual": 14,
+        "raw": 0.5905,
+        "factor": 0.8683,
+        "weight": 0.322
+      },
+      "hits_2": {
+        "n": 62,
+        "expected": 15.53,
+        "actual": 6,
+        "raw": 0.3863,
+        "factor": 0.8546,
+        "weight": 0.237
+      },
+      "total_bases_3": {
+        "n": 60,
+        "expected": 12.92,
+        "actual": 6,
+        "raw": 0.4646,
+        "factor": 0.8901,
+        "weight": 0.205
+      },
+      "home_run_1": {
+        "n": 32,
+        "expected": 4.7,
+        "actual": 3,
+        "raw": 0.6385,
+        "factor": 0.9689,
+        "weight": 0.086
+      }
+    },
+    "updatedAt": "2026-09-24T14:02:20.527Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-24T14:02:21.283Z",
+  "source": "live"
+}
