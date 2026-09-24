@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-24T03:18:30.997Z",
+  "generatedAt": "2026-09-24T03:43:42.046Z",
   "slateDate": "2026-09-23",
   "team": {
     "id": 158,
@@ -175,6 +175,13 @@
           "delta": -1
         }
       ]
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · Playoff berth",
+      "score": "Arizona Diamondbacks 5, Colorado Rockies 3",
+      "why": "Arizona Diamondbacks holds the mark for Playoff berth. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     }
   ]
 }
