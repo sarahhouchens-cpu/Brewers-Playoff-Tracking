@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-25",
+  "status": "ok",
+  "oddsStatus": "too-early (9.6h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 9.63,
+  "game": {
+    "gamePk": 823735,
+    "opponent": "St. Louis Cardinals",
+    "isHome": true,
+    "startTime": "2026-09-25T23:40:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 700241,
+    "name": "Michael McGreevy",
+    "hand": "R",
+    "opponentAvg": 0.255
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0493827160493827,
+    "bullpenContact": 0.9965706447187929,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 0.8269
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 96.32,
+      "actual": 71,
+      "raw": 0.7371,
+      "factor": 0.8269,
+      "weight": 0.658
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 40.63,
+        "actual": 40,
+        "raw": 0.9844,
+        "factor": 0.993,
+        "weight": 0.448
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 23.3,
+        "actual": 14,
+        "raw": 0.6008,
+        "factor": 0.8731,
+        "weight": 0.318
+      },
+      "hits_2": {
+        "n": 62,
+        "expected": 15.08,
+        "actual": 7,
+        "raw": 0.4641,
+        "factor": 0.8758,
+        "weight": 0.232
+      },
+      "total_bases_3": {
+        "n": 59,
+        "expected": 12.55,
+        "actual": 7,
+        "raw": 0.5576,
+        "factor": 0.9112,
+        "weight": 0.201
+      },
+      "home_run_1": {
+        "n": 33,
+        "expected": 4.75,
+        "actual": 3,
+        "raw": 0.6312,
+        "factor": 0.968,
+        "weight": 0.087
+      }
+    },
+    "updatedAt": "2026-09-25T14:02:18.063Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-25T14:02:18.907Z",
+  "source": "live"
+}
