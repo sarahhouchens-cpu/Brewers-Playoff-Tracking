@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-25T04:58:52.566Z",
+  "generatedAt": "2026-09-25T05:15:46.748Z",
   "slateDate": "2026-09-24",
   "team": {
     "id": 158,
@@ -74,11 +74,11 @@
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
         "wins": 97,
-        "losses": 61
+        "losses": 62
       },
-      "magic": 1,
+      "magic": 0,
       "elimination": 7,
-      "clinched": false
+      "clinched": true
     },
     {
       "key": "bestRecord",
@@ -96,14 +96,14 @@
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
         "wins": 97,
-        "losses": 61
+        "losses": 62
       },
-      "magic": 1,
+      "magic": 0,
       "elimination": 7,
-      "clinched": false
+      "clinched": true
     }
   ],
-  "headline": "leagueSeed",
+  "headline": "bestRecord",
   "deltas": [
     {
       "key": "berth",
@@ -121,14 +121,14 @@
     },
     {
       "key": "leagueSeed",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 1
     },
     {
       "key": "bestRecord",
-      "delta": 0,
+      "delta": -1,
       "chaserChanged": false,
       "previousChaser": null,
       "previousMagic": 1
@@ -151,6 +151,24 @@
           "label": "NL Central",
           "delta": -1
         },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · No. 1 seed, NL",
+      "score": "San Diego Padres 4, Los Angeles Dodgers 2",
+      "why": "Los Angeles Dodgers is the team the No. 1 seed, NL and Best record, MLB number is measured against, so their loss trims it by one.",
+      "impacts": [
         {
           "key": "leagueSeed",
           "label": "No. 1 seed, NL",
