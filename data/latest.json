@@ -1,16 +1,16 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-26T02:32:50.906Z",
+  "generatedAt": "2026-09-26T02:54:35.146Z",
   "slateDate": "2026-09-25",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
     "abbrev": "MIL",
-    "wins": 100,
+    "wins": 101,
     "losses": 59
   },
-  "gamesPlayed": 159,
-  "gamesRemaining": 3,
+  "gamesPlayed": 160,
+  "gamesRemaining": 2,
   "races": [
     {
       "key": "berth",
@@ -135,6 +135,34 @@
     }
   ],
   "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 8, St. Louis Cardinals 4",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
     {
       "kind": "chaser-loss",
       "tag": "Chaser · NL Central",
