@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-25T23:58:11.445Z",
+  "generatedAt": "2026-09-26T00:21:51.603Z",
   "slateDate": "2026-09-25",
   "team": {
     "id": 158,
@@ -51,7 +51,7 @@
         "name": "Chicago Cubs",
         "abbrev": "CHC",
         "wins": 88,
-        "losses": 72
+        "losses": 73
       },
       "magic": 0,
       "elimination": 16,
@@ -139,6 +139,19 @@
       "kind": "chaser-loss",
       "tag": "Chaser · NL Central",
       "score": "Boston Red Sox 4, Chicago Cubs 3",
+      "why": "Chicago Cubs is the team the NL Central number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · NL Central",
+      "score": "Boston Red Sox 2, Chicago Cubs 0",
       "why": "Chicago Cubs is the team the NL Central number is measured against, so their loss trims it by one.",
       "impacts": [
         {
