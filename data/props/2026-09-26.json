@@ -1,9 +1,9 @@
 {
   "date": "2026-09-26",
   "status": "ok",
-  "oddsStatus": "too-early (9.1h to first pitch)",
+  "oddsStatus": "too-early (7.1h to first pitch)",
   "books": 0,
-  "hoursToFirstPitch": 9.14,
+  "hoursToFirstPitch": 7.15,
   "game": {
     "gamePk": 823733,
     "opponent": "St. Louis Cardinals",
@@ -85,12 +85,12 @@
         "weight": 0.088
       }
     },
-    "updatedAt": "2026-09-26T14:01:50.590Z"
+    "updatedAt": "2026-09-26T16:01:15.669Z"
   },
   "battersResolved": 0,
   "battersSkipped": [],
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-09-26T14:01:50.757Z",
+  "generatedAt": "2026-09-26T16:01:16.009Z",
   "source": "live"
 }
