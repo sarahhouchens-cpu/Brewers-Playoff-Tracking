@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-26",
+  "status": "ok",
+  "oddsStatus": "too-early (9.1h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 9.14,
+  "game": {
+    "gamePk": 823733,
+    "opponent": "St. Louis Cardinals",
+    "isHome": true,
+    "startTime": "2026-09-26T23:10:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 687273,
+    "name": "Quinn Mathews",
+    "hand": "R",
+    "opponentAvg": 0.257
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0576131687242798,
+    "bullpenContact": 1.131687242798354,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 0.872
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 94.49,
+      "actual": 76,
+      "raw": 0.8043,
+      "factor": 0.872,
+      "weight": 0.654
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 40.14,
+        "actual": 41,
+        "raw": 1.0215,
+        "factor": 1.0096,
+        "weight": 0.445
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 22.8,
+        "actual": 15,
+        "raw": 0.6579,
+        "factor": 0.8929,
+        "weight": 0.313
+      },
+      "hits_2": {
+        "n": 62,
+        "expected": 14.51,
+        "actual": 9,
+        "raw": 0.6202,
+        "factor": 0.9146,
+        "weight": 0.225
+      },
+      "total_bases_3": {
+        "n": 58,
+        "expected": 12.2,
+        "actual": 8,
+        "raw": 0.656,
+        "factor": 0.9325,
+        "weight": 0.196
+      },
+      "home_run_1": {
+        "n": 34,
+        "expected": 4.85,
+        "actual": 3,
+        "raw": 0.6188,
+        "factor": 0.9663,
+        "weight": 0.088
+      }
+    },
+    "updatedAt": "2026-09-26T14:01:50.590Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-26T14:01:50.757Z",
+  "source": "live"
+}
