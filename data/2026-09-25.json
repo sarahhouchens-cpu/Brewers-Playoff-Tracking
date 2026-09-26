@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-26T04:17:10.240Z",
+  "generatedAt": "2026-09-26T04:42:45.081Z",
   "slateDate": "2026-09-25",
   "team": {
     "id": 158,
@@ -27,11 +27,11 @@
         "id": 109,
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
-        "wins": 85,
+        "wins": 86,
         "losses": 74
       },
       "magic": 0,
-      "elimination": 19,
+      "elimination": 18,
       "clinched": true,
       "clinchSource": "mlb"
     },
@@ -188,6 +188,13 @@
           "delta": -1
         }
       ]
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · Playoff berth",
+      "score": "Arizona Diamondbacks 11, San Diego Padres 4",
+      "why": "Arizona Diamondbacks holds the mark for Playoff berth. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     },
     {
       "kind": "chaser-win",
