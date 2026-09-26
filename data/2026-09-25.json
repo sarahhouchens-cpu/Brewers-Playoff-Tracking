@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-26T03:56:07.258Z",
+  "generatedAt": "2026-09-26T04:16:12.289Z",
   "slateDate": "2026-09-25",
   "team": {
     "id": 158,
@@ -73,11 +73,11 @@
         "id": 119,
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
-        "wins": 97,
+        "wins": 98,
         "losses": 62
       },
       "magic": 0,
-      "elimination": 7,
+      "elimination": 6,
       "clinched": true
     },
     {
@@ -95,11 +95,11 @@
         "id": 119,
         "name": "Los Angeles Dodgers",
         "abbrev": "LAD",
-        "wins": 97,
+        "wins": 98,
         "losses": 62
       },
       "magic": 0,
-      "elimination": 7,
+      "elimination": 6,
       "clinched": true
     }
   ],
@@ -188,6 +188,13 @@
           "delta": -1
         }
       ]
+    },
+    {
+      "kind": "chaser-win",
+      "tag": "Chaser · No. 1 seed, NL",
+      "score": "Los Angeles Dodgers 2, San Francisco Giants 0",
+      "why": "Los Angeles Dodgers holds the mark for No. 1 seed, NL and Best record, MLB. A win for them doesn't raise the number — it just removes a chance for it to fall.",
+      "impacts": []
     }
   ]
 }
