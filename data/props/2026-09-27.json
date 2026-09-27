@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-27",
+  "status": "ok",
+  "oddsStatus": "too-early (5.1h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 5.14,
+  "game": {
+    "gamePk": 823731,
+    "opponent": "St. Louis Cardinals",
+    "isHome": true,
+    "startTime": "2026-09-27T19:10:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 669467,
+    "name": "Andre Pallante",
+    "hand": "R",
+    "opponentAvg": 0.246
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0123456790123457,
+    "bullpenContact": 1.1296296296296298,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 0.8972
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 91.55,
+      "actual": 77,
+      "raw": 0.8411,
+      "factor": 0.8972,
+      "weight": 0.647
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 39.3,
+        "actual": 41,
+        "raw": 1.0434,
+        "factor": 1.0191,
+        "weight": 0.44
+      },
+      "hits_2": {
+        "n": 62,
+        "expected": 13.66,
+        "actual": 8,
+        "raw": 0.5857,
+        "factor": 0.9111,
+        "weight": 0.215
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 21.98,
+        "actual": 17,
+        "raw": 0.7735,
+        "factor": 0.9308,
+        "weight": 0.305
+      },
+      "total_bases_3": {
+        "n": 57,
+        "expected": 11.55,
+        "actual": 8,
+        "raw": 0.6926,
+        "factor": 0.9423,
+        "weight": 0.188
+      },
+      "home_run_1": {
+        "n": 35,
+        "expected": 5.06,
+        "actual": 3,
+        "raw": 0.5923,
+        "factor": 0.9625,
+        "weight": 0.092
+      }
+    },
+    "updatedAt": "2026-09-27T14:01:46.030Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-09-27T14:01:47.204Z",
+  "source": "live"
+}
