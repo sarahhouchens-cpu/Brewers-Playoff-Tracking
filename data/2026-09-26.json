@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-09-27T03:44:02.242Z",
+  "generatedAt": "2026-09-27T03:58:41.934Z",
   "slateDate": "2026-09-26",
   "team": {
     "id": 158,
@@ -28,7 +28,7 @@
         "name": "Arizona Diamondbacks",
         "abbrev": "AZ",
         "wins": 86,
-        "losses": 74
+        "losses": 75
       },
       "magic": 0,
       "elimination": 18,
@@ -159,6 +159,19 @@
         {
           "key": "bestRecord",
           "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · Playoff berth",
+      "score": "San Diego Padres 10, Arizona Diamondbacks 7",
+      "why": "Arizona Diamondbacks is the team the Playoff berth number is measured against, so their loss trims it by one.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
           "delta": -1
         }
       ]
