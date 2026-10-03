@@ -1,9 +1,97 @@
 {
-  "date": "2026-10-02",
-  "status": "no-game",
+  "date": "2026-10-03",
+  "status": "ok",
+  "oddsStatus": "too-early (6.0h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 6.03,
+  "game": {
+    "gamePk": 849830,
+    "opponent": "San Diego Padres",
+    "isHome": true,
+    "startTime": "2026-10-04T00:30:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 592662,
+    "name": "Robbie Ray",
+    "hand": "R",
+    "opponentAvg": 0.231
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 0.9506172839506174,
+    "bullpenContact": 0.8950617283950616,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 0.9726
+  },
+  "calibration": {
+    "overall": {
+      "n": 280,
+      "expected": 89.83,
+      "actual": 86,
+      "raw": 0.9574,
+      "factor": 0.9726,
+      "weight": 0.642
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 63,
+        "expected": 38.73,
+        "actual": 46,
+        "raw": 1.1876,
+        "factor": 1.0819,
+        "weight": 0.437
+      },
+      "total_bases_2": {
+        "n": 63,
+        "expected": 21.56,
+        "actual": 18,
+        "raw": 0.8347,
+        "factor": 0.9502,
+        "weight": 0.301
+      },
+      "hits_2": {
+        "n": 63,
+        "expected": 13.21,
+        "actual": 9,
+        "raw": 0.6812,
+        "factor": 0.9334,
+        "weight": 0.209
+      },
+      "total_bases_3": {
+        "n": 56,
+        "expected": 11.22,
+        "actual": 9,
+        "raw": 0.8024,
+        "factor": 0.9638,
+        "weight": 0.183
+      },
+      "home_run_1": {
+        "n": 35,
+        "expected": 5.1,
+        "actual": 4,
+        "raw": 0.7844,
+        "factor": 0.98,
+        "weight": 0.093
+      }
+    },
+    "updatedAt": "2026-10-03T18:28:20.470Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-10-03T01:07:14.691Z",
+  "generatedAt": "2026-10-03T18:28:20.660Z",
   "source": "live",
   "history": [
     {
