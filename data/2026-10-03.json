@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-10-04T02:59:22.482Z",
+  "generatedAt": "2026-10-04T05:11:53.114Z",
   "slateDate": "2026-10-03",
   "team": {
     "id": 158,
@@ -135,6 +135,34 @@
     }
   ],
   "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 3, San Diego Padres 2",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
     {
       "kind": "chaser-win",
       "tag": "Chaser · No. 1 seed, NL",
