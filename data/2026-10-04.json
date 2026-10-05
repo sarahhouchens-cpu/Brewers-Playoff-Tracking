@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-10-05T02:17:48.002Z",
+  "generatedAt": "2026-10-05T06:47:08.784Z",
   "slateDate": "2026-10-04",
   "team": {
     "id": 158,
@@ -151,6 +151,24 @@
           "label": "NL Central",
           "delta": -1
         },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    },
+    {
+      "kind": "chaser-loss",
+      "tag": "Chaser · No. 1 seed, NL",
+      "score": "Atlanta Braves 3, Los Angeles Dodgers 2",
+      "why": "Los Angeles Dodgers is the team the No. 1 seed, NL and Best record, MLB number is measured against, so their loss trims it by one.",
+      "impacts": [
         {
           "key": "leagueSeed",
           "label": "No. 1 seed, NL",
