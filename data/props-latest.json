@@ -1,9 +1,97 @@
 {
-  "date": "2026-10-05",
-  "status": "no-game",
+  "date": "2026-10-06",
+  "status": "ok",
+  "oddsStatus": "too-early (18.4h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 18.42,
+  "game": {
+    "gamePk": 849826,
+    "opponent": "San Diego Padres",
+    "isHome": false,
+    "startTime": "2026-10-07T01:30:00Z",
+    "venue": "Petco Park"
+  },
+  "starter": {
+    "id": 601713,
+    "name": "Nick Pivetta",
+    "hand": "R",
+    "opponentAvg": 0.206
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "Petco Park",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 0.8477366255144033,
+    "bullpenContact": 0.8950617283950616,
+    "power": 0.92,
+    "park": 0.92,
+    "calibration": 1.0357
+  },
+  "calibration": {
+    "overall": {
+      "n": 200,
+      "expected": 64.9,
+      "actual": 69,
+      "raw": 1.0632,
+      "factor": 1.0357,
+      "weight": 0.565
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 45,
+        "expected": 27.87,
+        "actual": 35,
+        "raw": 1.256,
+        "factor": 1.0916,
+        "weight": 0.358
+      },
+      "hits_2": {
+        "n": 45,
+        "expected": 9.6,
+        "actual": 8,
+        "raw": 0.8329,
+        "factor": 0.9731,
+        "weight": 0.161
+      },
+      "total_bases_2": {
+        "n": 45,
+        "expected": 15.57,
+        "actual": 15,
+        "raw": 0.9632,
+        "factor": 0.9913,
+        "weight": 0.237
+      },
+      "total_bases_3": {
+        "n": 40,
+        "expected": 8.11,
+        "actual": 8,
+        "raw": 0.9868,
+        "factor": 0.9982,
+        "weight": 0.14
+      },
+      "home_run_1": {
+        "n": 25,
+        "expected": 3.74,
+        "actual": 3,
+        "raw": 0.8012,
+        "factor": 0.9861,
+        "weight": 0.07
+      }
+    },
+    "updatedAt": "2026-10-06T07:04:46.158Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-10-05T23:10:52.291Z",
+  "generatedAt": "2026-10-06T07:04:46.958Z",
   "source": "live",
   "history": [
     {
