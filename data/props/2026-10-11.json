@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-11",
+  "status": "ok",
+  "oddsStatus": "too-early (17.3h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 17.27,
+  "game": {
+    "gamePk": 849809,
+    "opponent": "Los Angeles Dodgers",
+    "isHome": true,
+    "startTime": "2026-10-12T00:00:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 669373,
+    "name": "Tarik Skubal",
+    "hand": "R",
+    "opponentAvg": 0.217
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 0.8930041152263375,
+    "bullpenContact": 0.851508916323731,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 1.0454
+  },
+  "calibration": {
+    "overall": {
+      "n": 120,
+      "expected": 39.92,
+      "actual": 44,
+      "raw": 1.1023,
+      "factor": 1.0454,
+      "weight": 0.444
+    },
+    "byMarket": {
+      "hits_1": {
+        "n": 27,
+        "expected": 16.98,
+        "actual": 22,
+        "raw": 1.2956,
+        "factor": 1.0749,
+        "weight": 0.254
+      },
+      "total_bases_2": {
+        "n": 27,
+        "expected": 9.59,
+        "actual": 10,
+        "raw": 1.0429,
+        "factor": 1.0069,
+        "weight": 0.161
+      },
+      "hits_2": {
+        "n": 27,
+        "expected": 5.99,
+        "actual": 5,
+        "raw": 0.8347,
+        "factor": 0.9823,
+        "weight": 0.107
+      },
+      "total_bases_3": {
+        "n": 24,
+        "expected": 5,
+        "actual": 5,
+        "raw": 1.0002,
+        "factor": 1,
+        "weight": 0.091
+      },
+      "home_run_1": {
+        "n": 15,
+        "expected": 2.36,
+        "actual": 2,
+        "raw": 0.8474,
+        "factor": 0.9931,
+        "weight": 0.045
+      }
+    },
+    "updatedAt": "2026-10-11T06:43:41.345Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-10-11T06:43:42.428Z",
+  "source": "live"
+}
