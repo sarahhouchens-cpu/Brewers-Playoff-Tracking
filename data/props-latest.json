@@ -1,9 +1,8 @@
 {
   "date": "2026-10-12",
-  "status": "ok",
-  "oddsStatus": "too-early (14.1h to first pitch)",
-  "books": 0,
-  "hoursToFirstPitch": 14.15,
+  "status": "game-started",
+  "gameState": "In Progress",
+  "startTime": "2026-10-12T21:00:00Z",
   "game": {
     "gamePk": 849812,
     "opponent": "Los Angeles Dodgers",
@@ -11,87 +10,9 @@
     "startTime": "2026-10-12T21:00:00Z",
     "venue": "American Family Field"
   },
-  "starter": {
-    "id": 808967,
-    "name": "Yoshinobu Yamamoto",
-    "hand": "R",
-    "opponentAvg": 0.182
-  },
-  "lineupSource": "none",
-  "conditions": {
-    "venue": "American Family Field",
-    "roofed": true,
-    "roofClosed": false,
-    "temperatureF": 72,
-    "windMph": 0,
-    "windDirection": "none",
-    "description": "Conditions unavailable"
-  },
-  "factors": {
-    "starterContact": 0.75,
-    "bullpenContact": 0.8713991769547325,
-    "power": 1.05,
-    "park": 1.05,
-    "calibration": 1.0269
-  },
-  "calibration": {
-    "overall": {
-      "n": 80,
-      "expected": 26.93,
-      "actual": 29,
-      "raw": 1.0769,
-      "factor": 1.0269,
-      "weight": 0.35
-    },
-    "byMarket": {
-      "hits_1": {
-        "n": 18,
-        "expected": 11.39,
-        "actual": 15,
-        "raw": 1.3171,
-        "factor": 1.0588,
-        "weight": 0.186
-      },
-      "total_bases_2": {
-        "n": 18,
-        "expected": 6.47,
-        "actual": 7,
-        "raw": 1.082,
-        "factor": 1.0094,
-        "weight": 0.115
-      },
-      "hits_2": {
-        "n": 18,
-        "expected": 4.07,
-        "actual": 2,
-        "raw": 0.4918,
-        "factor": 0.9618,
-        "weight": 0.075
-      },
-      "total_bases_3": {
-        "n": 16,
-        "expected": 3.37,
-        "actual": 3,
-        "raw": 0.8908,
-        "factor": 0.9931,
-        "weight": 0.063
-      },
-      "home_run_1": {
-        "n": 10,
-        "expected": 1.64,
-        "actual": 2,
-        "raw": 1.2219,
-        "factor": 1.007,
-        "weight": 0.032
-      }
-    },
-    "updatedAt": "2026-10-12T06:51:06.056Z"
-  },
-  "battersResolved": 0,
-  "battersSkipped": [],
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-10-12T06:51:07.772Z",
+  "generatedAt": "2026-10-12T21:54:03.587Z",
   "source": "live",
   "history": [
     {
