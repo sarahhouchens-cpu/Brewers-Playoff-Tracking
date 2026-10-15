@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-15",
+  "status": "ok",
+  "oddsStatus": "too-early (18.5h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 18.53,
+  "game": {
+    "gamePk": 849810,
+    "opponent": "Los Angeles Dodgers",
+    "isHome": false,
+    "startTime": "2026-10-16T00:00:00Z",
+    "venue": "UNIQLO Field at Dodger Stadium"
+  },
+  "starter": {
+    "id": 607192,
+    "name": "Tyler Glasnow",
+    "hand": "R",
+    "opponentAvg": 0.175
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "UNIQLO Field at Dodger Stadium",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 0.75,
+    "bullpenContact": 0.8713991769547325,
+    "power": 1,
+    "park": 1,
+    "calibration": 1
+  },
+  "calibration": {
+    "overall": {
+      "n": 0,
+      "expected": 0,
+      "actual": 0,
+      "raw": 1,
+      "factor": 1,
+      "weight": 0
+    },
+    "byMarket": {},
+    "updatedAt": "2026-10-15T05:28:06.813Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-10-15T05:28:07.118Z",
+  "source": "live"
+}
