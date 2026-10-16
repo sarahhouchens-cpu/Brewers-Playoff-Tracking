@@ -733,7 +733,9 @@
       "expectedValue": -1.422855835885942,
       "rawExpectedValue": -0.40619071551885,
       "band": "short",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     },
     {
       "legs": [
@@ -797,7 +799,9 @@
       "expectedValue": -1.4429936696413037,
       "rawExpectedValue": -0.4320519510269891,
       "band": "short",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     },
     {
       "legs": [
@@ -895,7 +899,9 @@
       "expectedValue": -2.0789772081077333,
       "rawExpectedValue": -0.5680402361911243,
       "band": "short",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     },
     {
       "legs": [
@@ -959,7 +965,9 @@
       "expectedValue": -3.8003964373813277,
       "rawExpectedValue": -3.4594554396386332,
       "band": "medium",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     },
     {
       "legs": [
@@ -1023,7 +1031,9 @@
       "expectedValue": -4.068560751128644,
       "rawExpectedValue": -3.8038351061383304,
       "band": "medium",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     },
     {
       "legs": [
@@ -1087,7 +1097,9 @@
       "expectedValue": -4.1417285518153575,
       "rawExpectedValue": -3.8977980292689205,
       "band": "medium",
-      "stake": 5
+      "stake": 5,
+      "hit": false,
+      "graded": false
     }
   ],
   "generatedAt": "2026-10-15T22:44:05.890Z",
