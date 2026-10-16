@@ -1,7 +1,7 @@
 {
   "source": "live",
-  "generatedAt": "2026-10-16T01:07:41.700Z",
-  "slateDate": "2026-10-14",
+  "generatedAt": "2026-10-16T05:53:50.279Z",
+  "slateDate": "2026-10-15",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
@@ -138,7 +138,7 @@
     {
       "kind": "brewers-win",
       "tag": "Brewers · Final",
-      "score": "Milwaukee Brewers 6, Los Angeles Dodgers 2",
+      "score": "Milwaukee Brewers 6, Los Angeles Dodgers 4",
       "why": "Beating Los Angeles Dodgers head-to-head counts twice for the No. 1 seed, NL and Best record, MLB number — a Brewers win and a chaser loss in the same game.",
       "impacts": [
         {
