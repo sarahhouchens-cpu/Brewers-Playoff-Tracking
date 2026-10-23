@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-23",
+  "status": "ok",
+  "oddsStatus": "too-early (18.3h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 18.35,
+  "game": {
+    "gamePk": 849805,
+    "opponent": "Tampa Bay Rays",
+    "isHome": true,
+    "startTime": "2026-10-24T00:00:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 607259,
+    "name": "Nick Martinez",
+    "hand": "R",
+    "opponentAvg": 0.249
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0246913580246915,
+    "bullpenContact": 0.8518518518518519,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 1
+  },
+  "calibration": {
+    "overall": {
+      "n": 0,
+      "expected": 0,
+      "actual": 0,
+      "raw": 1,
+      "factor": 1,
+      "weight": 0
+    },
+    "byMarket": {},
+    "updatedAt": "2026-10-23T05:39:13.783Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-10-23T05:39:14.922Z",
+  "source": "live"
+}
