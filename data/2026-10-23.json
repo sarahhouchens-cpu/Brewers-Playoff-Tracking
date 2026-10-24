@@ -1,6 +1,6 @@
 {
   "source": "live",
-  "generatedAt": "2026-10-24T01:27:36.056Z",
+  "generatedAt": "2026-10-24T04:15:24.456Z",
   "slateDate": "2026-10-23",
   "team": {
     "id": 158,
@@ -134,5 +134,34 @@
       "previousMagic": 0
     }
   ],
-  "feed": []
+  "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 3, Tampa Bay Rays 2",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    }
+  ]
 }
