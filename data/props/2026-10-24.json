@@ -1,9 +1,9 @@
 {
   "date": "2026-10-24",
   "status": "ok",
-  "oddsStatus": "too-early (6.9h to first pitch)",
+  "oddsStatus": "too-early (5.6h to first pitch)",
   "books": 0,
-  "hoursToFirstPitch": 6.94,
+  "hoursToFirstPitch": 5.6,
   "game": {
     "gamePk": 849802,
     "opponent": "Tampa Bay Rays",
@@ -44,12 +44,12 @@
       "weight": 0
     },
     "byMarket": {},
-    "updatedAt": "2026-10-24T17:03:35.842Z"
+    "updatedAt": "2026-10-24T18:24:12.853Z"
   },
   "battersResolved": 0,
   "battersSkipped": [],
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-10-24T17:03:35.990Z",
+  "generatedAt": "2026-10-24T18:24:13.875Z",
   "source": "live"
 }
