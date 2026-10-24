@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-24",
+  "status": "ok",
+  "oddsStatus": "too-early (18.7h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 18.71,
+  "game": {
+    "gamePk": 849802,
+    "opponent": "Tampa Bay Rays",
+    "isHome": true,
+    "startTime": "2026-10-25T00:00:00Z",
+    "venue": "American Family Field"
+  },
+  "starter": {
+    "id": 656876,
+    "name": "Drew Rasmussen",
+    "hand": "R",
+    "opponentAvg": 0.199
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "American Family Field",
+    "roofed": true,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 0.8189300411522634,
+    "bullpenContact": 0.8971193415637859,
+    "power": 1.05,
+    "park": 1.05,
+    "calibration": 1
+  },
+  "calibration": {
+    "overall": {
+      "n": 0,
+      "expected": 0,
+      "actual": 0,
+      "raw": 1,
+      "factor": 1,
+      "weight": 0
+    },
+    "byMarket": {},
+    "updatedAt": "2026-10-24T05:17:20.375Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-10-24T05:17:20.502Z",
+  "source": "live"
+}
