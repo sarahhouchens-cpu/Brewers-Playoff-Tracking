@@ -3,7 +3,7 @@
   "status": "ok",
   "oddsStatus": "ok",
   "books": 6,
-  "hoursToFirstPitch": 1.95,
+  "hoursToFirstPitch": 0.51,
   "game": {
     "gamePk": 849802,
     "opponent": "Tampa Bay Rays",
@@ -44,7 +44,7 @@
       "weight": 0
     },
     "byMarket": {},
-    "updatedAt": "2026-10-24T22:02:43.414Z"
+    "updatedAt": "2026-10-24T23:29:18.349Z"
   },
   "battersResolved": 9,
   "battersSkipped": [],
@@ -64,6 +64,22 @@
       "impliedProbability": 0.3278688524590164,
       "fairProbability": 0.30794165316045385,
       "edge": 9.43040741253347
+    },
+    {
+      "playerId": 668930,
+      "playerName": "Brice Turang",
+      "lineupSlot": 5,
+      "market": "hits_1",
+      "marketLabel": "1+ hits",
+      "modelProbability": 0.6363501190398831,
+      "modelFairOdds": -175,
+      "gamePk": 849802,
+      "americanOdds": -148,
+      "oppositeAmericanOdds": 112,
+      "book": "DraftKings",
+      "impliedProbability": 0.5967741935483871,
+      "fairProbability": 0.5585303332383936,
+      "edge": 7.781978580148952
     },
     {
       "playerId": 806198,
@@ -282,12 +298,12 @@
       "modelProbability": 0.5434298518049275,
       "modelFairOdds": -119,
       "gamePk": 849802,
-      "americanOdds": -154,
-      "oppositeAmericanOdds": 119,
-      "book": "BetOnline.ag",
-      "impliedProbability": 0.6062992125984252,
-      "fairProbability": 0.5704089571423739,
-      "edge": -2.6979105337446407
+      "americanOdds": -155,
+      "oppositeAmericanOdds": 117,
+      "book": "DraftKings",
+      "impliedProbability": 0.607843137254902,
+      "fairProbability": 0.5687832924663905,
+      "edge": -2.5353440661462945
     },
     {
       "playerId": 806198,
@@ -314,28 +330,12 @@
       "modelProbability": 0.47216830139443355,
       "modelFairOdds": 112,
       "gamePk": 849802,
-      "americanOdds": -145,
-      "oppositeAmericanOdds": 105,
-      "book": "BetMGM",
-      "impliedProbability": 0.5918367346938775,
-      "fairProbability": 0.5481788842784694,
-      "edge": -7.601058288403584
-    },
-    {
-      "playerId": 668930,
-      "playerName": "Brice Turang",
-      "lineupSlot": 5,
-      "market": "hits_1",
-      "marketLabel": "1+ hits",
-      "modelProbability": 0.6363501190398831,
-      "modelFairOdds": -175,
-      "gamePk": 849802,
-      "americanOdds": -150,
-      "oppositeAmericanOdds": null,
-      "book": "BetRivers",
-      "impliedProbability": 0.6000000000000001,
-      "fairProbability": null,
-      "edge": null
+      "americanOdds": -139,
+      "oppositeAmericanOdds": 107,
+      "book": "BetOnline.ag",
+      "impliedProbability": 0.5815899581589958,
+      "fairProbability": 0.5462570956657111,
+      "edge": -7.408879427127757
     },
     {
       "playerId": 694192,
@@ -502,10 +502,10 @@
       "modelProbability": 0.14763889241256423,
       "modelFairOdds": 577,
       "gamePk": 849802,
-      "americanOdds": 475,
+      "americanOdds": 460,
       "oppositeAmericanOdds": null,
       "book": "BetRivers",
-      "impliedProbability": 0.17391304347826086,
+      "impliedProbability": 0.17857142857142858,
       "fairProbability": null,
       "edge": null
     },
@@ -518,10 +518,10 @@
       "modelProbability": 0.14342381341188815,
       "modelFairOdds": 597,
       "gamePk": 849802,
-      "americanOdds": 525,
+      "americanOdds": 510,
       "oppositeAmericanOdds": null,
       "book": "BetRivers",
-      "impliedProbability": 0.16,
+      "impliedProbability": 0.1639344262295082,
       "fairProbability": null,
       "edge": null
     },
@@ -954,6 +954,23 @@
     {
       "legs": [
         {
+          "playerId": 668930,
+          "playerName": "Brice Turang",
+          "lineupSlot": 5,
+          "market": "hits_1",
+          "marketLabel": "1+ hits",
+          "modelProbability": 0.6363501190398831,
+          "modelFairOdds": -175,
+          "gamePk": 849802,
+          "americanOdds": -148,
+          "oppositeAmericanOdds": 112,
+          "book": "DraftKings",
+          "impliedProbability": 0.5967741935483871,
+          "fairProbability": 0.5585303332383936,
+          "edge": 7.781978580148952,
+          "description": "Brice Turang 1+ hits"
+        },
+        {
           "playerId": 669003,
           "playerName": "Garrett Mitchell",
           "lineupSlot": 6,
@@ -969,6 +986,53 @@
           "fairProbability": 0.5246062992125985,
           "edge": 5.31804861663413,
           "description": "Garrett Mitchell 1+ hits"
+        },
+        {
+          "playerId": 592885,
+          "playerName": "Christian Yelich",
+          "lineupSlot": 3,
+          "market": "home_run_1",
+          "marketLabel": "to hit a home run",
+          "modelProbability": 0.10042328767671571,
+          "modelFairOdds": 896,
+          "gamePk": 849802,
+          "americanOdds": 850,
+          "oppositeAmericanOdds": null,
+          "book": "BetRivers",
+          "impliedProbability": 0.10526315789473684,
+          "fairProbability": null,
+          "edge": null,
+          "description": "Christian Yelich to hit a home run"
+        }
+      ],
+      "decimal": 28.164241164241165,
+      "payout": 140.82120582120584,
+      "profit": 135.82120582120584,
+      "probability": 0.034028330002078416,
+      "adjustedProbability": 0.02649745223265844,
+      "expectedValue": -1.268596825407236,
+      "rawExpectedValue": -0.20808953702540212,
+      "band": "short",
+      "stake": 5
+    },
+    {
+      "legs": [
+        {
+          "playerId": 668930,
+          "playerName": "Brice Turang",
+          "lineupSlot": 5,
+          "market": "hits_1",
+          "marketLabel": "1+ hits",
+          "modelProbability": 0.6363501190398831,
+          "modelFairOdds": -175,
+          "gamePk": 849802,
+          "americanOdds": -148,
+          "oppositeAmericanOdds": 112,
+          "book": "DraftKings",
+          "impliedProbability": 0.5967741935483871,
+          "fairProbability": 0.5585303332383936,
+          "edge": 7.781978580148952,
+          "description": "Brice Turang 1+ hits"
         },
         {
           "playerId": 666152,
@@ -1005,82 +1069,18 @@
           "description": "Christian Yelich to hit a home run"
         }
       ],
-      "decimal": 32.815018315018314,
-      "payout": 164.07509157509156,
-      "profit": 159.07509157509156,
-      "probability": 0.02778852565012665,
-      "adjustedProbability": 0.02163859146144582,
-      "expectedValue": -1.4496461244072827,
-      "rawExpectedValue": -0.4405951092186893,
-      "band": "short",
-      "stake": 5
-    },
-    {
-      "legs": [
-        {
-          "playerId": 669003,
-          "playerName": "Garrett Mitchell",
-          "lineupSlot": 6,
-          "market": "hits_1",
-          "marketLabel": "1+ hits",
-          "modelProbability": 0.5777867853789398,
-          "modelFairOdds": -137,
-          "gamePk": 849802,
-          "americanOdds": -130,
-          "oppositeAmericanOdds": -105,
-          "book": "BetMGM",
-          "impliedProbability": 0.5652173913043479,
-          "fairProbability": 0.5246062992125985,
-          "edge": 5.31804861663413,
-          "description": "Garrett Mitchell 1+ hits"
-        },
-        {
-          "playerId": 641343,
-          "playerName": "Jake Bauers",
-          "lineupSlot": 2,
-          "market": "hits_1",
-          "marketLabel": "1+ hits",
-          "modelProbability": 0.5807051155598482,
-          "modelFairOdds": -138,
-          "gamePk": 849802,
-          "americanOdds": -135,
-          "oppositeAmericanOdds": 100,
-          "book": "BetMGM",
-          "impliedProbability": 0.574468085106383,
-          "fairProbability": 0.5346534653465347,
-          "edge": 4.605165021331348,
-          "description": "Jake Bauers 1+ hits"
-        },
-        {
-          "playerId": 592885,
-          "playerName": "Christian Yelich",
-          "lineupSlot": 3,
-          "market": "home_run_1",
-          "marketLabel": "to hit a home run",
-          "modelProbability": 0.10042328767671571,
-          "modelFairOdds": 896,
-          "gamePk": 849802,
-          "americanOdds": 850,
-          "oppositeAmericanOdds": null,
-          "book": "BetRivers",
-          "impliedProbability": 0.10526315789473684,
-          "fairProbability": null,
-          "edge": null,
-          "description": "Christian Yelich to hit a home run"
-        }
-      ],
-      "decimal": 29.257834757834758,
-      "payout": 146.2891737891738,
-      "profit": 141.2891737891738,
-      "probability": 0.031052756517088213,
-      "adjustedProbability": 0.02418040886677839,
-      "expectedValue": -1.4626679649945773,
-      "rawExpectedValue": -0.45731790523878324,
+      "decimal": 31.079794079794077,
+      "payout": 155.3989703989704,
+      "profit": 150.3989703989704,
+      "probability": 0.030605116027019277,
+      "adjustedProbability": 0.023831836588847587,
+      "expectedValue": -1.2965571313765745,
+      "rawExpectedValue": -0.24399648046017663,
       "band": "short",
       "stake": 5
     }
   ],
-  "generatedAt": "2026-10-24T22:02:43.906Z",
+  "generatedAt": "2026-10-24T23:29:24.828Z",
   "source": "live",
   "history": [
     {
