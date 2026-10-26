@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-26",
+  "status": "ok",
+  "oddsStatus": "too-early (18.3h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 18.31,
+  "game": {
+    "gamePk": 849804,
+    "opponent": "Tampa Bay Rays",
+    "isHome": false,
+    "startTime": "2026-10-27T00:00:00Z",
+    "venue": "Tropicana Field"
+  },
+  "starter": {
+    "id": 642547,
+    "name": "Freddy Peralta",
+    "hand": "R",
+    "opponentAvg": 0.247
+  },
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "Tropicana Field",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1.0164609053497942,
+    "bullpenContact": 0.8971193415637859,
+    "power": 1,
+    "park": 1,
+    "calibration": 1
+  },
+  "calibration": {
+    "overall": {
+      "n": 0,
+      "expected": 0,
+      "actual": 0,
+      "raw": 1,
+      "factor": 1,
+      "weight": 0
+    },
+    "byMarket": {},
+    "updatedAt": "2026-10-26T05:41:35.950Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-10-26T05:41:36.652Z",
+  "source": "live"
+}
