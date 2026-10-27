@@ -1,7 +1,7 @@
 {
   "source": "live",
-  "generatedAt": "2026-10-27T01:56:41.979Z",
-  "slateDate": "2026-10-24",
+  "generatedAt": "2026-10-27T04:41:49.571Z",
+  "slateDate": "2026-10-26",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
@@ -138,7 +138,7 @@
     {
       "kind": "brewers-win",
       "tag": "Brewers · Final",
-      "score": "Milwaukee Brewers 5, Tampa Bay Rays 4",
+      "score": "Milwaukee Brewers 10, Tampa Bay Rays 1",
       "why": "A win drops every magic number by one — the only result that moves all four at once.",
       "impacts": [
         {

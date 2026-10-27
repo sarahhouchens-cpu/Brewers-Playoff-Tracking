@@ -1,0 +1,167 @@
+{
+  "source": "live",
+  "generatedAt": "2026-10-27T04:41:49.571Z",
+  "slateDate": "2026-10-26",
+  "team": {
+    "id": 158,
+    "name": "Milwaukee Brewers",
+    "abbrev": "MIL",
+    "wins": 103,
+    "losses": 59
+  },
+  "gamesPlayed": 162,
+  "gamesRemaining": 0,
+  "races": [
+    {
+      "key": "berth",
+      "label": "Playoff berth",
+      "headline": "to clinch a playoff berth",
+      "chaserNote": "first team out of the playoff field",
+      "series": {
+        "wins": 4,
+        "losses": 2,
+        "remaining": 0
+      },
+      "tiebreaker": true,
+      "chaser": {
+        "id": 109,
+        "name": "Arizona Diamondbacks",
+        "abbrev": "AZ",
+        "wins": 86,
+        "losses": 76
+      },
+      "magic": 0,
+      "elimination": 18,
+      "clinched": true,
+      "clinchSource": "mlb"
+    },
+    {
+      "key": "division",
+      "label": "NL Central",
+      "headline": "to win the NL Central",
+      "chaserNote": "closest pursuer in the division",
+      "series": {
+        "wins": 9,
+        "losses": 4,
+        "remaining": 0
+      },
+      "tiebreaker": true,
+      "chaser": {
+        "id": 112,
+        "name": "Chicago Cubs",
+        "abbrev": "CHC",
+        "wins": 89,
+        "losses": 73
+      },
+      "magic": 0,
+      "elimination": 15,
+      "clinched": true,
+      "clinchSource": "mlb"
+    },
+    {
+      "key": "leagueSeed",
+      "label": "No. 1 seed, NL",
+      "headline": "to lock up the No. 1 seed",
+      "chaserNote": "best record among other NL teams",
+      "series": {
+        "wins": 4,
+        "losses": 3,
+        "remaining": 0
+      },
+      "tiebreaker": true,
+      "chaser": {
+        "id": 119,
+        "name": "Los Angeles Dodgers",
+        "abbrev": "LAD",
+        "wins": 100,
+        "losses": 62
+      },
+      "magic": 0,
+      "elimination": 4,
+      "clinched": true
+    },
+    {
+      "key": "bestRecord",
+      "label": "Best record, MLB",
+      "headline": "to secure World Series home field",
+      "chaserNote": "best record anywhere in baseball",
+      "series": {
+        "wins": 4,
+        "losses": 3,
+        "remaining": 0
+      },
+      "tiebreaker": true,
+      "chaser": {
+        "id": 119,
+        "name": "Los Angeles Dodgers",
+        "abbrev": "LAD",
+        "wins": 100,
+        "losses": 62
+      },
+      "magic": 0,
+      "elimination": 4,
+      "clinched": true
+    }
+  ],
+  "headline": "bestRecord",
+  "deltas": [
+    {
+      "key": "berth",
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 0
+    },
+    {
+      "key": "division",
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 0
+    },
+    {
+      "key": "leagueSeed",
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 0
+    },
+    {
+      "key": "bestRecord",
+      "delta": 0,
+      "chaserChanged": false,
+      "previousChaser": null,
+      "previousMagic": 0
+    }
+  ],
+  "feed": [
+    {
+      "kind": "brewers-win",
+      "tag": "Brewers · Final",
+      "score": "Milwaukee Brewers 10, Tampa Bay Rays 1",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
+    }
+  ]
+}
