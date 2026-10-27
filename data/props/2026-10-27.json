@@ -3,7 +3,7 @@
   "status": "ok",
   "oddsStatus": "ok",
   "books": 6,
-  "hoursToFirstPitch": 2.04,
+  "hoursToFirstPitch": 0.7,
   "game": {
     "gamePk": 849803,
     "opponent": "Tampa Bay Rays",
@@ -44,7 +44,7 @@
       "weight": 0
     },
     "byMarket": {},
-    "updatedAt": "2026-10-27T21:57:50.882Z"
+    "updatedAt": "2026-10-27T23:17:46.017Z"
   },
   "battersResolved": 9,
   "battersSkipped": [],
@@ -58,12 +58,12 @@
       "modelProbability": 0.6457166253197824,
       "modelFairOdds": -182,
       "gamePk": 849803,
-      "americanOdds": -149,
-      "oppositeAmericanOdds": 115,
+      "americanOdds": -141,
+      "oppositeAmericanOdds": 108,
       "book": "BetOnline.ag",
-      "impliedProbability": 0.5983935742971888,
-      "fairProbability": 0.5626591727408448,
-      "edge": 8.30574525789376
+      "impliedProbability": 0.5850622406639003,
+      "fairProbability": 0.5489256569588981,
+      "edge": 9.67909683608843
     },
     {
       "playerId": 641343,
@@ -106,12 +106,12 @@
       "modelProbability": 0.590982476732766,
       "modelFairOdds": -144,
       "gamePk": 849803,
-      "americanOdds": -133,
-      "oppositeAmericanOdds": 103,
+      "americanOdds": -132,
+      "oppositeAmericanOdds": 102,
       "book": "BetOnline.ag",
-      "impliedProbability": 0.5708154506437768,
-      "fairProbability": 0.5367701147140101,
-      "edge": 5.42123620187559
+      "impliedProbability": 0.5689655172413793,
+      "fairProbability": 0.5347344777795604,
+      "edge": 5.624799895320565
     },
     {
       "playerId": 694192,
@@ -162,22 +162,6 @@
       "edge": -1.4887251107724042
     },
     {
-      "playerId": 661388,
-      "playerName": "William Contreras",
-      "lineupSlot": 4,
-      "market": "total_bases_2",
-      "marketLabel": "2+ total bases",
-      "modelProbability": 0.36180150014223034,
-      "modelFairOdds": 176,
-      "gamePk": 849803,
-      "americanOdds": 145,
-      "oppositeAmericanOdds": -190,
-      "book": "Bovada",
-      "impliedProbability": 0.4081632653061224,
-      "fairProbability": 0.38385175380542685,
-      "edge": -2.205025366319652
-    },
-    {
       "playerId": 694192,
       "playerName": "Jackson Chourio",
       "lineupSlot": 1,
@@ -194,6 +178,22 @@
       "edge": -3.515495873687313
     },
     {
+      "playerId": 661388,
+      "playerName": "William Contreras",
+      "lineupSlot": 4,
+      "market": "total_bases_2",
+      "marketLabel": "2+ total bases",
+      "modelProbability": 0.36180150014223034,
+      "modelFairOdds": 176,
+      "gamePk": 849803,
+      "americanOdds": 135,
+      "oppositeAmericanOdds": -180,
+      "book": "Bovada",
+      "impliedProbability": 0.425531914893617,
+      "fairProbability": 0.3982930298719773,
+      "edge": -3.6491529729746954
+    },
+    {
       "playerId": 686217,
       "playerName": "Sal Frelick",
       "lineupSlot": 6,
@@ -202,12 +202,12 @@
       "modelProbability": 0.5279913536476175,
       "modelFairOdds": -112,
       "gamePk": 849803,
-      "americanOdds": -172,
-      "oppositeAmericanOdds": 133,
+      "americanOdds": -175,
+      "oppositeAmericanOdds": 135,
       "book": "BetOnline.ag",
-      "impliedProbability": 0.6323529411764706,
-      "fairProbability": 0.5956953445508056,
-      "edge": -6.770399090318813
+      "impliedProbability": 0.6363636363636364,
+      "fairProbability": 0.599271402550091,
+      "edge": -7.128004890247352
     },
     {
       "playerId": 668930,
@@ -234,10 +234,10 @@
       "modelProbability": 0.6394481080713611,
       "modelFairOdds": -177,
       "gamePk": 849803,
-      "americanOdds": -200,
+      "americanOdds": -205,
       "oppositeAmericanOdds": null,
       "book": "BetRivers",
-      "impliedProbability": 0.6666666666666666,
+      "impliedProbability": 0.6721311475409836,
       "fairProbability": null,
       "edge": null
     },
@@ -490,10 +490,10 @@
       "modelProbability": 0.1552911534736242,
       "modelFairOdds": 544,
       "gamePk": 849803,
-      "americanOdds": 460,
+      "americanOdds": 450,
       "oppositeAmericanOdds": null,
       "book": "BetRivers",
-      "impliedProbability": 0.17857142857142858,
+      "impliedProbability": 0.18181818181818182,
       "fairProbability": null,
       "edge": null
     },
@@ -506,10 +506,10 @@
       "modelProbability": 0.15087130049738695,
       "modelFairOdds": 563,
       "gamePk": 849803,
-      "americanOdds": 350,
+      "americanOdds": 340,
       "oppositeAmericanOdds": null,
       "book": "BetRivers",
-      "impliedProbability": 0.2222222222222222,
+      "impliedProbability": 0.22727272727272727,
       "fairProbability": null,
       "edge": null
     },
@@ -550,10 +550,10 @@
       "modelProbability": 0.13975166317448462,
       "modelFairOdds": 616,
       "gamePk": 849803,
-      "americanOdds": 510,
+      "americanOdds": 525,
       "oppositeAmericanOdds": null,
       "book": "BetRivers",
-      "impliedProbability": 0.1639344262295082,
+      "impliedProbability": 0.16,
       "fairProbability": null,
       "edge": null
     },
@@ -666,10 +666,10 @@
       "modelProbability": 0.02356926141973259,
       "modelFairOdds": 4143,
       "gamePk": 849803,
-      "americanOdds": 1050,
+      "americanOdds": 1000,
       "oppositeAmericanOdds": null,
       "book": "BetRivers",
-      "impliedProbability": 0.08695652173913043,
+      "impliedProbability": 0.09090909090909091,
       "fairProbability": null,
       "edge": null
     }
@@ -686,12 +686,12 @@
           "modelProbability": 0.6457166253197824,
           "modelFairOdds": -182,
           "gamePk": 849803,
-          "americanOdds": -149,
-          "oppositeAmericanOdds": 115,
+          "americanOdds": -141,
+          "oppositeAmericanOdds": 108,
           "book": "BetOnline.ag",
-          "impliedProbability": 0.5983935742971888,
-          "fairProbability": 0.5626591727408448,
-          "edge": 8.30574525789376,
+          "impliedProbability": 0.5850622406639003,
+          "fairProbability": 0.5489256569588981,
+          "edge": 9.67909683608843,
           "description": "Cooper Pratt 1+ hits"
         },
         {
@@ -729,13 +729,13 @@
           "description": "Brice Turang to hit a home run"
         }
       ],
-      "decimal": 24.72669649515287,
-      "payout": 123.63348247576434,
-      "profit": 118.63348247576434,
+      "decimal": 25.290123456790127,
+      "payout": 126.45061728395063,
+      "profit": 121.45061728395063,
       "probability": 0.05500248234549897,
       "adjustedProbability": 0.042829772972651906,
-      "expectedValue": 0.2951939862553248,
-      "rawExpectedValue": 1.8001484371857845,
+      "expectedValue": 0.4158512305232991,
+      "rawExpectedValue": 1.9550978447379412,
       "band": "short",
       "stake": 5
     },
@@ -750,12 +750,12 @@
           "modelProbability": 0.6457166253197824,
           "modelFairOdds": -182,
           "gamePk": 849803,
-          "americanOdds": -149,
-          "oppositeAmericanOdds": 115,
+          "americanOdds": -141,
+          "oppositeAmericanOdds": 108,
           "book": "BetOnline.ag",
-          "impliedProbability": 0.5983935742971888,
-          "fairProbability": 0.5626591727408448,
-          "edge": 8.30574525789376,
+          "impliedProbability": 0.5850622406639003,
+          "fairProbability": 0.5489256569588981,
+          "edge": 9.67909683608843,
           "description": "Cooper Pratt 1+ hits"
         },
         {
@@ -793,13 +793,13 @@
           "description": "Brice Turang to hit a home run"
         }
       ],
-      "decimal": 26.55660927925299,
-      "payout": 132.78304639626495,
-      "profit": 127.78304639626495,
+      "decimal": 27.16173296330558,
+      "payout": 135.8086648165279,
+      "profit": 130.8086648165279,
       "probability": 0.04976133569733021,
       "adjustedProbability": 0.03874855497148267,
-      "expectedValue": 0.1451511725666066,
-      "rawExpectedValue": 1.6074617466387124,
+      "expectedValue": 0.2623895142468964,
+      "rawExpectedValue": 1.7580205605414436,
       "band": "short",
       "stake": 5
     },
@@ -848,12 +848,12 @@
           "modelProbability": 0.590982476732766,
           "modelFairOdds": -144,
           "gamePk": 849803,
-          "americanOdds": -133,
-          "oppositeAmericanOdds": 103,
+          "americanOdds": -132,
+          "oppositeAmericanOdds": 102,
           "book": "BetOnline.ag",
-          "impliedProbability": 0.5708154506437768,
-          "fairProbability": 0.5367701147140101,
-          "edge": 5.42123620187559,
+          "impliedProbability": 0.5689655172413793,
+          "fairProbability": 0.5347344777795604,
+          "edge": 5.624799895320565,
           "description": "Garrett Mitchell 1+ hits"
         },
         {
@@ -882,22 +882,22 @@
           "modelProbability": 0.36180150014223034,
           "modelFairOdds": 176,
           "gamePk": 849803,
-          "americanOdds": 145,
-          "oppositeAmericanOdds": -190,
+          "americanOdds": 135,
+          "oppositeAmericanOdds": -180,
           "book": "Bovada",
-          "impliedProbability": 0.4081632653061224,
-          "fairProbability": 0.38385175380542685,
-          "edge": -2.205025366319652,
+          "impliedProbability": 0.425531914893617,
+          "fairProbability": 0.3982930298719773,
+          "edge": -3.6491529729746954,
           "description": "William Contreras 2+ total bases"
         }
       ],
-      "decimal": 30.730367827782015,
-      "payout": 153.65183913891008,
-      "profit": 148.65183913891008,
+      "decimal": 29.571905528717124,
+      "payout": 147.85952764358564,
+      "profit": 142.85952764358564,
       "probability": 0.026320629495620418,
       "adjustedProbability": 0.017347440579556356,
-      "expectedValue": -2.3345338505982056,
-      "rawExpectedValue": -0.9557868707040793,
+      "expectedValue": -2.4350156300816277,
+      "rawExpectedValue": -1.1082441554957372,
       "band": "short",
       "stake": 5
     },
@@ -912,12 +912,12 @@
           "modelProbability": 0.590982476732766,
           "modelFairOdds": -144,
           "gamePk": 849803,
-          "americanOdds": -133,
-          "oppositeAmericanOdds": 103,
+          "americanOdds": -132,
+          "oppositeAmericanOdds": 102,
           "book": "BetOnline.ag",
-          "impliedProbability": 0.5708154506437768,
-          "fairProbability": 0.5367701147140101,
-          "edge": 5.42123620187559,
+          "impliedProbability": 0.5689655172413793,
+          "fairProbability": 0.5347344777795604,
+          "edge": 5.624799895320565,
           "description": "Garrett Mitchell 1+ hits"
         },
         {
@@ -955,13 +955,13 @@
           "description": "Cooper Pratt to hit a home run"
         }
       ],
-      "decimal": 50.103759398496244,
-      "payout": 250.5187969924812,
-      "profit": 245.5187969924812,
+      "decimal": 50.26666666666667,
+      "payout": 251.33333333333337,
+      "profit": 246.33333333333337,
       "probability": 0.006158708599494676,
       "adjustedProbability": 0.00479571248192331,
-      "expectedValue": -3.7985838783067463,
-      "rawExpectedValue": -3.457127730627345,
+      "expectedValue": -3.794677596209941,
+      "rawExpectedValue": -3.452111238660338,
       "band": "medium",
       "stake": 5
     },
@@ -993,12 +993,12 @@
           "modelProbability": 0.36180150014223034,
           "modelFairOdds": 176,
           "gamePk": 849803,
-          "americanOdds": 145,
-          "oppositeAmericanOdds": -190,
+          "americanOdds": 135,
+          "oppositeAmericanOdds": -180,
           "book": "Bovada",
-          "impliedProbability": 0.4081632653061224,
-          "fairProbability": 0.38385175380542685,
-          "edge": -2.205025366319652,
+          "impliedProbability": 0.425531914893617,
+          "fairProbability": 0.3982930298719773,
+          "edge": -3.6491529729746954,
           "description": "William Contreras 2+ total bases"
         },
         {
@@ -1019,13 +1019,13 @@
           "description": "Cooper Pratt to hit a home run"
         }
       ],
-      "decimal": 45.4031914893617,
-      "payout": 227.0159574468085,
-      "profit": 222.0159574468085,
+      "decimal": 43.550000000000004,
+      "payout": 217.75000000000003,
+      "profit": 212.75000000000003,
       "probability": 0.006317715578202597,
       "adjustedProbability": 0.004919529308159424,
-      "expectedValue": -3.883188343920553,
-      "rawExpectedValue": -3.56577774913772,
+      "expectedValue": -3.9287724931482852,
+      "rawExpectedValue": -3.624317432846384,
       "band": "medium",
       "stake": 5
     },
@@ -1094,6 +1094,6 @@
       "stake": 5
     }
   ],
-  "generatedAt": "2026-10-27T21:57:51.573Z",
+  "generatedAt": "2026-10-27T23:17:47.800Z",
   "source": "live"
 }
