@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-28",
+  "status": "ok",
+  "oddsStatus": "too-early (17.5h to first pitch)",
+  "books": 0,
+  "hoursToFirstPitch": 17.48,
+  "game": {
+    "gamePk": 849799,
+    "opponent": "Tampa Bay Rays",
+    "isHome": false,
+    "startTime": "2026-10-29T00:00:00Z",
+    "venue": "Tropicana Field"
+  },
+  "starter": null,
+  "lineupSource": "none",
+  "conditions": {
+    "venue": "Tropicana Field",
+    "roofed": false,
+    "roofClosed": false,
+    "temperatureF": 72,
+    "windMph": 0,
+    "windDirection": "none",
+    "description": "Conditions unavailable"
+  },
+  "factors": {
+    "starterContact": 1,
+    "bullpenContact": 0.8971193415637859,
+    "power": 1,
+    "park": 1,
+    "calibration": 1
+  },
+  "calibration": {
+    "overall": {
+      "n": 0,
+      "expected": 0,
+      "actual": 0,
+      "raw": 1,
+      "factor": 1,
+      "weight": 0
+    },
+    "byMarket": {},
+    "updatedAt": "2026-10-28T06:31:07.147Z"
+  },
+  "battersResolved": 0,
+  "battersSkipped": [],
+  "legs": [],
+  "parlays": [],
+  "generatedAt": "2026-10-28T06:31:07.250Z",
+  "source": "live"
+}
