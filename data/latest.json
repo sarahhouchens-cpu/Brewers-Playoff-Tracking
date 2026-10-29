@@ -1,7 +1,7 @@
 {
   "source": "live",
-  "generatedAt": "2026-10-29T02:15:33.874Z",
-  "slateDate": "2026-10-27",
+  "generatedAt": "2026-10-29T06:54:47.359Z",
+  "slateDate": "2026-10-28",
   "team": {
     "id": 158,
     "name": "Milwaukee Brewers",
@@ -136,11 +136,32 @@
   ],
   "feed": [
     {
-      "kind": "brewers-loss",
+      "kind": "brewers-win",
       "tag": "Brewers · Final",
-      "score": "Tampa Bay Rays 4, Milwaukee Brewers 3",
-      "why": "A loss never raises a magic number. It just burns a game off the schedule.",
-      "impacts": []
+      "score": "Milwaukee Brewers 4, Tampa Bay Rays 1",
+      "why": "A win drops every magic number by one — the only result that moves all four at once.",
+      "impacts": [
+        {
+          "key": "berth",
+          "label": "Playoff berth",
+          "delta": -1
+        },
+        {
+          "key": "division",
+          "label": "NL Central",
+          "delta": -1
+        },
+        {
+          "key": "leagueSeed",
+          "label": "No. 1 seed, NL",
+          "delta": -1
+        },
+        {
+          "key": "bestRecord",
+          "label": "Best record, MLB",
+          "delta": -1
+        }
+      ]
     }
   ]
 }
