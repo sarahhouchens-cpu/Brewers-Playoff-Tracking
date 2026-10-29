@@ -1,7 +1,7 @@
 {
   "date": "2026-10-28",
   "status": "game-started",
-  "gameState": "Warmup",
+  "gameState": "In Progress",
   "startTime": "2026-10-29T00:00:00Z",
   "game": {
     "gamePk": 849799,
@@ -12,7 +12,7 @@
   },
   "legs": [],
   "parlays": [],
-  "generatedAt": "2026-10-28T23:40:43.463Z",
+  "generatedAt": "2026-10-29T01:06:24.842Z",
   "source": "live",
   "history": [
     {
